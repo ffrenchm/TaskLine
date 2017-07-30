@@ -1,13 +1,16 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>TrialApp</title>
+    <title><%= full_title(yield(:title)) %></title>
     <%= render 'layouts/default_head' %>
     <%= render 'shared/shim' %>
   </head>
 
   <body>
-    <%= render 'users/flash' %>
-    <%= yield %>
+    <%= render 'layouts/header' %>
+    <div class="content">
+      <%= render 'users/flash' %>
+      <%= yield %>
+    </div>
   </body>
 </html>
