@@ -2,13 +2,12 @@
 <html>
   <head>
     <title>TrialApp</title>
-    <%= csrf_meta_tags %>
-
-    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
-    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+    <%= render 'layouts/default_head' %>
+    <%= render 'shared/shim' %>
   </head>
 
   <body>
+    <%= render 'users/flash' %>
     <%= yield %>
   </body>
 </html>
