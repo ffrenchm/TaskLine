@@ -1,0 +1,12 @@
+<%= provide(:title, "Sign Up") %>
+<%= provide(:button_text, "Sign Up") %>
+
+<h2>Sign Up for the app.</h2>
+<%= form_for @user do |f| %>
+  <%= f.email_field :email, placeholder: "Email", class: 'form-control' %>
+  <%= f.password_field :password, placeholder: "Password", class: 'form-control' %>
+  <%= f.password_field :password_confirmation, placeholder: "Confirm Password", class: "form-control" %>
+  <%= f.submit yield(:button_text), class: "btn btn-primary" %>
+<% end %>
+
+<p>Already have an account? <%= link_to "Sign In", root_path %></p>
