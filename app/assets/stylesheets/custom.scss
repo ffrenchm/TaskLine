@@ -60,6 +60,7 @@ html {
 body {
   display: flex;
   flex-direction: column;
+  min-height: 100vh;
 }
 h1, h2, h3, h4, h5, h6 {
   font-family: $header;
@@ -69,6 +70,7 @@ h1, h2, h3, h4, h5, h6 {
   max-width: 980px;
   margin: auto;
   padding: 20px;
+  flex: 1 1 auto;
 }
 
 // HERO STYLES
@@ -86,16 +88,35 @@ h1, h2, h3, h4, h5, h6 {
   padding: 5px;
 }
 
+// FORM STYLES
+.form-control {
+  width: 300px;
+  margin-bottom: 5px;
+}
+
+// FOOTER STYLES
+footer {
+  width: 100%;
+  max-width: 980px;
+  height: 200px;
+  background-color: #000;
+}
+
 
 // HEADER STYLES
 header {
   width: 100%;
   height: 70px;
+  position: relative;
 }
 .nav {
   width: 100%;
   max-width: 980px;
   margin: auto;
+  position: absolute;
+  bottom: 50%;
+  left: 50%;
+  transform: translate(-50%, 50%);
   li {
     float: right;
     display: inline-block;

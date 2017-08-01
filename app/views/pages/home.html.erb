@@ -1,4 +1,7 @@
 <%= provide(:button_text, "Sign In") %>
-<h2>Sign In</h2>
-
-<%= render 'users/signin' %>
+<% if signed_in? %>
+  Home
+<% else %>
+  <h2>Sign In</h2>
+  <%= render 'users/signin' %>
+<% end %>
