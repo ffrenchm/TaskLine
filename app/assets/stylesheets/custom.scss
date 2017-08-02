@@ -97,11 +97,9 @@ h1, h2, h3, h4, h5, h6 {
 // FOOTER STYLES
 footer {
   width: 100%;
-  max-width: 980px;
   height: 200px;
   background-color: #000;
 }
-
 
 // HEADER STYLES
 header {
@@ -129,5 +127,36 @@ header {
         background-color: #fff;
       }
     }
+  }
+}
+.logo {
+  float: left;
+  font-family: $header;
+  font-size: 30px;
+  margin-left: 20px;
+  position: absolute;
+  bottom: 50%;
+  transform: translate(0, 60%);
+  color: #444;
+  &:hover {
+    text-decoration: none;
+    color: #888;
+  }
+}
+.dropdown-toggle {
+  background-color: #eee;
+  &:hover {
+    background-color: #eee !important;
+  }
+}
+.edge-link {
+  margin-right: 20px !important;
+}
+.dropdown-menu {
+  width: 99.19px;
+  min-width: 0;
+  li {
+    width: 100%;
+    text-align: center;
   }
 }
