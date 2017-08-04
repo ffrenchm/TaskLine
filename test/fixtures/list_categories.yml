@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+work:
+  title: "work"
+
+chores:
+  title: "chores"
+
+fitness:
+  title: "fitness"
+
+admin:
+  title: "admin"

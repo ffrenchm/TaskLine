@@ -1,5 +1,6 @@
 class User < ApplicationRecord
   attr_accessor :remember_token
+  has_many :list_categories, dependent: :destroy
 
   before_save :email_downcase
 
