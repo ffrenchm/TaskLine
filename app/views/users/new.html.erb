@@ -2,11 +2,6 @@
 <%= provide(:button_text, "Sign Up") %>
 
 <h2>Sign Up for TaskLine</h2>
-<%= form_for @user do |f| %>
-  <%= f.email_field :email, placeholder: "Email", class: 'form-control' %>
-  <%= f.password_field :password, placeholder: "Password", class: 'form-control' %>
-  <%= f.password_field :password_confirmation, placeholder: "Confirm Password", class: "form-control" %>
-  <%= f.submit yield(:button_text), class: "btn btn-primary" %>
-<% end %>
+<%= render 'shared/form' %>
 
 <p>Already have an account? <%= link_to "Sign In", root_path %></p>

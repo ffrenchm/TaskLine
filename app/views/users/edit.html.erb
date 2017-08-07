@@ -1,9 +1,4 @@
 <%= provide(:title, "Update Password") %>
 <%= provide(:button_text, "Update") %>
 
-<%= form_for @user do |f| %>
-  <%= f.email_field :email, placeholder: "Email", class: 'form-control' %>
-  <%= f.password_field :password, placeholder: "New Password", class: 'form-control' %>
-  <%= f.password_field :password_confirmation, placeholder: "Confirm New Password", class: "form-control" %>
-  <%= f.submit yield(:button_text), class: "btn btn-primary" %>
-<% end %>
+<%= render 'shared/form' %>
