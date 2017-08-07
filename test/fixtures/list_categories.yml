@@ -2,12 +2,16 @@
 
 work:
   title: "work"
+  user: matt
 
 chores:
   title: "chores"
+  user: matt
 
 fitness:
   title: "fitness"
+  user: matt
 
 admin:
   title: "admin"
+  user: matt

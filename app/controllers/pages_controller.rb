@@ -1,5 +1,10 @@
 class PagesController < ApplicationController
   def home
-    @user = User.new
+    if signed_in?
+      @user = current_user
+      @list_categories = @user.list_categories
+    else
+      @user = User.new
+    end
   end
 end

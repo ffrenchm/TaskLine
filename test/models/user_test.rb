@@ -58,4 +58,12 @@ class UserTest < ActiveSupport::TestCase
     assert_not @user.valid?
   end
 
+  test "associated list categories should be destroyed" do
+    @user.save
+    @user.list_categories.create!(title: "Test")
+    assert_difference 'ListCategory.count', -1 do
+      @user.destroy
+    end
+  end
+
 end

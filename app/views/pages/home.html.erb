@@ -1,6 +1,11 @@
 <%= provide(:button_text, "Sign In") %>
 <% if signed_in? %>
-  Home
+  <% if @user.list_categories.any? %>
+    <ul class="list-categories">
+      <%= render @list_categories %>
+    </ul>
+  <% end %>
+  <%= link_to "Add Category", '#' %>
 <% else %>
   <h2>Sign In</h2>
   <%= render 'users/signin' %>
