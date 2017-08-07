@@ -17,9 +17,9 @@ class UsersEditTest < ActionDispatch::IntegrationTest
   end
 
   test "successful edit" do
-    sign_in_as(@user)
     get edit_user_path(@user)
-    assert_template 'users/edit'
+    sign_in_as(@user)
+    assert_redirected_to edit_user_path(@user)
     patch user_path(@user), params: { user: { email: "valid@email.com",
                                               password: "",
                                               password_confirmation: "" } }

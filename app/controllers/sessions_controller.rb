@@ -5,7 +5,7 @@ class SessionsController < ApplicationController
     if user && user.authenticate(params[:session][:password])
       signin user
       remember user
-      redirect_to root_path
+      redirect_back_or root_path
     else
       flash[:danger] = "Invalid email/password"
       redirect_to root_path
