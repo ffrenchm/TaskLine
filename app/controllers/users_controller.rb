@@ -1,6 +1,6 @@
 class UsersController < ApplicationController
-  before_action :signed_in_user, only: [:edit, :update]
-  before_action :correct_user, only: [:edit, :update]
+  before_action :signed_in_user, only: [:edit, :update, :destroy]
+  before_action :correct_user, only: [:edit, :update, :destroy]
 
   def new
     @user = User.new
@@ -35,6 +35,13 @@ class UsersController < ApplicationController
     end
   end
 
+  def destroy
+    User.find(params[:id]).destroy
+    flash[:success] = "Account deleted successfully"
+    sign_out
+    redirect_to root_path
+  end
+
   private
 
     def user_params
@@ -43,7 +50,7 @@ class UsersController < ApplicationController
 
     # before filters
 
-    #confirms a looged in user
+    #confirms a signed in user
     def signed_in_user
       unless signed_in?
         store_location
