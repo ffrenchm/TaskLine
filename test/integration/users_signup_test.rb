@@ -11,6 +11,6 @@ class UsersSignupTest < ActionDispatch::IntegrationTest
     end
     follow_redirect!
     assert_select "a[href=?]", signout_path
-    assert is_logged_in?
+    assert is_signed_in?
   end
 end
