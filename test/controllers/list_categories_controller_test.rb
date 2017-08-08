@@ -4,6 +4,7 @@ class ListCategoriesControllerTest < ActionDispatch::IntegrationTest
 
   def setup
     @user = users(:matt)
+    @other_user = users(:chris)
     @list_category = list_categories(:work)
   end
 
@@ -25,17 +26,18 @@ class ListCategoriesControllerTest < ActionDispatch::IntegrationTest
     assert_select "a[href=?]", signup_path
   end
 
-  test "should create list category when signed in" do
-    sign_in_as(@user)
-    assert_difference 'ListCategory.count', 1 do
-      post list_categories_path, params: { list_category: { title: "Test" } }
-    end
+  test "should redirect index when not signed in" do
+    get list_categories_path
+    assert_redirected_to root_path
+    follow_redirect!
+    assert_select "a[href=?]", signup_path
   end
 
-  test "should destroy list category when signed in" do
+  test "should redirect destroy for wrong list category" do
     sign_in_as(@user)
-    assert_difference 'ListCategory.count', -1 do
-      delete list_category_path(@list_category)
+    assert_no_difference "ListCategory.count" do
+      delete list_category_path(list_categories(:chemeng))
     end
+    assert_redirected_to list_categories_path
   end
 end

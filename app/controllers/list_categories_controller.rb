@@ -1,5 +1,5 @@
 class ListCategoriesController < ApplicationController
-  before_action :signed_in_user, only: [:create, :destroy]
+  before_action :signed_in_user, only: [:create, :destroy, :index]
   before_action :correct_user, only: :destroy
 
   def index
