@@ -10,16 +10,12 @@ class ListCategoriesController < ApplicationController
 
   def create
     @list_category = current_user.list_categories.build(list_category_params)
-    if @list_category.save
-      redirect_to list_categories_path
-    else
-      flash[:danger] = "Invalid category"
-    end
+    flash[:danger] = "Invalid category" unless @list_category.save
+    redirect_to list_categories_path
   end
 
   def destroy
     @list_category.destroy
-    flash[:success] = "Category deleted"
     redirect_to request.referrer || list_categories_path
   end
 
