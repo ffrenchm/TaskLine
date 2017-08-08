@@ -1,0 +1,8 @@
+<% if current_user.list_categories.any? %>
+  <ul class="list-categories">
+    <%= render @list_categories %>
+  </ul>
+  <%= render 'shared/list_category_form' %>
+<% else %>
+  Make a list category
+<% end %>
