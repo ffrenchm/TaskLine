@@ -1,0 +1,5 @@
+class AddUserToListItem < ActiveRecord::Migration[5.0]
+  def change
+    add_reference :list_items, :user, foreign_key: true
+  end
+end

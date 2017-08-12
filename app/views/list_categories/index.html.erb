@@ -1,8 +1,24 @@
-<% if current_user.list_categories.any? %>
-  <ul class="list-categories">
-    <%= render @list_categories %>
-  </ul>
-  <%= render 'shared/list_category_form' %>
-<% else %>
-  Make a list category
-<% end %>
+<%= provide(:title, "Categories") %>
+
+<ul class="list-categories">
+  <% @user.list_categories.each do |category| %>
+    <% unless category.id.nil? %>
+      <li class="category" id='<%= category.id %>'>
+        <span class="title"><%= link_to category.title, list_category_path(category) %></span>
+        <span class="delete-category">
+          <%= link_to "", category, method: :delete, class: "fa fa-trash", data: { confirm: "Are you sure?" } %>
+        </span>
+      </li>
+      <div class="items-list">
+        <% @user.list_categories.find(category.id).list_items.each do |item| %>
+          <li class="a">
+            <!-- <span class="content"><%= item.content %></span> -->
+            <span class="edit-item"></span>
+            <span class="delete-item"></span>
+          </li>
+        <% end %>
+      </div>
+    <% end %>
+  <% end %>
+</ul>
+<%= render 'shared/list_category_form' %>

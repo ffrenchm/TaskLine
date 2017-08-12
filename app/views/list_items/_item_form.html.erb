@@ -1,0 +1,8 @@
+<ul class="item-form">
+  <%= form_for(@list_item) do |f| %>
+    <%= f.text_field :content %>
+    <%= f.hidden_field :list_category_id, value: @list_category.id %>
+    <%= f.hidden_field :user_id, value: @user.id %>
+    <%= f.submit "Add", class: "btn btn-primary" %>
+  <% end %>
+</ul>

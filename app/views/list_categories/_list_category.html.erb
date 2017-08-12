@@ -1,5 +1,6 @@
-  <li id="category-<%= list_category.id %>">
-    <span class="title"><%= list_category.title %></span>
-    <span class="edit-category"><%= link_to "Edit", '#' %></span>
-    <span class="delete-category"><%= link_to "Delete", list_category, method: :delete %></span>
-  </li>
+<li class="category" id='<%= category.id %>'>
+  <span class="title"><%= link_to category.title, list_category_path(category) %></span>
+  <span class="delete-category">
+    <%= link_to "", category, method: :delete, class: "fa fa-trash", data: { confirm: "Are you sure?" } %>
+  </span>
+</li>

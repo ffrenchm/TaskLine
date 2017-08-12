@@ -1,0 +1,7 @@
+<%= provide(:title, @list_category.title) %>
+
+<h2><%= @list_category.title %></h2>
+<ul class="list-items">
+  <%= render 'list_items/list_item' %>
+</ul>
+<%= render 'list_items/item_form' %>

@@ -7,6 +7,7 @@ end
 
 gem 'bcrypt',       '3.1.11'
 gem 'bootstrap-sass', '3.3.7'
+gem 'font-awesome-rails', '4.7.0'
 gem 'bootstrap-will_paginate', '1.0.0'
 gem 'carrierwave',             '1.1.0'
 gem 'coffee-rails', '4.2.1'

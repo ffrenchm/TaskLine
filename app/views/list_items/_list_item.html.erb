@@ -1,0 +1,8 @@
+<% @list_items.each do |item| %>
+  <% unless item.id.nil? %>
+    <li class="item-<%= item.id %>">
+      <%= item.content %>
+      <%= link_to "", item, method: :delete, class: "fa fa-trash" %>
+    </li>
+  <% end %>
+<% end %>

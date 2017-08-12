@@ -1,5 +1,5 @@
 class ListCategoriesController < ApplicationController
-  before_action :signed_in_user, only: [:create, :destroy, :index]
+  before_action :signed_in_user, only: [:create, :destroy, :index, :show]
   before_action :correct_user, only: :destroy
 
   def index
@@ -19,10 +19,21 @@ class ListCategoriesController < ApplicationController
     redirect_to request.referrer || list_categories_path
   end
 
+  def show
+    @user = current_user
+    @list_category = current_user.list_categories.find(params[:id])
+    @list_item = @list_category.list_items.build
+    @list_items = @list_category.list_items
+  end
+
   private
 
     def list_category_params
       params.require(:list_category).permit(:title)
+    end
+
+    def list_item_params
+      params.require(:list_item).permit(:content)
     end
 
     def correct_user
