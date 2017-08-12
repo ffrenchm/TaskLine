@@ -1,2 +1,0 @@
-module ListCategoriesHelper
-end

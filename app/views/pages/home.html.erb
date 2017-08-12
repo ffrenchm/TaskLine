@@ -1,7 +1,7 @@
 <%= provide(:button_text, "Sign In") %>
 <% if signed_in? %>
   <ul class="list-items-collation">
-    <% current_user.list_items do |item| %>
+    <% current_user.items do |item| %>
       <%= item.content %>
     <% end %>
   </ul>

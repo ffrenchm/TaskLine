@@ -1,5 +1,5 @@
 <li class="category" id='<%= category.id %>'>
-  <span class="title"><%= link_to category.title, list_category_path(category) %></span>
+  <span class="title"><%= link_to category.title, category_path(category) %></span>
   <span class="update-category">
     <%= link_to "Something", '#', class: "fa fa-pencil-square-o" %>
   </span>

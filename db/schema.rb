@@ -10,24 +10,24 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170812141456) do
+ActiveRecord::Schema.define(version: 20170812160354) do
 
-  create_table "list_categories", force: :cascade do |t|
+  create_table "categories", force: :cascade do |t|
     t.string   "title"
     t.integer  "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["user_id"], name: "index_list_categories_on_user_id"
+    t.index ["user_id"], name: "index_categories_on_user_id"
   end
 
-  create_table "list_items", force: :cascade do |t|
-    t.integer  "list_category_id"
+  create_table "items", force: :cascade do |t|
     t.string   "content"
-    t.datetime "created_at",       null: false
-    t.datetime "updated_at",       null: false
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
     t.integer  "user_id"
-    t.index ["list_category_id"], name: "index_list_items_on_list_category_id"
-    t.index ["user_id"], name: "index_list_items_on_user_id"
+    t.integer  "category_id"
+    t.index ["category_id"], name: "index_items_on_category_id"
+    t.index ["user_id"], name: "index_items_on_user_id"
   end
 
   create_table "users", force: :cascade do |t|
