@@ -3,12 +3,13 @@ class ItemsController < ApplicationController
 
   def create
     @user = current_user
-    @category = current_user.categories.find_by(id: params[:item][:category_id])
-    @item = @category.items.build(item_params)
+    @category = current_user.categories.find(params[:item][:category_id])
+    @item = @user.items.build(item_params)
     if @item.save
       redirect_to category_path(@category)
     else
-      redirect_to categories
+      flash[:danger] = "Invalid list item"
+      redirect_to categories_path
     end
   end
 
@@ -22,6 +23,6 @@ class ItemsController < ApplicationController
   private
 
     def item_params
-      params.require(:item).permit(:content)
+      params.require(:item).permit(:content, :deadline, :repeat)
     end
 end

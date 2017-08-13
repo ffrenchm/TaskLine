@@ -1,9 +1,24 @@
-<li class="category" id='<%= category.id %>'>
-  <span class="title"><%= link_to category.title, category_path(category) %></span>
-  <span class="update-category">
-    <%= link_to "Something", '#', class: "fa fa-pencil-square-o" %>
-  </span>
-  <span class="delete-category">
-    <%= link_to "", category, method: :delete, class: "fa fa-trash", data: { confirm: "Are you sure?" } %>
-  </span>
-</li>
+<% @user.categories.each do |category| %>
+  <% unless category.id.nil? %>
+    <li class="category" id='<%= category.id %>'>
+      <span class="title">
+        <%= link_to category.title, category_path(category) %>
+      </span>
+      <span class="update-category">
+        <%= link_to "", '#', class: "fa fa-pencil-square-o" %>
+      </span>
+      <span class="delete-category">
+        <%= link_to "", category, method: :delete, class: "fa fa-trash", data: { confirm: "Are you sure?" } %>
+      </span>
+    </li>
+    <div class="items-list">
+      <% @user.categories.find(category.id).items.each do |item| %>
+        <li class="a">
+          <!-- <span class="content"><%= item.content %></span> -->
+          <span class="edit-item"></span>
+          <span class="delete-item"></span>
+        </li>
+      <% end %>
+    </div>
+  <% end %>
+<% end %>

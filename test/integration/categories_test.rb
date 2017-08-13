@@ -26,9 +26,11 @@ class CategoriesTest < ActionDispatch::IntegrationTest
       post categories_path, params: { category: { title: "Test" } }
     end
     assert_redirected_to categories_path
+    # check for presence of show and destroy links
     follow_redirect!
+    assert_select "a[href=?]", category_path(@category), method: :delete
+    assert_select "a[href=?]", category_path(@category)
     # delete category
-    assert_select 'a', text: 'Delete'
     assert_difference 'Category.count', -1 do
       delete category_path(@category)
     end
