@@ -1,11 +1,10 @@
 <ul class="item-form">
-  <%= form_for(@item) do |f| %>
+  <%= form_for [@category, @item] do |f| %>
     <li><%= f.text_field :content, placeholder: "Item", class: "form-control" %></li>
     <li><%= f.label "Deadline" %></li>
-    <li><%= f.date_field :deadline, class: "form-control" %></li>
+    <li><%= f.date_field :deadline_date, class: "form-control" %></li>
+    <li><%= f.time_field :deadline_time, class: "form-control" %></li>
     <li class="form-control"><%= f.check_box :repeat %><%= f.label "repeat item?" %></li>
-    <%= f.hidden_field :category_id, value: @category.id %>
-    <%= f.hidden_field :user_id, value: @user.id %>
     <li><%= f.submit "Add", class: "btn btn-primary" %></li>
   <% end %>
 </ul>

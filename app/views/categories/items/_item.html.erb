@@ -1,0 +1,18 @@
+<% @items.each do |item| %>
+  <% unless item.id.nil? %>
+    <ul class="item item-<%= item.id %>">
+      <span class="item_content"><%= item.content %></span>
+      <span class="edit-item">
+        <%= link_to "", '#', class: "fa fa-pencil-square-o" %>
+      </span>
+      <span class="delete-item">
+        <%= link_to "", [@category, item], method: :delete, class: "fa fa-trash" %>
+      </span>
+      <li class="item_deadline">
+        <%= deadline_date(item.deadline_date) +
+            comma(item.deadline_date, item.deadline_time) +
+            deadline_time(item.deadline_time) %>
+      </li>
+    </ul>
+  <% end %>
+<% end %>

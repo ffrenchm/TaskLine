@@ -20,20 +20,15 @@ class CategoriesController < ApplicationController
   end
 
   def show
-    @user = current_user
-    @category = current_user.categories.find(params[:id])
-    @item = @category.items.build
+    @category = Category.find(params[:id])
     @items = @category.items
+    @item = @category.items.build
   end
 
   private
 
     def category_params
       params.require(:category).permit(:title)
-    end
-
-    def item_params
-      params.require(:item).permit(:content)
     end
 
     def correct_user

@@ -1,10 +1,12 @@
-class ItemsController < ApplicationController
+class Categories::ItemsController < ApplicationController
   before_action :signed_in_user, only: [:create, :destroy]
 
   def create
     @user = current_user
-    @category = current_user.categories.find(params[:item][:category_id])
-    @item = @user.items.build(item_params)
+    @category = Category.find(params[:category_id])
+    @item = Item.new(item_params)
+    @item.category_id = @category.id
+    @item.user_id = @user.id
     if @item.save
       redirect_to category_path(@category)
     else
@@ -14,7 +16,8 @@ class ItemsController < ApplicationController
   end
 
   def destroy
-    @item = current_user.items.find(params[:id])
+    @category = Category.find(params[:category_id])
+    @item = Item.find(params[:id])
     if @item.destroy
       redirect_to request.referrer || categories_path
     end
@@ -23,6 +26,6 @@ class ItemsController < ApplicationController
   private
 
     def item_params
-      params.require(:item).permit(:content, :deadline, :repeat)
+      params.require(:item).permit(:content, :deadline_date, :deadline_time, :repeat)
     end
 end

@@ -12,7 +12,7 @@
       </span>
     </li>
     <div class="items-list">
-      <% @user.categories.find(category.id).items.each do |item| %>
+      <% category.items.each do |item| %>
         <li class="a">
           <!-- <span class="content"><%= item.content %></span> -->
           <span class="edit-item"></span>

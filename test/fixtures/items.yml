@@ -1,1 +1,7 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+cook:
+  content: "Cook"
+  deadline: 29/08/2017
+  repeat: 1
+  user: matt
+  category: chores

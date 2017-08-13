@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170813083807) do
+ActiveRecord::Schema.define(version: 20170813173956) do
 
   create_table "categories", force: :cascade do |t|
     t.string   "title"
@@ -22,12 +22,13 @@ ActiveRecord::Schema.define(version: 20170813083807) do
 
   create_table "items", force: :cascade do |t|
     t.string   "content"
-    t.datetime "created_at",  null: false
-    t.datetime "updated_at",  null: false
+    t.datetime "created_at",    null: false
+    t.datetime "updated_at",    null: false
     t.integer  "user_id"
     t.integer  "category_id"
-    t.datetime "deadline"
+    t.datetime "deadline_date"
     t.integer  "repeat"
+    t.datetime "deadline_time"
     t.index ["category_id"], name: "index_items_on_category_id"
     t.index ["user_id"], name: "index_items_on_user_id"
   end

@@ -1,10 +1,14 @@
 <%= provide(:button_text, "Sign In") %>
 <% if signed_in? %>
-  <ul class="list-items-collation">
-    <% current_user.items do |item| %>
-      <%= item.content %>
+  <div class="list-items-collation">
+    <% @items.each do |item| %>
+      <ul class="item">
+        <li><%= item.content %></li>
+        <li><%= deadline_date(item.deadline_date) +
+                comma(item.deadline_date, item.deadline_time) + deadline_time(item.deadline_time) %></li>
+      </ul>
     <% end %>
-  </ul>
+  </div>
 <% else %>
   <h2>Sign In</h2>
   <%= render 'users/signin' %>
