@@ -1,5 +1,5 @@
 class Categories::ItemsController < ApplicationController
-  before_action :signed_in_user, only: [:create, :destroy]
+  before_action :signed_in_user
 
   def create
     @user = current_user
@@ -7,12 +7,24 @@ class Categories::ItemsController < ApplicationController
     @item = Item.new(item_params)
     @item.category_id = @category.id
     @item.user_id = @user.id
-    if @item.save
-      redirect_to category_path(@category)
-    else
+    unless @item.save
       flash[:danger] = "Invalid list item"
-      redirect_to categories_path
     end
+    redirect_to @category
+  end
+
+  def edit
+    @category = Category.find(params[:category_id])
+    @item = Item.find(params[:id])
+  end
+
+  def update
+    @category = Category.find(params[:category_id])
+    @item = Item.find(params[:id])
+    unless @item.update(item_params)
+      flash[:danger] = "Invalid list item"
+    end
+    redirect_to @category
   end
 
   def destroy

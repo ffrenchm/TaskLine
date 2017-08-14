@@ -14,6 +14,18 @@ class CategoriesController < ApplicationController
     redirect_to categories_path
   end
 
+  def edit
+    @category = Category.find(params[:id])
+  end
+
+  def update
+    @category = Category.find(params[:id])
+    unless @category.update(category_params)
+      flash[:danger] = "Invalid name"
+    end
+    redirect_to categories_path
+  end
+
   def destroy
     @category.destroy
     redirect_to request.referrer || categories_path

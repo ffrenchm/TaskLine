@@ -1,4 +1,5 @@
 <%= provide(:title, @category.title) %>
+<%= provide(:button_text, "Add") %>
 
 <h2><%= @category.title %> <i class="fa fa-plus new-item-toggle"></i></h2>
 <%= render 'categories/items/item' %>

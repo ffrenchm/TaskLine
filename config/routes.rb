@@ -7,8 +7,8 @@ Rails.application.routes.draw do
 
   resources :users
 
-  resources :categories, only: [:create, :destroy, :index, :show] do
-    resources :items, only: [:create, :destroy],
+  resources :categories, except: :new do
+    resources :items, only: [:create, :edit, :update, :destroy],
                       controller: 'categories/items'
   end
 end

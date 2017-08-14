@@ -8,17 +8,11 @@
         <%= link_to "", category, method: :delete, class: "fa fa-trash", data: { confirm: "Are you sure? All items inside '" + category.title + "' will be lost." } %>
       </span>
       <span class="edit-category">
-        <%= link_to "", '#', class: "fa fa-pencil-square-o" %>
+        <%= link_to "", edit_category_path(category), class: "fa fa-pencil-square-o" %>
       </span>
-    </div>
-    <div class="items-list">
-      <% category.items.each do |item| %>
-        <li class="a">
-          <!-- <span class="content"><%= item.content %></span> -->
-          <span class="edit-item"></span>
-          <span class="delete-item"></span>
-        </li>
-      <% end %>
+      <li class="item-count">
+        <%= pluralize(category.items.count, "Item") %>
+      </li>
     </div>
   <% end %>
 <% end %>

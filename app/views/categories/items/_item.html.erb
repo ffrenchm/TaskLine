@@ -18,7 +18,7 @@
             <%= link_to "", [@category, item], method: :delete, class: "fa fa-trash" %>
           </span>
           <span class="edit-item">
-            <%= link_to "", '#', class: "fa fa-pencil-square-o" %>
+            <%= link_to "", edit_category_item_path(@category, item), class: "fa fa-pencil-square-o" %>
           </span>
         </div>
       </div>

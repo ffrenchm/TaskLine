@@ -5,6 +5,6 @@
     <li><%= f.date_field :deadline_date, class: "form-control" %></li>
     <li><%= f.time_field :deadline_time, class: "form-control" %></li>
     <li class="form-control"><%= f.check_box :repeat %><%= f.label "repeat item?" %></li>
-    <li><%= f.submit "Add", class: "btn btn-primary" %></li>
+    <li><%= f.submit yield(:button_text), class: "btn btn-primary" %></li>
   <% end %>
 </ul>
