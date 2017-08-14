@@ -1,9 +1,6 @@
 <%= provide(:title, @category.title) %>
 
-<h2>
-  <%= @category.title %> <i class="fa fa-plus"></i></h2>
-<ul class="list-items">
-  <%= render 'categories/items/item' %>
-</ul>
+<h2><%= @category.title %> <i class="fa fa-plus new-item-toggle"></i></h2>
+<%= render 'categories/items/item' %>
 <%= render 'categories/items/item_form' %>
 <li><%= link_to "Back", categories_path %></li>

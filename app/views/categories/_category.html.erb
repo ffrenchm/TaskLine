@@ -1,16 +1,16 @@
 <% @user.categories.each do |category| %>
   <% unless category.id.nil? %>
-    <li class="category" id='<%= category.id %>'>
+    <div class="category" id='<%= category.id %>'>
       <span class="title">
         <%= link_to category.title, category_path(category) %>
-      </span>
-      <span class="update-category">
-        <%= link_to "", '#', class: "fa fa-pencil-square-o" %>
       </span>
       <span class="delete-category">
         <%= link_to "", category, method: :delete, class: "fa fa-trash", data: { confirm: "Are you sure?" } %>
       </span>
-    </li>
+      <span class="edit-category">
+        <%= link_to "", '#', class: "fa fa-pencil-square-o" %>
+      </span>
+    </div></br>
     <div class="items-list">
       <% category.items.each do |item| %>
         <li class="a">

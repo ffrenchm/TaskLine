@@ -1,12 +1,21 @@
 <%= provide(:button_text, "Sign In") %>
 <% if signed_in? %>
-  <div class="list-items-collation">
+  <div class="items-collation items">
     <% @items.each do |item| %>
-      <ul class="item">
-        <li><%= item.content %></li>
-        <li><%= deadline_date(item.deadline_date) +
-                comma(item.deadline_date, item.deadline_time) + deadline_time(item.deadline_time) %></li>
-      </ul>
+      <div class="item item-<%= item.id %>">
+        <span class="item-content"><%= item.content %></span>
+        <span class="delete-item">
+          <%= link_to "", '#', method: :delete, class: "fa fa-trash" %>
+        </span>
+        <span class="edit-item">
+          <%= link_to "", '#', class: "fa fa-pencil-square-o" %>
+        </span>
+        <li class="item-deadline">
+          <%= deadline_date(item.deadline_date) +
+              comma(item.deadline_date, item.deadline_time) +
+              deadline_time(item.deadline_time) %>
+        </li>
+      </div>
     <% end %>
   </div>
 <% else %>
