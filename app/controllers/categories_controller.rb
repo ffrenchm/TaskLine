@@ -1,6 +1,6 @@
 class CategoriesController < ApplicationController
   before_action :signed_in_user, only: [:create, :destroy, :index, :show]
-  before_action :correct_user, only: :destroy
+  before_action :correct_user, only: [:edit, :update, :show]
 
   def index
     @user = current_user
@@ -15,11 +15,9 @@ class CategoriesController < ApplicationController
   end
 
   def edit
-    @category = Category.find(params[:id])
   end
 
   def update
-    @category = Category.find(params[:id])
     unless @category.update(category_params)
       flash[:danger] = "Invalid name"
     end
@@ -32,7 +30,6 @@ class CategoriesController < ApplicationController
   end
 
   def show
-    @category = Category.find(params[:id])
     @items = @category.items
     @item = @category.items.build
   end
@@ -47,4 +44,5 @@ class CategoriesController < ApplicationController
       @category = current_user.categories.find_by(id: params[:id])
       redirect_to categories_path if @category.nil?
     end
+
 end
