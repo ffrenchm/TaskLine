@@ -1,6 +1,6 @@
 class CategoriesController < ApplicationController
   before_action :signed_in_user, only: [:create, :destroy, :index, :show]
-  before_action :correct_user, only: [:edit, :update, :show]
+  before_action :correct_user, except: [:index, :create]
 
   def index
     @user = current_user
