@@ -1,6 +1,6 @@
 <ul class="item-form">
   <%= form_for [@category, @item] do |f| %>
-    <li><%= f.text_field :content, placeholder: "Item", class: "form-control" %></li>
+    <li><%= f.text_field :content, placeholder: "Task", class: "form-control" %></li>
     <li><%= f.label "Deadline" %></li>
     <li><%= f.date_field :deadline_date, class: "form-control" %></li>
     <li><%= f.time_field :deadline_time, class: "form-control" %></li>

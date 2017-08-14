@@ -11,7 +11,7 @@
         <%= link_to "", edit_category_path(category), class: "fa fa-pencil-square-o" %>
       </span>
       <li class="item-count">
-        <%= pluralize(category.items.count, "Item") %>
+        <%= pluralize(category.items.count, "Task") %>
       </li>
     </div>
   <% end %>

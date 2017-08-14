@@ -16,10 +16,10 @@
         </div>
         <div class="links">
           <span class="delete-item">
-            <%= link_to "", '#', method: :delete, class: "fa fa-trash" %>
+            <%= link_to "", category_item_path(item.category, item), method: :delete, class: "fa fa-trash" %>
           </span>
           <span class="edit-item">
-            <%= link_to "", '#', class: "fa fa-pencil-square-o" %>
+            <%= link_to "", edit_category_item_path(item.category, item), class: "fa fa-pencil-square-o" %>
           </span>
         </div>
       </div>

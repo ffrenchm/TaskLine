@@ -11,8 +11,10 @@ module ItemsHelper
       "Yesterday"
     elsif date - 7.days < Time.now
       date.strftime("%A")
+    elsif date.strftime("%Y") != Time.now.strftime("%Y")
+      date.strftime("%b %-d, %Y")
     else
-      date.strftime("%b %d")
+      date.strftime("%b %-d")
     end
   end
 
@@ -32,31 +34,4 @@ module ItemsHelper
       ""
     end
   end
-
-#   def deadline(date, time)
-#     deadline_date = Proc.new {
-#       case date
-#       when nil
-#         return ""
-#       else
-#         return date.strftime("%b %d")
-#       end
-#     }
-#     deadline_time = Proc.new {
-#       case time
-#       when nil
-#         return ""
-#       else
-#         return time.strftime("%-I:%M%p")
-#       end
-#     }
-#     comma = Proc.new {
-#       if date && time
-#         return ", "
-#       else
-#         return ""
-#       end
-#     }
-#     return comma.call, deadline_time.call
-#   end
 end
