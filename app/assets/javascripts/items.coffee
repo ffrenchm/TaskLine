@@ -3,6 +3,6 @@
 # You can use CoffeeScript in this file: http://coffeescript.org/
 $(document).on 'turbolinks:load', ->
   $(".fa-plus").click ->
-    $(".item-form").toggle()
+    $(".new-item-form").toggle()
   $(".tickbox").click ->
     $(this).toggle()

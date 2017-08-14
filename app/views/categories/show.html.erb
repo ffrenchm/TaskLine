@@ -1,7 +1,11 @@
 <%= provide(:title, @category.title) %>
 <%= provide(:button_text, "Add") %>
 
-<h2><%= @category.title %> <i class="fa fa-plus new-item-toggle"></i></h2>
-<%= render 'categories/items/item' %>
-<%= render 'categories/items/item_form' %>
+<h2>
+  <%= @category.title %> <i class="fa fa-plus new-item-toggle"></i>
+</h2>
+<%= render 'shared/items' %>
+<div class="new-item-form">
+  <%= render 'categories/items/item_form' %>
+</div>
 <li><%= link_to "Back", categories_path %></li>

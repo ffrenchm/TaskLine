@@ -29,14 +29,6 @@ footer, header, hgroup, menu, nav, section {
 ol, ul, li {
 	list-style: none;
 }
-blockquote, q {
-	quotes: none;
-}
-blockquote:before, blockquote:after,
-q:before, q:after {
-	content: '';
-	content: none;
-}
 table {
 	border-collapse: collapse;
 	border-spacing: 0;
@@ -158,25 +150,21 @@ header {
   box-sizing: border-box;
   min-height: 55px;
   display: flex;
-}
-.tickbox-container {
-  width: 13%;
-  display: inline-block;
-  height: 100%;
-  float: left;
   position: relative;
-  .tickbox {
-    position: absolute;
-    height: 30px;
-    width: 30px;
-    border-radius: 8px;
-    background-color: #fff;
-    border: 1px solid #888;
-  }
+}
+.tickbox {
+  position: absolute;
+  height: 25px;
+  width: 25px;
+  border-radius: 8px;
+  background-color: #fff;
+  border: 1px solid #888;
+  top: 50%;
+  transform: translate(20%, -50%);
 }
 .info {
   width: 72%;
-  margin: 0;
+  margin-left: 45px;
   word-wrap: break-word;
   display: inline-block;
   float: right;
@@ -201,8 +189,8 @@ header {
   font-style: italic;
   color: #888;
 }
-.item-form {
-  // display: none;
+.new-item-form {
+  display: none;
 }
 .new-item-toggle {
   color: #337ab7;

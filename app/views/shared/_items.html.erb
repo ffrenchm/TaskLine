@@ -2,9 +2,7 @@
   <% @items.each do |item| %>
     <% unless item.id.nil? %>
       <div class="item item-<%= item.id %>">
-        <div class="tickbox-container">
-          <div class="tickbox"><span></span></div>
-        </div>
+        <div class="tickbox"><span></span></div>
         <div class="info">
           <span class="item-content"><%= item.content %></span>
           <li class="item-deadline">
@@ -15,10 +13,10 @@
         </div>
         <div class="links">
           <span class="delete-item">
-            <%= link_to "", [@category, item], method: :delete, class: "fa fa-trash" %>
+            <%= link_to "", [item.category, item], method: :delete, class: "fa fa-trash" %>
           </span>
           <span class="edit-item">
-            <%= link_to "", edit_category_item_path(@category, item), class: "fa fa-pencil-square-o" %>
+            <%= link_to "", edit_category_item_path(item.category, item), class: "fa fa-pencil-square-o" %>
           </span>
         </div>
       </div>
