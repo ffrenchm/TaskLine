@@ -4,3 +4,5 @@
 $(document).on 'turbolinks:load', ->
   $(".fa-plus").click ->
     $(".item-form").toggle()
+  $(".tickbox").click ->
+    $(this).toggle()

@@ -2,18 +2,25 @@
   <% @items.each do |item| %>
     <% unless item.id.nil? %>
       <div class="item item-<%= item.id %>">
-        <span class="item-content"><%= item.content %></span>
-        <span class="delete-item">
-          <%= link_to "", [@category, item], method: :delete, class: "fa fa-trash" %>
-        </span>
-        <span class="edit-item">
-          <%= link_to "", '#', class: "fa fa-pencil-square-o" %>
-        </span>
-        <li class="item-deadline">
-          <%= deadline_date(item.deadline_date) +
-              comma(item.deadline_date, item.deadline_time) +
-              deadline_time(item.deadline_time) %>
-        </li>
+        <div class="tickbox-container">
+          <div class="tickbox"><span></span></div>
+        </div>
+        <div class="info">
+          <span class="item-content"><%= item.content %></span>
+          <li class="item-deadline">
+            <%= deadline_date(item.deadline_date) +
+            comma(item.deadline_date, item.deadline_time) +
+            deadline_time(item.deadline_time) %>
+          </li>
+        </div>
+        <div class="links">
+          <span class="delete-item">
+            <%= link_to "", [@category, item], method: :delete, class: "fa fa-trash" %>
+          </span>
+          <span class="edit-item">
+            <%= link_to "", '#', class: "fa fa-pencil-square-o" %>
+          </span>
+        </div>
       </div>
     <% end %>
   <% end %>
