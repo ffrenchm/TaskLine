@@ -5,7 +5,15 @@
         <div class="tickbox"><span></span></div>
         <div class="info">
           <span class="item-content"><%= item.content %></span>
-          <li class="item-deadline">
+          <% if item.deadline_date &&
+                (item.deadline_time &&
+                (((item.deadline_date + item.deadline_time.seconds_since_midnight.seconds).to_datetime < Time.now) ||
+                (!item.deadline_time &&
+                item.deadline_date < Time.now))) %>
+              <li class="item-overdue-deadline">
+          <% else %>
+              <li class="item-deadline">
+          <% end %>
             <%= deadline_date(item.deadline_date) +
             comma(item.deadline_date, item.deadline_time) +
             deadline_time(item.deadline_time) %>
@@ -17,6 +25,9 @@
           </span>
           <span class="edit-item">
             <%= link_to "", edit_category_item_path(item.category, item), class: "fa fa-pencil-square-o" %>
+          </span>
+          <span class="move-item">
+            <%= link_to "", '#', class: "fa fa-arrow-left" %>
           </span>
         </div>
       </div>

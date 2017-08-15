@@ -2,6 +2,8 @@
 <%= provide(:button_text, "Sign Up") %>
 
 <h2>Sign Up for TaskLine</h2>
-<%= render 'shared/form' %>
+<div class="user">
+  <%= render 'shared/form' %>
+</div>
 
 <p>Already have an account? <%= link_to "Sign In", root_path %></p>

@@ -1,10 +1,20 @@
-<ul class="item-form">
-  <%= form_for [@category, @item] do |f| %>
-    <li><%= f.text_field :content, placeholder: "Task", class: "form-control" %></li>
-    <li><%= f.label "Deadline" %></li>
-    <li><%= f.date_field :deadline_date, class: "form-control" %></li>
-    <li><%= f.time_field :deadline_time, class: "form-control" %></li>
-    <li class="form-control"><%= f.check_box :repeat %><%= f.label "repeat item?" %></li>
-    <li><%= f.submit yield(:button_text), class: "btn btn-primary" %></li>
-  <% end %>
-</ul>
+<div class="form-holder">
+  <div class="full-page-form">
+    <div class="form-nav">
+      <%= yield(:window_title) %>
+      <%= yield(:window_close) %>
+    </div>
+    <%= form_for [@category, @item] do |f| %>
+      <div class="input-group">
+        <%= f.text_field :content, placeholder: "Task", class: "form-control" %>
+        <span class="input-group-btn">
+          <%= f.submit yield(:button_text), class: "btn btn-primary" %>
+        </span>
+      </div>
+      <%= f.label "Deadline" %>
+      <%= f.date_field :deadline_date, class: "form-control" %>
+      <%= f.time_field :deadline_time, class: "form-control" %>
+      <li class="form-control"><%= f.check_box :repeat %><%= f.label "repeat item?" %></li>
+    <% end %>
+  </div>
+</div>

@@ -2,7 +2,7 @@
 # All this logic will automatically be available in application.js.
 # You can use CoffeeScript in this file: http://coffeescript.org/
 $(document).on 'turbolinks:load', ->
-  $(".fa-plus").click ->
+  $(".fa-plus-square, .fa-window-close").click ->
     $(".new-item-form").toggle()
   $(".tickbox").click ->
     $(this).toggle()

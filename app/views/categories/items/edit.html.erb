@@ -1,6 +1,5 @@
-<%= provide(:title, "Edit Task") %>
+<%= provide(:window_title, "Edit Task") %>
 <%= provide(:button_text, "Update") %>
+<%= provide(:window_close, (link_to "", @category, class: "fa fa-window-close")) %>
 
 <%= render 'item_form' %>
-
-<%= link_to "Cancel", @category %>

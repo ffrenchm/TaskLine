@@ -1,9 +1,14 @@
 <%= provide(:title, @category.title) %>
 <%= provide(:button_text, "Add") %>
+<%= provide(:window_close, (link_to "", '#', class: "fa fa-window-close")) %>
+<%= provide(:window_title, "New Task") %>
 
-<h2>
-  <%= @category.title %> <i class="fa fa-plus new-item-toggle"></i>
-</h2>
+<div class="page-header">
+  <h2 class="show-header">
+    <%= @category.title %>
+  </h2>
+  <i class="fa fa-plus-square new-item-toggle"></i>
+</div>
 <%= render 'shared/items' %>
 <div class="new-item-form">
   <%= render 'categories/items/item_form' %>

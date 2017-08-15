@@ -1,4 +1,6 @@
 <%= provide(:title, "Profile") %>
 
-<h1>Profile</h1>
+<div class="page-header">
+  <h2>Profile</h2>
+</div>
 <%= link_to "Delete Account", current_user, method: :delete, data: { confirm: "Are you sure?" } %>
