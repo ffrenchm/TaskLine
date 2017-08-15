@@ -1,6 +1,6 @@
 class Categories::ItemsController < ApplicationController
   before_action :signed_in_user
-  before_action :find_category
+  before_action :find_category, except: :complete
   before_action :find_item, except: :create
 
   def create
@@ -28,6 +28,14 @@ class Categories::ItemsController < ApplicationController
     if @item.destroy
       redirect_to request.referrer || categories_path
     end
+  end
+
+  def complete
+    @category = @item.category
+    unless @item.update(completed: !@item.completed)
+      flash[:danger] = "Error"
+    end
+    redirect_to request.referrer || categories_path
   end
 
   private

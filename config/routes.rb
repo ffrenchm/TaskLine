@@ -11,4 +11,5 @@ Rails.application.routes.draw do
     resources :items, only: [:create, :edit, :update, :destroy],
                       controller: 'categories/items'
   end
+  get '/categories/:category_id/items/:id', to: 'categories/items#complete', as: :complete
 end

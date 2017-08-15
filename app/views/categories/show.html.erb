@@ -7,7 +7,15 @@
   <h2 class="show-header">
     <%= @category.title %>
   </h2>
-  <i class="fa fa-plus-square new-item-toggle"></i>
+  <span class="new-category">
+    <i class="fa fa-plus-square new-item-toggle"></i>
+  </span>
+  <span class="delete-category">
+    <%= link_to "", @category, method: :delete, class: "fa fa-trash", data: { confirm: "Are you sure? All items inside '" + @category.title + "' will be lost." } %>
+  </span>
+  <span class="edit-category">
+    <%= link_to "", edit_category_path(@category), class: "fa fa-pencil-square-o" %>
+  </span>
 </div>
 <%= render 'shared/items' %>
 <div class="new-item-form">

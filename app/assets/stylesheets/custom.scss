@@ -39,7 +39,8 @@ table {
   // COLOURS
   $main: #eee;
   $text: #111;
-  $links: #888;
+  $links: #337ab7;
+  $links-hover: #23527c;
 
   // FONTS
   $header: 'Baloo Bhaina', cursive;
@@ -210,6 +211,28 @@ header {
   font-style: italic;
   color: red;
 }
+.completed-item {
+  background-color: $main;
+  margin-bottom: 10px;
+  border-radius: 10px;
+  padding: 10px;
+  box-sizing: border-box;
+  min-height: 55px;
+  position: relative;
+  display: none;
+  .info {
+    text-decoration: line-through;
+    color: #888;
+  }
+}
+.toggle-completed {
+  cursor: pointer;
+  color: $links;
+  margin-bottom: 10px;
+  &:hover {
+    color: $links-hover
+  }
+}
 .form-holder {
   height: 100vh;
   width: 100vw;
@@ -275,9 +298,15 @@ header {
   color: #888;
 }
 .edit-category,
+.new-category,
 .delete-category {
-  float: right;
+  font-size: 20px;
   margin-left: 10px;
+  line-height: 1;
+  float: right;
+}
+.delete-category {
+  font-size: 18px;
 }
 .show-header {
   display: inline-block;

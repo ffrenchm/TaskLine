@@ -1,14 +1,25 @@
 <div class="items">
+  <% if @items.count != 0 %>
+    <p class="toggle-completed">Toggle Completed</p>
+  <% else %>
+    <p>This category is empty. Create a new task by clicking the plus icon.</p></br>
+  <% end %>
   <% @items.each do |item| %>
     <% unless item.id.nil? %>
-      <div class="item item-<%= item.id %>">
-        <div class="tickbox"><span></span></div>
+      <% if item.completed == false %>
+        <div class="item">
+      <% else %>
+        <div class="completed-item">
+      <% end %>
+        <%= link_to complete_path(item.category, item) do %>
+          <div class="tickbox"><span></span></div>
+        <% end %>
         <div class="info">
           <span class="item-content"><%= item.content %></span>
           <% d = item.deadline_date
              t = item.deadline_time %>
-          <% if (d && !t && d < Time.now) ||
-                (d && t &&
+          <% if (d && !t && d < Time.now && !item.completed) ||
+                (d && t && !item.completed &&
                 (d + t.seconds_since_midnight.seconds).to_datetime < Time.now) %>
               <li class="item-overdue-deadline">
           <% else %>
