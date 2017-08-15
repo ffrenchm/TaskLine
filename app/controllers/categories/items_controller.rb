@@ -1,7 +1,11 @@
 class Categories::ItemsController < ApplicationController
   before_action :signed_in_user
   before_action :find_category, except: :complete
-  before_action :find_item, except: :create
+  before_action :find_item, except: [:create, :new]
+
+  def new
+    @new_item = @category.items.build
+  end
 
   def create
     @user = current_user
@@ -11,7 +15,7 @@ class Categories::ItemsController < ApplicationController
     unless @item.save
       flash[:danger] = "Invalid list item"
     end
-    redirect_to @category
+    redirect_to categories_path
   end
 
   def edit
@@ -21,7 +25,7 @@ class Categories::ItemsController < ApplicationController
     unless @item.update(item_params)
       flash[:danger] = "Invalid list item"
     end
-    redirect_to @category
+    redirect_to categories_path
   end
 
   def destroy

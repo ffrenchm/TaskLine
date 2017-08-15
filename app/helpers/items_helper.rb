@@ -9,8 +9,10 @@ module ItemsHelper
       "Tomorrow"
     elsif (date + 1.day).today?
       "Yesterday"
-    elsif date - 7.days < Time.now
+    elsif (date - 7.days < Time.now) && (date > Time.now)
       date.strftime("%A")
+    elsif (date + 7.days > Time.now) && (date < Time.now)
+      date.strftime("Last %A")
     elsif date.strftime("%Y") != Time.now.strftime("%Y")
       date.strftime("%b %-d, %Y")
     else

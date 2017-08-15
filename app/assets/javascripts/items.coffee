@@ -5,8 +5,7 @@ $(document).on 'turbolinks:load', ->
   $(".fa-plus-square, .fa-window-close").click ->
     $(".new-item-form").toggle()
   $(".toggle-completed").click ->
-    # $(".completed-item").slideToggle '500', "easeOutBounce", ->
-      if $(".completed-item").css("display") == "none"
-        $(".completed-item").css("display" : "flex")
-      else
-        $(".completed-item").css("display" : "none")
+    if $(".completed-item").css("display") == "none"
+      $(".completed-item").css("display" : "flex")
+    else
+      $(".completed-item").css("display" : "none")

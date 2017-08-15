@@ -66,7 +66,7 @@ h1, h2, h3, h4, h5, h6 {
   flex: 1 1 auto;
 }
 .page-header {
-  width: 40%;
+  width: 100%;
 }
 a {
   &:hover {
@@ -86,7 +86,7 @@ h2 {
 // FOOTER STYLES
 footer {
   width: 100%;
-  height: 200px;
+  height: 150px;
   background-color: #000;
 }
 
@@ -96,6 +96,7 @@ header {
   height: 70px;
   position: relative;
   background-color: $main;
+  box-shadow: 0 2px 2px #ccc;
 }
 .nav {
   width: 100%;
@@ -157,7 +158,7 @@ header {
 
 // ITEM STYLES
 .items {
-  width: 40%;
+  width: 350px;
 }
 .item {
   background-color: $main;
@@ -168,6 +169,14 @@ header {
   min-height: 55px;
   display: flex;
   position: relative;
+  box-shadow: 0 2px 2px #ccc;
+  .fa-check {
+    font-size: 20px;
+    color: #fff;
+    &:hover {
+      color: #888;
+    }
+  }
 }
 .tickbox {
   position: absolute;
@@ -178,6 +187,12 @@ header {
   border: 1px solid #888;
   top: 50%;
   transform: translate(20%, -50%);
+  span {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
 }
 .info {
   width: 67%;
@@ -220,15 +235,30 @@ header {
   min-height: 55px;
   position: relative;
   display: none;
+  box-shadow: 0 2px 2px #ccc;
   .info {
     text-decoration: line-through;
     color: #888;
+  }
+  a {
+    color: #888;
+    &:hover {
+      color: #444;
+    }
+  }
+  .fa-check {
+    font-size: 20px;
+    color: #888;
+    &:hover {
+      color: #ccc;
+    }
   }
 }
 .toggle-completed {
   cursor: pointer;
   color: $links;
   margin-bottom: 10px;
+  display: inline-block;
   &:hover {
     color: $links-hover
   }
@@ -236,14 +266,14 @@ header {
 .form-holder {
   height: 100vh;
   width: 100vw;
-  background-color: rgba(0, 0, 0, 0.4);
+  background-color: rgba(0, 0, 0, 0.2);
   z-index: 5;
   position: absolute;
   top: 0;
   left: 0;
 }
 .full-page-form {
-  width: 40%;
+  width: 400px;
   z-index: 10;
   background-color: #fff;
   position: absolute;
@@ -253,12 +283,16 @@ header {
   padding: 20px;
   padding-top: 10px;
   border-radius: 10px;
+  box-shadow: 0 10px 10px #888;
 }
 .fa-window-close {
   float: right;
   color: red;
   font-size: 20px !important;
   cursor: pointer;
+  &:hover {
+    color: #A40000;
+  }
 }
 .form-nav {
   width: 100%;
@@ -279,13 +313,14 @@ header {
 
 // CATEGORY STYLES
 .categories {
-  width: 40%;
+  width: 100%;
 }
 .category {
-  background-color: $main;
+  background-color: #f8f8f8;
   margin-bottom: 10px;
   padding: 10px;
   border-radius: 10px;
+  box-shadow: 0 2px 2px #ccc;
 }
 .category-title {
   font-family: $header;
@@ -308,7 +343,7 @@ header {
 .delete-category {
   font-size: 18px;
 }
-.show-header {
+.page-title {
   display: inline-block;
   line-height: 1;
 }

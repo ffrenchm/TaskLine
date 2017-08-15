@@ -6,13 +6,16 @@
   <% end %>
   <% @items.each do |item| %>
     <% unless item.id.nil? %>
+      <% @item = item %>
       <% if item.completed == false %>
         <div class="item">
       <% else %>
         <div class="completed-item">
       <% end %>
         <%= link_to complete_path(item.category, item) do %>
-          <div class="tickbox"><span></span></div>
+          <div class="tickbox"><span>
+            <i class="fa fa-check"></i>
+          </span></div>
         <% end %>
         <div class="info">
           <span class="item-content"><%= item.content %></span>
