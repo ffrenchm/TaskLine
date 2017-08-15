@@ -13,6 +13,8 @@
       <li class="item-count">
         <%= item_count(category) %>
       </li>
+      <% @items = category.items %>
+      <%= render 'shared/items' %>
     </div>
   <% end %>
 <% end %>
