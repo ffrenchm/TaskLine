@@ -6,7 +6,6 @@
   <% end %>
   <% @items.each do |item| %>
     <% unless item.id.nil? %>
-      <% @item = item %>
       <% if item.completed == false %>
         <div class="item">
       <% else %>

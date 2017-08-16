@@ -8,7 +8,7 @@ Rails.application.routes.draw do
   resources :users
 
   resources :categories, except: :new do
-    resources :items, only: [:create, :edit, :update, :destroy],
+    resources :items, except: [:index, :show],
                       controller: 'categories/items'
   end
   get '/categories/:category_id/items/:id', to: 'categories/items#complete', as: :complete

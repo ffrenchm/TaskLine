@@ -1,10 +1,10 @@
 class Categories::ItemsController < ApplicationController
   before_action :signed_in_user
   before_action :find_category, except: :complete
-  before_action :find_item, except: [:create, :new]
+  before_action :find_item, except: [:new, :create]
 
   def new
-    @new_item = @category.items.build
+    @item = Item.new
   end
 
   def create

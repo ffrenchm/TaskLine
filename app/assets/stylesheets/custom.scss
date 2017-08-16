@@ -333,7 +333,7 @@ header {
   color: #888;
 }
 .edit-category,
-.new-category,
+.new-item,
 .delete-category {
   font-size: 20px;
   margin-left: 10px;
@@ -346,6 +346,9 @@ header {
 .page-title {
   display: inline-block;
   line-height: 1;
+}
+.items-toggle {
+  cursor: pointer;
 }
 .fa-plus-square {
   float: right;

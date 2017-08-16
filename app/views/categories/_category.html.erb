@@ -4,11 +4,15 @@
       <span class="category-title">
         <%= link_to category.title, category_path(category) %>
       </span>
+      <span class="items-toggle">Toggle</span>
       <span class="delete-category">
         <%= link_to "", category, method: :delete, class: "fa fa-trash", data: { confirm: "Are you sure? All items inside '" + category.title + "' will be lost." } %>
       </span>
       <span class="edit-category">
         <%= link_to "", edit_category_path(category), class: "fa fa-pencil-square-o" %>
+      </span>
+      <span class="new-item">
+        <%= link_to "", new_category_item_path(category), class: "fa fa-plus" %>
       </span>
       <li class="item-count">
         <%= item_count(category) %>

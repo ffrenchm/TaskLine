@@ -5,7 +5,7 @@ $(document).on 'turbolinks:load', ->
   $(".fa-plus-square, .fa-window-close").click ->
     $(".new-item-form").toggle()
   $(".toggle-completed").click ->
-    if $(".completed-item").css("display") == "none"
-      $(".completed-item").css("display" : "flex")
+    if $(this).parent().children(".completed-item").css("display") == "none"
+      $(this).parent().children(".completed-item").css("display" : "flex")
     else
-      $(".completed-item").css("display" : "none")
+      $(this).parent().children(".completed-item").css("display" : "none")
