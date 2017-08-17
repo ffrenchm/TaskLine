@@ -60,10 +60,13 @@ h1, h2, h3, h4, h5, h6 {
 }
 .content {
   width: 100%;
-  max-width: 980px;
+  max-width: 1280px;
   margin: auto;
   padding: 20px;
   flex: 1 1 auto;
+}
+.index {
+  display: flex;
 }
 .page-header {
   width: 100%;
@@ -76,6 +79,11 @@ a {
 h2 {
   font-size: 20px;
 }
+.aside {
+  width: 40%;
+  display: inline-block;
+  flex: 1 1 0;
+}
 
 // FORM STYLES
 .form-control {
@@ -87,7 +95,7 @@ h2 {
 footer {
   width: 100%;
   height: 150px;
-  background-color: #000;
+  background-color: #222;
 }
 
 // HEADER STYLES
@@ -100,8 +108,7 @@ header {
 }
 .nav {
   width: 100%;
-  max-width: 980px;
-  margin: auto;
+  max-width: 1280px;
   position: absolute;
   bottom: 50%;
   left: 50%;
@@ -158,12 +165,12 @@ header {
 
 // ITEM STYLES
 .items {
-  width: 350px;
+  // display: none;
 }
 .item {
   background-color: $main;
-  margin-bottom: 10px;
-  border-radius: 10px;
+  margin-top: 10px;
+  border-radius: 7px;
   padding: 10px;
   box-sizing: border-box;
   min-height: 55px;
@@ -181,6 +188,7 @@ header {
 .tickbox {
   position: absolute;
   height: 25px;
+  flex: 0 0 auto;
   width: 25px;
   border-radius: 8px;
   background-color: #fff;
@@ -199,18 +207,20 @@ header {
   margin-left: 45px;
   word-wrap: break-word;
   display: inline-block;
+  flex: 1 1 0;
   float: right;
   height: 100%;
 }
 .links {
   width: 20%;
   display: inline-block;
+  flex: 0 0 auto;
   height: 100%;
   float: right;
-}
-.delete-item, .edit-item {
-  float: right;
-  margin-left: 10px;
+  span {
+    float: right;
+    margin-left: 10px;
+  }
 }
 .item-content {
   padding: 0;
@@ -228,8 +238,8 @@ header {
 }
 .completed-item {
   background-color: $main;
-  margin-bottom: 10px;
-  border-radius: 10px;
+  margin-top: 10px;
+  border-radius: 7px;
   padding: 10px;
   box-sizing: border-box;
   min-height: 55px;
@@ -257,7 +267,6 @@ header {
 .toggle-completed {
   cursor: pointer;
   color: $links;
-  margin-bottom: 10px;
   display: inline-block;
   &:hover {
     color: $links-hover
@@ -282,7 +291,7 @@ header {
   transform: translate(-50%, -50%);
   padding: 20px;
   padding-top: 10px;
-  border-radius: 10px;
+  border-radius: 7px;
   box-shadow: 0 10px 10px #888;
 }
 .fa-window-close {
@@ -313,24 +322,65 @@ header {
 
 // CATEGORY STYLES
 .categories {
-  width: 100%;
+  width: 52%;
+  margin: 0 40px 100px 0;
+  display: inline-block;
+  flex: 0 0 auto;
 }
-.category {
+.category, .stats {
   background-color: #f8f8f8;
-  margin-bottom: 10px;
+  margin: 0 10px 10px 0;
   padding: 10px;
-  border-radius: 10px;
+  border-radius: 7px;
+  width: 100%;
   box-shadow: 0 2px 2px #ccc;
+  display: inline-block;
 }
-.category-title {
+.stats {
+  margin-top: 10px;
+  h2 {
+    border-bottom: 1px solid #ddd;
+    margin-bottom: 10px;
+  }
+  li {
+    margin-bottom: 5px;
+  }
+}
+.title-wrapper {
+  position: relative;
+  display: inline-block;
+}
+.category-title, .toggled-title {
   font-family: $header;
   font-size: 20px;
+  padding-right: 15px;
   line-height: 1;
+  color: $links;
+  cursor: pointer;
+  &:hover {
+    color: $links-hover
+  }
+  &::after {
+    height: 0;
+    width: 0;
+    content: "";
+    border: 6px solid;
+    border-color: #ddd transparent transparent;
+    position: absolute;
+    top: 50%;
+    transform: translate(50%, -33%);
+  }
+}
+.toggled-title {
+  &::after {
+    border-color: transparent transparent #ddd;
+  }
 }
 .item-count {
   font-size: 14px;
   font-style: italic;
   color: #888;
+  margin-bottom: 10px;
 }
 .edit-category,
 .new-item,
@@ -346,9 +396,6 @@ header {
 .page-title {
   display: inline-block;
   line-height: 1;
-}
-.items-toggle {
-  cursor: pointer;
 }
 .fa-plus-square {
   float: right;

@@ -1,10 +1,11 @@
 <% @user.categories.each do |category| %>
   <% unless category.id.nil? %>
     <div class="category" id='<%= category.id %>'>
-      <span class="category-title">
-        <%= link_to category.title, category_path(category) %>
-      </span>
-      <span class="items-toggle">Toggle</span>
+      <div class="title-wrapper">
+        <span class="category-title">
+          <%= category.title %>
+        </span>
+      </div>
       <span class="delete-category">
         <%= link_to "", category, method: :delete, class: "fa fa-trash", data: { confirm: "Are you sure? All items inside '" + category.title + "' will be lost." } %>
       </span>

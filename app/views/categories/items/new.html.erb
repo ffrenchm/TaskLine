@@ -1,3 +1,5 @@
+<%= provide(:title, "Add Task") %>
+
 <%= form_for [@category, @item] do |f| %>
   <div class="input-group">
     <%= f.text_field :content, placeholder: "Task", class: "form-control" %>
@@ -10,3 +12,5 @@
   <%= f.time_field :deadline_time, class: "form-control" %>
   <li class="form-control"><%= f.check_box :repeat %><%= f.label "repeat item?" %></li>
 <% end %>
+
+<%= link_to "Back", categories_path %>

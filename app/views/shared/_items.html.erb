@@ -1,8 +1,8 @@
 <div class="items">
-  <% if @items.count != 0 %>
+  <% if @items.any? %>
     <p class="toggle-completed">Toggle Completed</p>
   <% else %>
-    <p>This category is empty. Create a new task by clicking the plus icon.</p></br>
+    <p>This category is empty. Create a new task by clicking the plus icon.</p>
   <% end %>
   <% @items.each do |item| %>
     <% unless item.id.nil? %>

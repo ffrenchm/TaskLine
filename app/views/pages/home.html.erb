@@ -1,10 +1,9 @@
-<%= provide(:button_text, "Sign In") %>
 <% if signed_in? %>
+  <%= provide(:title, "Calendar") %>
   <%= render 'shared/items' %>
 <% else %>
-  <div class="page-header">
-    <h2 class="page-title">Sign In</h2>
-  </div>
+  <%= provide(:title, "Sign In") %>
+  <%= provide(:button_text, "Sign In") %>
   <div class="user">
     <%= render 'users/signin' %>
   </div>
