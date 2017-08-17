@@ -1,16 +1,17 @@
 <%= provide(:title, "Add Task") %>
-
-<%= form_for [@category, @item] do |f| %>
-  <div class="input-group">
-    <%= f.text_field :content, placeholder: "Task", class: "form-control" %>
-    <span class="input-group-btn">
-      <%= f.submit "Add", class: "btn btn-primary" %>
-    </span>
-  </div>
-  <%= f.label "Deadline" %>
-  <%= f.date_field :deadline_date, class: "form-control" %>
-  <%= f.time_field :deadline_time, class: "form-control" %>
-  <li class="form-control"><%= f.check_box :repeat %><%= f.label "repeat item?" %></li>
-<% end %>
-
+<div class="form-holder">
+  <%= form_for [@category, @item] do |f| %>
+    <div class="input-group">
+      <%= f.text_field :content, placeholder: "Task", class: "form-control" %>
+      <span class="input-group-btn">
+        <%= f.submit "Add", class: "btn btn-primary" %>
+      </span>
+    </div>
+    <%= f.label "Deadline" %>
+    <%= f.date_field :deadline_date, class: "form-control" %>
+    <%= f.time_field :deadline_time, class: "form-control" %>
+    <li class="form-control"><%= f.check_box :repeat %><%= f.label "repeat item?" %></li>
+  <% end %>
+</div>
+</br>
 <%= link_to "Back", categories_path %>

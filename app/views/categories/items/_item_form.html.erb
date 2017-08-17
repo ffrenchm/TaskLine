@@ -1,20 +1,14 @@
 <div class="form-holder">
-  <div class="full-page-form">
-    <div class="form-nav">
-      <%= yield(:window_title) %>
-      <%= yield(:window_close) %>
+  <%= form_for [@category, @item] do |f| %>
+    <div class="input-group">
+      <%= f.text_field :content, placeholder: "Task", class: "form-control" %>
+      <span class="input-group-btn">
+        <%= f.submit yield(:button_text), class: "btn btn-primary" %>
+      </span>
     </div>
-    <%= form_for [@category, @item] do |f| %>
-      <div class="input-group">
-        <%= f.text_field :content, placeholder: "Task", class: "form-control" %>
-        <span class="input-group-btn">
-          <%= f.submit yield(:button_text), class: "btn btn-primary" %>
-        </span>
-      </div>
-      <%= f.label "Due Date" %>
-      <%= f.date_field :deadline_date, class: "form-control" %>
-      <%= f.time_field :deadline_time, class: "form-control" %>
-      <li class="form-control"><%= f.check_box :repeat %><%= f.label "repeat item?" %></li>
-    <% end %>
-  </div>
+    <%= f.label "Due Date" %>
+    <%= f.date_field :deadline_date, class: "form-control" %>
+    <%= f.time_field :deadline_time, class: "form-control" %>
+    <li class="form-control"><%= f.check_box :repeat %><%= f.label "repeat item?" %></li>
+  <% end %>
 </div>

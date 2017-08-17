@@ -36,8 +36,20 @@ table {
 
 // MIXINS AND VARIABLES
 
+  @mixin item {
+    background-color: $main;
+    margin-top: 10px;
+    border-radius: 7px;
+    padding: 10px;
+    box-sizing: border-box;
+    min-height: 55px;
+    position: relative;
+    box-shadow: 0 2px 2px #d8d8d8;
+  }
+
   // COLOURS
-  $main: #eee;
+  $main: #efefef;
+  $accent: #f8f8f8;
   $text: #111;
   $links: #337ab7;
   $links-hover: #23527c;
@@ -53,7 +65,7 @@ html {
 body {
   display: flex;
   flex-direction: column;
-  min-height: 100vh;
+  min-height: 101vh;
 }
 h1, h2, h3, h4, h5, h6 {
   font-family: $header;
@@ -75,6 +87,9 @@ a {
   &:hover {
     text-decoration: none;
   }
+}
+h1 {
+  font-size: 36px;
 }
 h2 {
   font-size: 20px;
@@ -103,8 +118,8 @@ header {
   width: 100%;
   height: 70px;
   position: relative;
-  background-color: $main;
-  box-shadow: 0 2px 2px #ccc;
+  background-color: $accent;
+  box-shadow: 0 2px 2px #d8d8d8;
 }
 .nav {
   width: 100%;
@@ -116,9 +131,7 @@ header {
   li {
     float: right;
     display: inline-block;
-    margin: 0;
     a {
-      text-decoration: none;
       color: #444;
       &:hover {
         color: #888;
@@ -136,7 +149,6 @@ header {
   transform: translate(0, 60%);
   color: #444;
   &:hover {
-    text-decoration: none;
     color: #888;
   }
 }
@@ -159,24 +171,14 @@ header {
 }
 
 // USER STYLES
-.user {
+.form-holder {
   width: 40%;
 }
 
 // ITEM STYLES
-.items {
-  // display: none;
-}
 .item {
-  background-color: $main;
-  margin-top: 10px;
-  border-radius: 7px;
-  padding: 10px;
-  box-sizing: border-box;
-  min-height: 55px;
+  @include item;
   display: flex;
-  position: relative;
-  box-shadow: 0 2px 2px #ccc;
   .fa-check {
     font-size: 20px;
     color: #fff;
@@ -199,7 +201,7 @@ header {
     position: absolute;
     top: 50%;
     left: 50%;
-    transform: translate(-50%, -50%);
+    transform: translate(-50%, -45%);
   }
 }
 .info {
@@ -237,15 +239,8 @@ header {
   color: red;
 }
 .completed-item {
-  background-color: $main;
-  margin-top: 10px;
-  border-radius: 7px;
-  padding: 10px;
-  box-sizing: border-box;
-  min-height: 55px;
-  position: relative;
+  @include item;
   display: none;
-  box-shadow: 0 2px 2px #ccc;
   .info {
     text-decoration: line-through;
     color: #888;
@@ -270,37 +265,6 @@ header {
   display: inline-block;
   &:hover {
     color: $links-hover
-  }
-}
-.form-holder {
-  height: 100vh;
-  width: 100vw;
-  background-color: rgba(0, 0, 0, 0.2);
-  z-index: 5;
-  position: absolute;
-  top: 0;
-  left: 0;
-}
-.full-page-form {
-  width: 400px;
-  z-index: 10;
-  background-color: #fff;
-  position: absolute;
-  top: 30%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  padding: 20px;
-  padding-top: 10px;
-  border-radius: 7px;
-  box-shadow: 0 10px 10px #888;
-}
-.fa-window-close {
-  float: right;
-  color: red;
-  font-size: 20px !important;
-  cursor: pointer;
-  &:hover {
-    color: #A40000;
   }
 }
 .form-nav {
@@ -328,12 +292,12 @@ header {
   flex: 0 0 auto;
 }
 .category, .stats {
-  background-color: #f8f8f8;
+  background-color: $accent;
   margin: 0 10px 10px 0;
   padding: 10px;
   border-radius: 7px;
   width: 100%;
-  box-shadow: 0 2px 2px #ccc;
+  box-shadow: 0 2px 2px #eee;
   display: inline-block;
 }
 .stats {

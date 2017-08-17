@@ -1,10 +1,7 @@
 <%= provide(:title, "Edit Category") %>
 <%= provide(:button_text, "Update") %>
 <div class="form-holder">
-  <div class="full-page-form">
-    <div class="form-nav">
-      <%= link_to "", categories_path, class: "fa fa-window-close" %>
-    </div>
-    <%= render 'categories/category_form' %>
-  </div>
+  <%= render 'categories/category_form' %>
 </div>
+</br>
+<%= link_to "Back", categories_path %>

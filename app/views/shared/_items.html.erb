@@ -1,6 +1,8 @@
 <div class="items">
   <% if @items.any? %>
-    <p class="toggle-completed">Toggle Completed</p>
+    <% if @category && completed_items(@items.first.category) != 0 %>
+      <p class="toggle-completed">Toggle Completed</p>
+    <% end %>
   <% else %>
     <p>This category is empty. Create a new task by clicking the plus icon.</p>
   <% end %>

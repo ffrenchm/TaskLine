@@ -54,4 +54,14 @@ module CategoriesHelper
     end
     (items.count)
   end
+
+  def completed_items(category)
+    items = []
+    category.items.each do |item|
+      if item.completed == true
+        items << item
+      end
+    end
+    (items.count)
+  end
 end
