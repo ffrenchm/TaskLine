@@ -48,8 +48,8 @@ table {
   }
 
   // COLOURS
-  $main: #efefef;
-  $accent: #f8f8f8;
+  $main: #e8e8e8;
+  $accent: #f3f3f3;
   $text: #111;
   $links: #337ab7;
   $links-hover: #23527c;
@@ -76,6 +76,9 @@ h1, h2, h3, h4, h5, h6 {
   margin: auto;
   padding: 20px;
   flex: 1 1 auto;
+}
+.form-holder {
+  width: 40%;
 }
 .index {
   display: flex;
@@ -170,10 +173,6 @@ header {
   }
 }
 
-// USER STYLES
-.form-holder {
-  width: 40%;
-}
 
 // ITEM STYLES
 .item {
