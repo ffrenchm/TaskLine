@@ -1,6 +1,6 @@
 <% if signed_in? %>
   <%= provide(:title, "Calendar") %>
-  <%= render 'shared/items' %>
+  <%= render 'categories/items/items' %>
 <% else %>
   <%= provide(:title, "Sign In") %>
   <%= provide(:button_text, "Sign In") %>

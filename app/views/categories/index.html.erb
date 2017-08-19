@@ -2,11 +2,9 @@
 <%= provide(:button_text, "Add") %>
 
 <div class="index">
-  <div class="categories">
-    <%= render 'categories/category' %>
-  </div>
+  <%= render 'categories' %>
   <div class="aside">
-    <%= render 'categories/category_form' %>
+    <%= render 'category_form' %>
     <div class="stats">
       <h2>Statistics</h2>
       <li><%= pluralize(total_items, "total task") %></li>
