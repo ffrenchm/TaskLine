@@ -1,16 +1,15 @@
 class Categories::ItemsController < ApplicationController
   before_action :signed_in_user
-  before_action :find_category, except: :complete
+  before_action :find_category, except: [:complete, :move]
   before_action :find_item, except: [:new, :create]
 
   def new
-    @item = Item.new
+    @item = @category.items.build
   end
 
   def create
     @user = current_user
-    @item = Item.new(item_params)
-    @item.category_id = @category.id
+    @item = @category.items.build(item_params)
     @item.user_id = @user.id
     unless @item.save
       flash[:danger] = "Invalid list item"
@@ -35,8 +34,14 @@ class Categories::ItemsController < ApplicationController
   end
 
   def complete
-    @category = @item.category
     unless @item.update(completed: !@item.completed)
+      flash[:danger] = "Error"
+    end
+    redirect_to request.referrer || categories_path
+  end
+
+  def move
+    unless @item.update(category_id: @category.id)
       flash[:danger] = "Error"
     end
     redirect_to request.referrer || categories_path

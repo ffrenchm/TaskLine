@@ -16,7 +16,7 @@
         <%= link_to "", new_category_item_path(category), class: "fa fa-plus" %>
       </span>
       <li class="item-count">
-        <%= item_count(category) %>
+        <%= pluralize(item_count(category), "task") %>
       </li>
       <% @items = category.items %>
       <%= render 'shared/items' %>

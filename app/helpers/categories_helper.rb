@@ -7,19 +7,17 @@ module CategoriesHelper
         items << item
       end
     end
-    pluralize(items.count, "task")
+    items.count
   end
 
   def total_items
     items = []
     @user.items.each do |item|
-      unless item.id.nil?
-        if !item.completed && !item.content.nil?
-          items << item
-        end
+      if !item.completed && !item.content.nil?
+        items << item
       end
     end
-    (items.count)
+    items.count
   end
 
   def overdue_items
@@ -30,7 +28,7 @@ module CategoriesHelper
         items << item
       end
     end
-    (items.count)
+    items.count
   end
 
   def week_items
@@ -41,7 +39,7 @@ module CategoriesHelper
         items << item
       end
     end
-    (items.count)
+    items.count
   end
 
   def today_items
@@ -52,7 +50,7 @@ module CategoriesHelper
         items << item
       end
     end
-    (items.count)
+    items.count
   end
 
   def completed_items(category)
@@ -62,6 +60,6 @@ module CategoriesHelper
         items << item
       end
     end
-    (items.count)
+    items.count
   end
 end

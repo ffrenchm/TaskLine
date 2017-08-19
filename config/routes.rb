@@ -12,4 +12,5 @@ Rails.application.routes.draw do
                       controller: 'categories/items'
   end
   get '/categories/:category_id/items/:id', to: 'categories/items#complete', as: :complete
+  get '/categories/:category_id/items/:id', to: 'categories/items#move', as: :move
 end
