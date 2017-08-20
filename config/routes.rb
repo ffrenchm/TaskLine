@@ -10,7 +10,7 @@ Rails.application.routes.draw do
   resources :categories, except: :new do
     resources :items, except: [:index, :show],
                       controller: 'categories/items'
+    get '/items/:id', to: 'categories/items#complete', as: :complete
+    get '/items/:id', to: 'categories/items#move', as: :move
   end
-  get '/categories/:category_id/items/:id', to: 'categories/items#complete', as: :complete
-  get '/categories/:category_id/items/:id', to: 'categories/items#move', as: :move
 end

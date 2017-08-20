@@ -4,6 +4,8 @@ class UsersController < ApplicationController
 
   def new
     @user = User.new
+    @skip_footer = true
+    @skip_title = true
   end
 
   def create

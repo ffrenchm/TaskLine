@@ -2,19 +2,7 @@
 @import "bootstrap";
 
 // RESET
-html, body, div, span, applet, object, iframe,
-h1, h2, h3, h4, h5, h6, p, blockquote, pre,
-a, abbr, acronym, address, big, cite, code,
-del, dfn, em, img, ins, kbd, q, s, samp,
-small, strike, strong, sub, sup, tt, var,
-b, u, i, center,
-dl, dt, dd, ol, ul, li,
-fieldset, form, label, legend,
-table, caption, tbody, tfoot, thead, tr, th, td,
-article, aside, canvas, details, embed,
-figure, figcaption, footer, header, hgroup,
-menu, nav, output, ruby, section, summary,
-time, mark, audio, video {
+html, body, div, span, object, h1, h2, h3, h4, h5, h6, p, a, ol, ul, li, fieldset, form, footer, header, menu, nav {
 	margin: 0;
 	padding: 0;
 	border: 0;
@@ -22,8 +10,7 @@ time, mark, audio, video {
 	font: inherit;
 	vertical-align: baseline;
 }
-article, aside, details, figcaption, figure,
-footer, header, hgroup, menu, nav, section {
+footer, header, menu, nav, {
 	display: block;
 }
 ol, ul, li {
@@ -65,7 +52,7 @@ html {
 body {
   display: flex;
   flex-direction: column;
-  min-height: 101vh;
+  min-height: 100vh;
 }
 h1, h2, h3, h4, h5, h6 {
   font-family: $header;
@@ -101,6 +88,33 @@ h2 {
   width: 40%;
   display: inline-block;
   flex: 1 1 0;
+}
+.desk {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 100vw;
+  height: 100vh;
+  max-width: 100%;
+  z-index: -5;
+  background-image: url('/assets/desk.jpg');
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+.centre-form {
+  background-color: #fff;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 500px;
+  padding: 20px;
+  border-radius: 6px;
+  h1 {
+    text-align: center;
+  }
 }
 
 // FORM STYLES
@@ -173,6 +187,24 @@ header {
   }
 }
 
+// CALENDAR STYLES
+.day {
+  width: 15%;
+  height: 15%;
+  float: left;
+  display: flex;
+  border: 1px solid #ddd;
+}
+.day-header {
+  background-color: rgba(255, 0, 0, 0.2);
+  height: 30px;
+  width: 100%;
+  flex: 0 0 auto;
+}
+.day-content {
+  flex: 1 1 0;
+  width: 100%;
+}
 
 // ITEM STYLES
 .item {
@@ -331,12 +363,7 @@ header {
     border-color: #888 transparent transparent;
     position: absolute;
     top: 50%;
-    transform: translate(50%, -33%);
-  }
-}
-.toggled-title {
-  &::after {
-    border-color: transparent transparent #ddd;
+    transform: translate(50%, -36%);
   }
 }
 .item-count {

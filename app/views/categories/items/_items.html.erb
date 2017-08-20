@@ -13,7 +13,7 @@
       <% else %>
         <div class="completed-item">
       <% end %>
-        <%= link_to complete_path(item.category, item) do %>
+        <%= link_to category_complete_path(item.category, item) do %>
           <div class="tickbox"><span>
             <i class="fa fa-check"></i>
           </span></div>

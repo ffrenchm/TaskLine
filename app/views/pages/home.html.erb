@@ -1,10 +1,11 @@
 <% if signed_in? %>
   <%= provide(:title, "Calendar") %>
-  <%= render 'categories/items/items' %>
 <% else %>
   <%= provide(:title, "Sign In") %>
   <%= provide(:button_text, "Sign In") %>
-  <div class="user">
+  <div class="desk"></div>
+  <div class="centre-form">
+    <h1>Sign In</h1>
     <%= render 'users/signin' %>
   </div>
 <% end %>

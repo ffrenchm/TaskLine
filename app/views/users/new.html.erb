@@ -1,8 +1,10 @@
-<%= provide(:title, "Sign Up") %>
 <%= provide(:button_text, "Sign Up") %>
+<%= provide(:title, "Sign Up") %>
 
-<div class="form-holder">
+<div class="desk"></div>
+<div class="centre-form">
+  <h1>Sign Up</h1>
   <%= render 'shared/form' %>
+  <br/>
+  <p>Already have an account? <%= link_to "Sign In", root_path %></p>
 </div>
-
-<p>Already have an account? <%= link_to "Sign In", root_path %></p>
