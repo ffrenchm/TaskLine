@@ -1,4 +1,5 @@
-<div class="form-holder">
+<div class="centre-form">
+  <h2><%= yield(:title) %></h2>
   <%= form_for [@category, @item] do |f| %>
     <div class="input-group">
       <%= f.text_field :content, placeholder: "Task", class: "form-control" %>
@@ -11,6 +12,6 @@
     <%= f.time_field :deadline_time, class: "form-control" %>
     <li class="form-control"><%= f.check_box :repeat %><%= f.label "repeat item?" %></li>
   <% end %>
+  </br>
+  <%= link_to "Back", categories_path %>
 </div>
-</br>
-<%= link_to "Back", categories_path %>

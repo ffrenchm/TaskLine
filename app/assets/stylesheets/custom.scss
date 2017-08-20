@@ -52,7 +52,8 @@ html {
 body {
   display: flex;
   flex-direction: column;
-  min-height: 100vh;
+  min-height: 101vh;
+  background-image: linear-gradient(to top right, #ccc, #eee);
 }
 h1, h2, h3, h4, h5, h6 {
   font-family: $header;
@@ -63,6 +64,7 @@ h1, h2, h3, h4, h5, h6 {
   margin: auto;
   padding: 20px;
   flex: 1 1 auto;
+  background-color: rgba(0, 0, 0, 0.2);
 }
 .form-holder {
   width: 40%;
@@ -90,7 +92,6 @@ h2 {
   flex: 1 1 0;
 }
 .desk {
-  position: absolute;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
@@ -102,11 +103,12 @@ h2 {
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
+  position: fixed;
 }
 .centre-form {
-  background-color: #fff;
+  background-color: $accent;
   position: absolute;
-  top: 50%;
+  top: 40%;
   left: 50%;
   transform: translate(-50%, -50%);
   width: 500px;
@@ -121,6 +123,7 @@ h2 {
 .form-control {
   width: 100%;
   margin-bottom: 5px;
+  z-index: 1;
 }
 
 // FOOTER STYLES
@@ -137,6 +140,7 @@ header {
   position: relative;
   background-color: $accent;
   box-shadow: 0 2px 2px #d8d8d8;
+  z-index: 30;
 }
 .nav {
   width: 100%;
@@ -181,6 +185,7 @@ header {
 .dropdown-menu {
   width: 99.19px;
   min-width: 0;
+  z-index: 10;
   li {
     width: 100%;
     text-align: center;
@@ -386,6 +391,7 @@ header {
 .page-title {
   display: inline-block;
   line-height: 1;
+  color: $accent;
 }
 .fa-plus-square {
   float: right;
