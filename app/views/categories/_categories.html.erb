@@ -14,21 +14,21 @@
         </div>
         <div class="big-links">
           <span class="delete-category">
-            <%= link_to "", category, method: :delete, class: "fa fa-trash", data: { confirm: "Are you sure? All items inside '" + category.title + "' will be lost." } %>
+            <%= link_to "", category, method: :delete, class: "fa fa-trash", data: { confirm: "Are you sure? All tasks inside '" + category.title + "' will be lost." } %>
           </span>
           <span class="edit-category">
             <%= link_to "", edit_category_path(category), class: "fa fa-pencil-square-o" %>
           </span>
-          <span class="new-item">
-            <%= link_to "", new_category_item_path(category), class: "fa fa-plus" %>
+          <span class="new-task">
+            <%= link_to "", new_category_task_path(category), class: "fa fa-plus" %>
           </span>
         </div>
         <li class="sub-info">
-          <%= pluralize(item_count(category), "task") %>
+          <%= pluralize(task_count(category), "task") %>
         </li>
       </br>
-        <% @items = category.items %>
-        <%= render 'categories/items/items' %>
+        <% @tasks = category.tasks %>
+        <%= render 'categories/tasks/tasks' %>
       </div>
     <% end %>
   <% end %>

@@ -1,4 +1,4 @@
-class Item < ApplicationRecord
+class Task < ApplicationRecord
   belongs_to :category
   belongs_to :user
   default_scope -> { order(:deadline_date) }

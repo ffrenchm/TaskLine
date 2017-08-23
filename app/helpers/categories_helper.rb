@@ -1,62 +1,62 @@
 module CategoriesHelper
 
-  def item_count(category)
-    items = []
-    category.items.each do |item|
-      if !item.completed
-        items << item
+  def task_count(category)
+    tasks = []
+    category.tasks.each do |task|
+      if !task.completed
+        tasks << task
       end
     end
-    items.count
+    tasks.count
   end
 
-  def total_items
-    items = []
-    @user.items.each do |item|
-      if !item.completed && !item.content.nil?
-        items << item
+  def total_tasks
+    tasks = []
+    @user.tasks.each do |task|
+      if !task.completed && !task.content.nil?
+        tasks << task
       end
     end
-    items.count
+    tasks.count
   end
 
-  def overdue_items
-    items = []
-    @user.items.each do |item|
-      if item.overdue?
-        items << item
+  def overdue_tasks
+    tasks = []
+    @user.tasks.each do |task|
+      if task.overdue?
+        tasks << task
       end
     end
-    items.count
+    tasks.count
   end
 
-  def week_items
-    items = []
-    @user.items.each do |item|
-      if item.week?
-        items << item
+  def week_tasks
+    tasks = []
+    @user.tasks.each do |task|
+      if task.week?
+        tasks << task
       end
     end
-    items.count
+    tasks.count
   end
 
-  def today_items
-    items = []
-    @user.items.each do |item|
-      if item.today?
-        items << item
+  def today_tasks
+    tasks = []
+    @user.tasks.each do |task|
+      if task.today?
+        tasks << task
       end
     end
-    items.count
+    tasks.count
   end
 
-  def completed_items(category)
-    items = []
-    category.items.each do |item|
-      if item.completed
-        items << item
+  def completed_tasks(category)
+    tasks = []
+    category.tasks.each do |task|
+      if task.completed
+        tasks << task
       end
     end
-    items.count
+    tasks.count
   end
 end

@@ -1,6 +1,6 @@
 <div class="centre-form">
   <h2>Change Category to...</h2>
-  <%= form_for [@category, @item] do |f| %>
+  <%= form_for [@category, @task] do |f| %>
   <%= f.text_field :category_id %>
   <%= f.submit "Move", class: "btn btn-primary" %>
   <% end %>

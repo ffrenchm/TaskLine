@@ -33,7 +33,7 @@ class CategoriesControllerTest < ActionDispatch::IntegrationTest
     assert_select "a[href=?]", signup_path
   end
 
-  test "should redirect destroy for wrong list category" do
+  test "should redirect destroy for wrong category" do
     sign_in_as(@user)
     assert_no_difference "Category.count" do
       delete category_path(categories(:chemeng))

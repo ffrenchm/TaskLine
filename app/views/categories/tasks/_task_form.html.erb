@@ -1,6 +1,6 @@
 <div class="centre-form">
   <h2><%= yield(:title) %></h2>
-  <%= form_for [@category, @item] do |f| %>
+  <%= form_for [@category, @task] do |f| %>
     <div class="input-group">
       <%= f.text_field :content, placeholder: "Task", class: "form-control" %>
       <span class="input-group-btn">
@@ -10,7 +10,7 @@
     <%= f.label "Due Date" %>
     <%= f.date_field :deadline_date, class: "form-control" %>
     <%= f.time_field :deadline_time, class: "form-control" %>
-    <li class="form-control"><%= f.check_box :repeat %><%= f.label "repeat item?" %></li>
+    <li class="form-control"><%= f.check_box :repeat %><%= f.label "repeat task?" %></li>
     <%= f.text_area :notes, placeholder: "Notes", class: "form-control" %>
   <% end %>
   </br>

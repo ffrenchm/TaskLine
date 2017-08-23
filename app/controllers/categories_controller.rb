@@ -30,8 +30,8 @@ class CategoriesController < ApplicationController
   end
 
   def show
-    @items = @category.items
-    @item = @category.items.build
+    @tasks = @category.tasks
+    @task = @category.tasks.build
   end
 
   private
@@ -41,7 +41,7 @@ class CategoriesController < ApplicationController
     end
 
     def correct_user
-      @category = current_user.categories.find(params[:id])
+      @category = current_user.categories.find_by(id: params[:id])
       redirect_to categories_path if @category.nil?
     end
 

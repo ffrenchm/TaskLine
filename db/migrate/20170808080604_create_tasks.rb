@@ -1,6 +1,6 @@
-class CreateListItems < ActiveRecord::Migration[5.0]
+class CreateTasks < ActiveRecord::Migration[5.0]
   def change
-    create_table :items do |t|
+    create_table :tasks do |t|
       t.references :category, foreign_key: true
       t.references :user, foreign_key: true
       t.datetime :deadline_date

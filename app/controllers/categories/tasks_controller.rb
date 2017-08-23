@@ -1,19 +1,19 @@
-class Categories::ItemsController < ApplicationController
+class Categories::TasksController < ApplicationController
   before_action :signed_in_user
   before_action :find_category, except: [:complete]
-  before_action :find_item, except: [:new, :create]
+  before_action :find_task, except: [:new, :create]
   before_action :verify_move, only: :update
 
   def new
-    @item = @category.items.build
+    @task = @category.tasks.build
   end
 
   def create
     @user = current_user
-    @item = @category.items.build(item_params)
-    @item.user_id = @user.id
-    unless @item.save
-      flash[:danger] = "Invalid list item"
+    @task = @category.tasks.build(task_params)
+    @task.user_id = @user.id
+    unless @task.save
+      flash[:danger] = "Invalid list task"
     end
     redirect_to categories_path
   end
@@ -22,20 +22,20 @@ class Categories::ItemsController < ApplicationController
   end
 
   def update
-    unless @item.update(item_params)
-      flash[:danger] = "Invalid list item"
+    unless @task.update(task_params)
+      flash[:danger] = "Invalid list task"
     end
     redirect_to categories_path
   end
 
   def destroy
-    if @item.destroy
+    if @task.destroy
       redirect_to request.referrer || categories_path
     end
   end
 
   def complete
-    unless @item.update(completed: !@item.completed)
+    unless @task.update(completed: !@task.completed)
       flash[:danger] = "Error"
     end
     redirect_to request.referrer || categories_path
@@ -43,16 +43,16 @@ class Categories::ItemsController < ApplicationController
 
   private
 
-    def item_params
-      params.require(:item).permit(:content, :deadline_date, :deadline_time, :repeat, :category_id, :notes)
+    def task_params
+      params.require(:task).permit(:content, :deadline_date, :deadline_time, :repeat, :category_id, :notes)
     end
 
     def find_category
       @category = Category.find(params[:category_id])
     end
 
-    def find_item
-      @item = Item.find(params[:id])
+    def find_task
+      @task = Task.find(params[:id])
     end
 
     def verify_move

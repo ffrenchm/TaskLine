@@ -12,10 +12,10 @@ Rails.application.routes.draw do
   resources :invites
 
   resources :categories, except: :new do
-    resources :items, except: [:index, :show],
-                      controller: 'categories/items'
-    get '/items/:id/complete', to: 'categories/items#complete', as: :complete
-    get '/items/:id/move_form', to: 'categories/items#move_form', as: :move_form
-    patch 'items/:id/move', to: 'categories/items#move', as: :move
+    resources :tasks, except: [:index, :show],
+                      controller: 'categories/tasks'
+    get '/tasks/:id/complete', to: 'categories/tasks#complete', as: :complete
+    get '/tasks/:id/move_form', to: 'categories/tasks#move_form', as: :move_form
+    patch 'tasks/:id/move', to: 'categories/tasks#move', as: :move
   end
 end

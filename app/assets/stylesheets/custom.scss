@@ -241,8 +241,8 @@ header {
   width: 100%;
 }
 
-// ITEM STYLES
-.item {
+// TASK STYLES
+.task {
   @include sub_box;
   display: flex;
   .fa-check {
@@ -292,14 +292,14 @@ header {
     font-size: 14px;
   }
 }
-.item-content {
+.task-content {
   padding: 0;
   font-weight: bold;
 }
-.item-overdue-deadline {
+.task-overdue-deadline {
   color: red !important;
 }
-.completed-item {
+.completed-task {
   @include sub_box;
   display: none;
   .info {
@@ -335,10 +335,10 @@ header {
   font-size: 20px;
   line-height: 1.4;
 }
-.new-item-form {
+.new-task-form {
   display: none;
 }
-.new-item-toggle {
+.new-task-toggle {
   color: #337ab7;
   &:hover {
     color: #23527c;

@@ -31,7 +31,18 @@ ActiveRecord::Schema.define(version: 20170823203105) do
     t.index ["team_id"], name: "index_invites_on_team_id"
   end
 
-  create_table "items", force: :cascade do |t|
+  create_table "memberships", force: :cascade do |t|
+    t.integer  "user_id"
+    t.integer  "team_id"
+    t.boolean  "admin",      default: false
+    t.datetime "created_at",                 null: false
+    t.datetime "updated_at",                 null: false
+    t.index ["team_id"], name: "index_memberships_on_team_id"
+    t.index ["user_id", "team_id"], name: "index_memberships_on_user_id_and_team_id", unique: true
+    t.index ["user_id"], name: "index_memberships_on_user_id"
+  end
+
+  create_table "tasks", force: :cascade do |t|
     t.integer  "category_id"
     t.integer  "user_id"
     t.datetime "deadline_date"
@@ -42,19 +53,8 @@ ActiveRecord::Schema.define(version: 20170823203105) do
     t.text     "notes"
     t.datetime "created_at",                    null: false
     t.datetime "updated_at",                    null: false
-    t.index ["category_id"], name: "index_items_on_category_id"
-    t.index ["user_id"], name: "index_items_on_user_id"
-  end
-
-  create_table "memberships", force: :cascade do |t|
-    t.integer  "user_id"
-    t.integer  "team_id"
-    t.boolean  "admin",      default: false
-    t.datetime "created_at",                 null: false
-    t.datetime "updated_at",                 null: false
-    t.index ["team_id"], name: "index_memberships_on_team_id"
-    t.index ["user_id", "team_id"], name: "index_memberships_on_user_id_and_team_id", unique: true
-    t.index ["user_id"], name: "index_memberships_on_user_id"
+    t.index ["category_id"], name: "index_tasks_on_category_id"
+    t.index ["user_id"], name: "index_tasks_on_user_id"
   end
 
   create_table "teams", force: :cascade do |t|

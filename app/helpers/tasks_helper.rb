@@ -1,4 +1,4 @@
-module ItemsHelper
+module TasksHelper
 
   def deadline_date(date)
     if date.nil?

@@ -3,7 +3,7 @@
 # You can use CoffeeScript in this file: http://coffeescript.org/
 $(document).on 'turbolinks:load', ->
   $(".toggle-completed").click ->
-    if $(this).parent().children(".completed-item").css("display") == "none"
-      $(this).parent().children(".completed-item").css("display" : "flex")
+    if $(this).parent().children(".completed-task").css("display") == "none"
+      $(this).parent().children(".completed-task").css("display" : "flex")
     else
-      $(this).parent().children(".completed-item").css("display" : "none")
+      $(this).parent().children(".completed-task").css("display" : "none")

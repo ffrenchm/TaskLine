@@ -2,7 +2,7 @@ class User < ApplicationRecord
   attr_accessor :remember_token
 
   has_many :categories, dependent: :destroy
-  has_many :items, through: :categories
+  has_many :tasks, through: :categories
   has_many :memberships, dependent: :destroy
   has_many :teams, through: :memberships
   has_many :received_invites, class_name: 'Invite',

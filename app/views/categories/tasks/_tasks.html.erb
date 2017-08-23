@@ -1,0 +1,51 @@
+<div class="tasks">
+  <% if @tasks.any? %>
+    <% if @category && completed_tasks(@tasks.first.category) != 0 %>
+      <p class="toggle-completed">Toggle Completed</p>
+    <% end %>
+  <% else %>
+    <p>This category is empty. Create a new task by clicking the plus icon.</p>
+  <% end %>
+  <% @tasks.each do |task| %>
+    <% unless task.id.nil? %>
+      <% if task.completed == false %>
+        <div class="task">
+      <% else %>
+        <div class="completed-task">
+      <% end %>
+        <%= link_to category_complete_path(task.category, task) do %>
+          <div class="tickbox"><span>
+            <i class="fa fa-check"></i>
+          </span></div>
+        <% end %>
+        <div class="info">
+          <span class="task-content"><%= task.content %></span>
+          <% d = task.deadline_date
+             t = task.deadline_time %>
+          <% if (d && !t && d < Time.now && !task.completed) ||
+                (d && t && !task.completed &&
+                (d + t.seconds_since_midnight.seconds).to_datetime < Time.now) %>
+              <li class="sub-info task-overdue-deadline">
+          <% else %>
+              <li class="sub-info">
+          <% end %>
+            <%= deadline_date(d) +
+                comma(d, t) +
+                deadline_time(t) %>
+          </li>
+        </div>
+        <div class="small-links">
+          <span class="action-link delete-task">
+            <%= link_to "", [task.category, task], method: :delete, class: "fa fa-trash" %>
+          </span>
+          <span class="action-link edit-task">
+            <%= link_to "", edit_category_task_path(task.category, task), class: "fa fa-pencil-square-o" %>
+          </span>
+          <span class="action-link move-task">
+            <%= link_to "", category_move_form_path(task.category, task), class: "fa fa-arrow-left" %>
+          </span>
+        </div>
+      </div>
+    <% end %>
+  <% end %>
+</div>
