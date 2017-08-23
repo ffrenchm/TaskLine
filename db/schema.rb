@@ -32,16 +32,16 @@ ActiveRecord::Schema.define(version: 20170823203105) do
   end
 
   create_table "items", force: :cascade do |t|
+    t.integer  "category_id"
+    t.integer  "user_id"
+    t.datetime "deadline_date"
+    t.datetime "deadline_time"
+    t.integer  "repeat"
+    t.boolean  "completed",     default: false
     t.string   "content"
+    t.text     "notes"
     t.datetime "created_at",                    null: false
     t.datetime "updated_at",                    null: false
-    t.integer  "user_id"
-    t.integer  "category_id"
-    t.datetime "deadline_date"
-    t.integer  "repeat"
-    t.datetime "deadline_time"
-    t.boolean  "completed",     default: false
-    t.text     "notes"
     t.index ["category_id"], name: "index_items_on_category_id"
     t.index ["user_id"], name: "index_items_on_user_id"
   end
@@ -49,28 +49,28 @@ ActiveRecord::Schema.define(version: 20170823203105) do
   create_table "memberships", force: :cascade do |t|
     t.integer  "user_id"
     t.integer  "team_id"
+    t.boolean  "admin",      default: false
     t.datetime "created_at",                 null: false
     t.datetime "updated_at",                 null: false
-    t.boolean  "admin",      default: false
     t.index ["team_id"], name: "index_memberships_on_team_id"
     t.index ["user_id", "team_id"], name: "index_memberships_on_user_id_and_team_id", unique: true
     t.index ["user_id"], name: "index_memberships_on_user_id"
   end
 
   create_table "teams", force: :cascade do |t|
+    t.string   "name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.string   "name"
   end
 
   create_table "users", force: :cascade do |t|
+    t.string   "name"
     t.string   "email"
     t.string   "password_digest"
+    t.string   "remember_digest"
+    t.string   "picture"
     t.datetime "created_at",      null: false
     t.datetime "updated_at",      null: false
-    t.string   "remember_digest"
-    t.string   "name"
-    t.string   "picture"
   end
 
 end

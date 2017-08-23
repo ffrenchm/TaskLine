@@ -3,6 +3,7 @@ class CreateMemberships < ActiveRecord::Migration[5.0]
     create_table :memberships do |t|
       t.references :user, foreign_key: true
       t.references :team, foreign_key: true
+      t.boolean :admin, default: false
 
       t.timestamps
     end
