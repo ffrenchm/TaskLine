@@ -41,7 +41,7 @@ class CategoriesController < ApplicationController
     end
 
     def correct_user
-      @category = current_user.categories.find_by(id: params[:id])
+      @category = current_user.categories.find(params[:id])
       redirect_to categories_path if @category.nil?
     end
 

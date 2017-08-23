@@ -23,8 +23,7 @@ module CategoriesHelper
   def overdue_items
     items = []
     @user.items.each do |item|
-      if (!item.completed && item.deadline_date &&
-          item.deadline_date < Time.now)
+      if item.overdue?
         items << item
       end
     end
@@ -34,8 +33,7 @@ module CategoriesHelper
   def week_items
     items = []
     @user.items.each do |item|
-      if (!item.completed && item.deadline_date &&
-         item.deadline_date - Time.now < 7.days)
+      if item.week?
         items << item
       end
     end
@@ -45,8 +43,7 @@ module CategoriesHelper
   def today_items
     items = []
     @user.items.each do |item|
-      if (!item.completed && item.deadline_date &&
-         item.deadline_date.today?)
+      if item.today?
         items << item
       end
     end
@@ -56,7 +53,7 @@ module CategoriesHelper
   def completed_items(category)
     items = []
     category.items.each do |item|
-      if item.completed == true
+      if item.completed
         items << item
       end
     end

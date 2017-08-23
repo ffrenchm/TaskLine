@@ -1,3 +1,36 @@
 <%= provide(:title, "Profile") %>
-
-<%= link_to "Delete Account", current_user, method: :delete, data: { confirm: "Are you sure?" } %>
+<div class="split-layout">
+  <div class="main">
+    <div class="box">
+      <div class="title-wrapper">
+        <h2><%= @user.name %></h2>
+      </div>
+      <div class="sub-box">
+        <%= image_tag current_user.picture.url, size: "150x150" %>
+      </div>
+    </div>
+    <div class="box">
+      <div class="title-wrapper">
+        <h2>Account</h2>
+      </div>
+      <div class="sub-box">
+        <li><%= link_to "Edit profile", edit_user_path(@user) %></li>
+        <li><%= link_to "Sign Out", signout_path, method: :delete %></li>
+        <li><%= link_to "Delete Account", current_user, method: :delete, data: { confirm: "Are you sure?" } %></li>
+      </div>
+    </div>
+  </div>
+  <div class="aside">
+    <div class="box">
+      <div class="title-wrapper">
+        <h2>Statistics</h2>
+      </div>
+      <div class="sub-box">
+        <li><%= pluralize(total_items, "total task") %></li>
+        <li><%= pluralize(overdue_items, "overdue task") %></li>
+        <li><%= pluralize(today_items, "task") %> due today</li>
+        <li><%= pluralize(week_items, "task") %> due this week</li>
+      </div>
+    </div>
+  </div>
+</div>

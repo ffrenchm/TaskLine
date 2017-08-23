@@ -3,7 +3,7 @@ require 'test_helper'
 class UserTest < ActiveSupport::TestCase
 
   def setup
-    @user = User.new(email: "user@example.com", password: "password", password_confirmation: "password")
+    @user = User.new(name: "Example", email: "user@example.com", password: "password", password_confirmation: "password")
   end
 
   test "should be valid initially" do
@@ -64,6 +64,16 @@ class UserTest < ActiveSupport::TestCase
     assert_difference 'Category.count', -1 do
       @user.destroy
     end
+  end
+
+  test "should join and exit team" do
+    user = users(:matt)
+    team = teams(:work)
+    assert_not user.member?(team)
+    user.join(team)
+    assert user.member?(team)
+    user.leave(team)
+    assert_not user.member?(team)
   end
 
 end

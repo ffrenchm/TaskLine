@@ -23,7 +23,7 @@ table {
 
 // MIXINS AND VARIABLES
 
-  @mixin item {
+  @mixin sub_box {
     background-color: $main;
     margin-top: 10px;
     border-radius: 7px;
@@ -53,7 +53,7 @@ body {
   display: flex;
   flex-direction: column;
   min-height: 101vh;
-  background-image: linear-gradient(to top right, #ccc, #eee);
+  background-image: linear-gradient(to top right, #888, #fff);
 }
 h1, h2, h3, h4, h5, h6 {
   font-family: $header;
@@ -63,17 +63,30 @@ h1, h2, h3, h4, h5, h6 {
   max-width: 1280px;
   margin: auto;
   padding: 20px;
+  padding-top: 120px;
   flex: 1 1 auto;
-  background-color: rgba(0, 0, 0, 0.2);
+  // background-color: rgba(0, 0, 0, 0.2);
 }
 .form-holder {
   width: 40%;
 }
-.index {
+.split-layout {
   display: flex;
 }
 .page-header {
   width: 100%;
+}
+.box {
+  background-color: $accent;
+  margin: 0 10px 10px 0;
+  padding: 10px;
+  border-radius: 7px;
+  width: 100%;
+  box-shadow: 0 3px 3px rgba(0, 0, 0, 0.3);
+  display: inline-block;
+}
+.sub-box {
+  @include sub-box;
 }
 a {
   &:hover {
@@ -86,10 +99,20 @@ h1 {
 h2 {
   font-size: 20px;
 }
+.main {
+  width: 52%;
+  margin: 0 40px 100px 0;
+  display: inline-block;
+  flex: 0 0 auto;
+}
 .aside {
   width: 40%;
   display: inline-block;
+  float: right;
   flex: 1 1 0;
+}
+.above-aside {
+  margin-bottom: 10px;
 }
 .desk {
   top: 50%;
@@ -118,6 +141,21 @@ h2 {
     text-align: center;
   }
 }
+.sub-info {
+  font-size: 14px;
+  font-style: italic;
+  color: #888;
+}
+.big-links {
+  display: inline-block;
+  float: right;
+  span {
+    float: right;
+    margin-left: 10px;
+    font-size: 20px;
+    line-height: 1;
+  }
+}
 
 // FORM STYLES
 .form-control {
@@ -137,9 +175,9 @@ footer {
 header {
   width: 100%;
   height: 70px;
-  position: relative;
+  position: fixed;
   background-color: $accent;
-  box-shadow: 0 2px 2px #d8d8d8;
+  box-shadow: 0 6px 4px rgba(0, 0, 0, 0.6);
   z-index: 30;
 }
 .nav {
@@ -158,6 +196,10 @@ header {
         color: #888;
       }
     }
+    .profile-link {
+      padding: 0;
+      padding-right: 20px;
+    }
   }
 }
 .logo {
@@ -173,23 +215,11 @@ header {
     color: #888;
   }
 }
-.dropdown-toggle {
-  background-color: #ddd;
-  &:hover {
-    background-color: #ddd !important;
-  }
+.small-pic {
+  border-radius: 39px;
 }
 .edge-link {
   margin-right: 20px !important;
-}
-.dropdown-menu {
-  width: 99.19px;
-  min-width: 0;
-  z-index: 10;
-  li {
-    width: 100%;
-    text-align: center;
-  }
 }
 
 // CALENDAR STYLES
@@ -213,7 +243,7 @@ header {
 
 // ITEM STYLES
 .item {
-  @include item;
+  @include sub_box;
   display: flex;
   .fa-check {
     font-size: 20px;
@@ -249,7 +279,7 @@ header {
   float: right;
   height: 100%;
 }
-.links {
+.small-links {
   width: 20%;
   display: inline-block;
   flex: 0 0 auto;
@@ -258,24 +288,19 @@ header {
   span {
     float: right;
     margin-left: 10px;
+    line-height: 1;
+    font-size: 14px;
   }
 }
 .item-content {
   padding: 0;
   font-weight: bold;
 }
-.item-deadline {
-  font-size: 14px;
-  font-style: italic;
-  color: #888;
-}
 .item-overdue-deadline {
-  font-size: 14px;
-  font-style: italic;
-  color: red;
+  color: red !important;
 }
 .completed-item {
-  @include item;
+  @include sub_box;
   display: none;
   .info {
     text-decoration: line-through;
@@ -321,21 +346,6 @@ header {
 }
 
 // CATEGORY STYLES
-.categories {
-  width: 52%;
-  margin: 0 40px 100px 0;
-  display: inline-block;
-  flex: 0 0 auto;
-}
-.category, .stats {
-  background-color: $accent;
-  margin: 0 10px 10px 0;
-  padding: 10px;
-  border-radius: 7px;
-  width: 100%;
-  box-shadow: 0 2px 2px #eee;
-  display: inline-block;
-}
 .stats {
   margin-top: 10px;
   h2 {
@@ -349,12 +359,12 @@ header {
 .title-wrapper {
   position: relative;
   display: inline-block;
+  line-height: 1;
 }
 .category-title, .toggled-title {
   font-family: $header;
   font-size: 20px;
   padding-right: 15px;
-  line-height: 1;
   color: $links;
   cursor: pointer;
   &:hover {
@@ -370,23 +380,6 @@ header {
     top: 50%;
     transform: translate(50%, -36%);
   }
-}
-.item-count {
-  font-size: 14px;
-  font-style: italic;
-  color: #888;
-  margin-bottom: 10px;
-}
-.edit-category,
-.new-item,
-.delete-category {
-  font-size: 20px;
-  margin-left: 10px;
-  line-height: 1;
-  float: right;
-}
-.delete-category {
-  font-size: 18px;
 }
 .page-title {
   display: inline-block;

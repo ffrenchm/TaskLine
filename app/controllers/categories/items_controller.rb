@@ -1,7 +1,8 @@
 class Categories::ItemsController < ApplicationController
   before_action :signed_in_user
-  before_action :find_category, except: [:complete, :move]
+  before_action :find_category, except: [:complete]
   before_action :find_item, except: [:new, :create]
+  before_action :verify_move, only: :update
 
   def new
     @item = @category.items.build
@@ -40,17 +41,10 @@ class Categories::ItemsController < ApplicationController
     redirect_to request.referrer || categories_path
   end
 
-  def move
-    unless @item.update(category_id: @category.id)
-      flash[:danger] = "Error"
-    end
-    redirect_to request.referrer || categories_path
-  end
-
   private
 
     def item_params
-      params.require(:item).permit(:content, :deadline_date, :deadline_time, :repeat)
+      params.require(:item).permit(:content, :deadline_date, :deadline_time, :repeat, :category_id, :notes)
     end
 
     def find_category
@@ -59,5 +53,12 @@ class Categories::ItemsController < ApplicationController
 
     def find_item
       @item = Item.find(params[:id])
+    end
+
+    def verify_move
+      if Category.find_by(id: params[:category_id]).user != current_user
+        redirect_to categories_path
+        flash[:danger] = "You can't move it to someone else's category BUD."
+      end
     end
 end

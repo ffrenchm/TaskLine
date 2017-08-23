@@ -1,0 +1,8 @@
+<div class="centre-form">
+  <h2>Change Category to...</h2>
+  <%= form_for [@category, @item] do |f| %>
+  <%= f.text_field :category_id %>
+  <%= f.submit "Move", class: "btn btn-primary" %>
+  <% end %>
+  <%= link_to "Cancel", categories_path %>
+</div>

@@ -25,24 +25,24 @@
           <% if (d && !t && d < Time.now && !item.completed) ||
                 (d && t && !item.completed &&
                 (d + t.seconds_since_midnight.seconds).to_datetime < Time.now) %>
-              <li class="item-overdue-deadline">
+              <li class="sub-info item-overdue-deadline">
           <% else %>
-              <li class="item-deadline">
+              <li class="sub-info">
           <% end %>
             <%= deadline_date(d) +
                 comma(d, t) +
                 deadline_time(t) %>
           </li>
         </div>
-        <div class="links">
-          <span class="delete-item">
+        <div class="small-links">
+          <span class="action-link delete-item">
             <%= link_to "", [item.category, item], method: :delete, class: "fa fa-trash" %>
           </span>
-          <span class="edit-item">
+          <span class="action-link edit-item">
             <%= link_to "", edit_category_item_path(item.category, item), class: "fa fa-pencil-square-o" %>
           </span>
-          <span class="move-item">
-            <%= link_to "", '#', class: "fa fa-arrow-left" %>
+          <span class="action-link move-item">
+            <%= link_to "", category_move_form_path(item.category, item), class: "fa fa-arrow-left" %>
           </span>
         </div>
       </div>

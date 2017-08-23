@@ -11,6 +11,7 @@
     <%= f.date_field :deadline_date, class: "form-control" %>
     <%= f.time_field :deadline_time, class: "form-control" %>
     <li class="form-control"><%= f.check_box :repeat %><%= f.label "repeat item?" %></li>
+    <%= f.text_area :notes, placeholder: "Notes", class: "form-control" %>
   <% end %>
   </br>
   <%= link_to "Back", categories_path %>

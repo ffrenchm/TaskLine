@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170815094049) do
+ActiveRecord::Schema.define(version: 20170823203105) do
 
   create_table "categories", force: :cascade do |t|
     t.string   "title"
@@ -18,6 +18,17 @@ ActiveRecord::Schema.define(version: 20170815094049) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["user_id"], name: "index_categories_on_user_id"
+  end
+
+  create_table "invites", force: :cascade do |t|
+    t.string   "email"
+    t.integer  "team_id"
+    t.string   "token"
+    t.integer  "sender_id"
+    t.integer  "recipient_id"
+    t.datetime "created_at",   null: false
+    t.datetime "updated_at",   null: false
+    t.index ["team_id"], name: "index_invites_on_team_id"
   end
 
   create_table "items", force: :cascade do |t|
@@ -30,8 +41,26 @@ ActiveRecord::Schema.define(version: 20170815094049) do
     t.integer  "repeat"
     t.datetime "deadline_time"
     t.boolean  "completed",     default: false
+    t.text     "notes"
     t.index ["category_id"], name: "index_items_on_category_id"
     t.index ["user_id"], name: "index_items_on_user_id"
+  end
+
+  create_table "memberships", force: :cascade do |t|
+    t.integer  "user_id"
+    t.integer  "team_id"
+    t.datetime "created_at",                 null: false
+    t.datetime "updated_at",                 null: false
+    t.boolean  "admin",      default: false
+    t.index ["team_id"], name: "index_memberships_on_team_id"
+    t.index ["user_id", "team_id"], name: "index_memberships_on_user_id_and_team_id", unique: true
+    t.index ["user_id"], name: "index_memberships_on_user_id"
+  end
+
+  create_table "teams", force: :cascade do |t|
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.string   "name"
   end
 
   create_table "users", force: :cascade do |t|
@@ -40,6 +69,8 @@ ActiveRecord::Schema.define(version: 20170815094049) do
     t.datetime "created_at",      null: false
     t.datetime "updated_at",      null: false
     t.string   "remember_digest"
+    t.string   "name"
+    t.string   "picture"
   end
 
 end

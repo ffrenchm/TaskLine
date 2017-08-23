@@ -1,0 +1,10 @@
+<div class="above-aside">
+  <%= form_for(@team) do |f| %>
+  <div class="input-group">
+    <%= f.text_field :name, placeholder: "New Team", class: "form-control" %>
+    <div class="input-group-btn">
+      <%= f.submit "Create", class: "btn btn-primary" %>
+    </div>
+  </div>
+  <% end %>
+</div>

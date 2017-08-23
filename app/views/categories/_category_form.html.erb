@@ -1,8 +1,10 @@
-<%= form_for(@category) do |f| %>
+<div class="above-aside">
+  <%= form_for(@category) do |f| %>
   <div class="input-group">
     <%= f.text_field :title, placeholder: "New Category", class: "form-control" %>
     <span class="input-group-btn">
       <%= f.submit yield(:button_text), class: "btn btn-primary" %>
     </span>
   </div>
-<% end %>
+  <% end %>
+</div>

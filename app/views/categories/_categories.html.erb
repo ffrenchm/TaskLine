@@ -1,24 +1,32 @@
-<div class="categories">
+<div class="main">
+  <% if @user.categories.count == 0 %>
+    <div class="box">
+      <p>You currently have no categories... Make some using the form on the right.</p>
+    </div>
+  <% end %>
   <% @user.categories.each do |category| %>
     <% unless category.id.nil? %>
-      <div class="category" id='<%= category.id %>'>
+      <div class="box" id='<%= category.id %>'>
         <div class="title-wrapper">
           <span class="category-title">
             <%= category.title %>
           </span>
         </div>
-        <span class="delete-category">
-          <%= link_to "", category, method: :delete, class: "fa fa-trash", data: { confirm: "Are you sure? All items inside '" + category.title + "' will be lost." } %>
-        </span>
-        <span class="edit-category">
-          <%= link_to "", edit_category_path(category), class: "fa fa-pencil-square-o" %>
-        </span>
-        <span class="new-item">
-          <%= link_to "", new_category_item_path(category), class: "fa fa-plus" %>
-        </span>
-        <li class="item-count">
+        <div class="big-links">
+          <span class="delete-category">
+            <%= link_to "", category, method: :delete, class: "fa fa-trash", data: { confirm: "Are you sure? All items inside '" + category.title + "' will be lost." } %>
+          </span>
+          <span class="edit-category">
+            <%= link_to "", edit_category_path(category), class: "fa fa-pencil-square-o" %>
+          </span>
+          <span class="new-item">
+            <%= link_to "", new_category_item_path(category), class: "fa fa-plus" %>
+          </span>
+        </div>
+        <li class="sub-info">
           <%= pluralize(item_count(category), "task") %>
         </li>
+      </br>
         <% @items = category.items %>
         <%= render 'categories/items/items' %>
       </div>
