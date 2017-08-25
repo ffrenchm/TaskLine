@@ -18,4 +18,20 @@ class Task < ApplicationRecord
     (!self.completed && self.deadline_date && self.deadline_date - Time.now < 7.days)
   end
 
+  def increment
+    n = self.repeat_number
+    case self.repeat_period
+    when "Day"
+      n.days
+    when "Week"
+      n.weeks
+    when "Month"
+      n.months
+    when "Year"
+      n.years
+    else
+      0
+    end
+  end
+
 end

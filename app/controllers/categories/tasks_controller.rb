@@ -1,6 +1,6 @@
 class Categories::TasksController < ApplicationController
   before_action :signed_in_user
-  before_action :find_category, except: [:complete]
+  before_action :find_category
   before_action :find_task, except: [:new, :create]
   before_action :verify_move, only: :update
 
@@ -37,6 +37,10 @@ class Categories::TasksController < ApplicationController
   def complete
     unless @task.update(completed: !@task.completed)
       flash[:danger] = "Error"
+    end
+    if @task.repeat == 1 && @task.completed == true
+      @new_task = @task.dup
+      @new_task.update(deadline_date: @task.deadline_date + @task.increment, completed: false)
     end
     redirect_to request.referrer || categories_path
   end
