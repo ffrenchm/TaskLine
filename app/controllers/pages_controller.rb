@@ -9,4 +9,8 @@ class PagesController < ApplicationController
       @skip_footer = true
     end
   end
+
+  def inbox
+    @user = current_user
+  end
 end

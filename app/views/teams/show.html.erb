@@ -12,16 +12,33 @@
         </div>
         </br>
         <% @team.users.each do |user| %>
-        <%= image_tag user.picture.url, size: "39x39", class: "small-pic" %>
-        <%= user.name %>
+        <li class="team-member">
+          <span><%= image_tag user.picture.url, size: "39x39", class: "small-pic" %></span>
+          <span class="member-name"><%= user.name %></span>
+          <% if Membership.find_by(user_id: user.id, team_id: @team.id).admin == true %>
+            <span class="admin-tag">
+              <%= "admin" %>
+            </span>
+          <% end %>
+          <% if user == current_user %>
+            <span class="you-tag">
+              <%= "you" %>
+            </span>
+          <% end %>
+        </li>
         <% end %>
       </div>
       </br>
-      <%= link_to "Back", teams_path %>
+      <%= link_to "Back", teams_path %> |
+      <% if @membership %>
+        <%= link_to "Leave Team", team_membership_path(@team, @membership), method: :delete %>
+      <% else %>
+        <%= link_to "Join", team_memberships_path(@team), method: :post %>
+      <% end %>
     </div>
   </div>
   <div class="aside">
-    <%= form_for @invite, :url => invites_path do |f| %>
+    <%= form_for @invite, url: invites_path do |f| %>
       <%= f.hidden_field :team_id, value: @invite.team_id %>
       <div class="input-group">
         <%= f.email_field :email, placeholder: "Email", class: "form-control" %>

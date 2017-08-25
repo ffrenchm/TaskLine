@@ -22,6 +22,7 @@ class TeamsController < ApplicationController
 
   def show
     @invite = @team.invites.build
+    @membership = Membership.find_by(user_id: current_user.id, team_id: @team.id)
   end
 
   def edit
@@ -41,7 +42,7 @@ class TeamsController < ApplicationController
   private
 
     def team_params
-      params.require(:team).permit(:name)
+      params.require(:team).permit(:name, :public)
     end
 
     def find_team

@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
   root 'pages#home'
+  get '/inbox', to: 'pages#inbox'
   get '/signup', to: 'users#new'
   post '/signup', to: 'users#create'
   post '/signin', to: 'sessions#create'
@@ -7,8 +8,10 @@ Rails.application.routes.draw do
 
   resources :users
 
-  resources :teams
-  resources :memberships, only: [:create, :destroy]
+  resources :teams do
+    resources :memberships, only: [:create, :destroy], controller: 'teams/memberships'
+  end
+
   resources :invites
 
   resources :categories, except: :new do

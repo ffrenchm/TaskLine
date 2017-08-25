@@ -19,20 +19,25 @@
           </span></div>
         <% end %>
         <div class="info">
-          <span class="task-content"><%= task.content %></span>
+          <li class="task-content"><%= task.content %></li>
           <% d = task.deadline_date
              t = task.deadline_time %>
           <% if (d && !t && d < Time.now && !task.completed) ||
                 (d && t && !task.completed &&
                 (d + t.seconds_since_midnight.seconds).to_datetime < Time.now) %>
-              <li class="sub-info task-overdue-deadline">
+            <span class="sub-info task-overdue-deadline">
           <% else %>
-              <li class="sub-info">
+            <span class="sub-info">
           <% end %>
-            <%= deadline_date(d) +
-                comma(d, t) +
-                deadline_time(t) %>
-          </li>
+              <%= deadline_date(d) +
+                  comma(d, t) +
+                  deadline_time(t) %>
+            </li>
+          <% if task.repeat == 1 %>
+            <span class="sub-info task-repeat">
+              <%= " - Every " + pluralize(task.repeat_number, task.repeat_period) %>
+            </span>
+          <% end %>
         </div>
         <div class="small-links">
           <span class="action-link delete-task">
