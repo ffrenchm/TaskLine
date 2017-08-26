@@ -14,7 +14,7 @@
         </div>
         <div class="big-links">
           <span class="delete-category">
-            <%= link_to "", category, method: :delete, class: "fa fa-trash", data: { confirm: "Are you sure? All tasks inside '" + category.title + "' will be lost." } %>
+            <%= link_to "", category, method: :delete, remote: true, class: "fa fa-trash", data: { confirm: "Are you sure? All tasks inside '" + category.title + "' will be lost." } %>
           </span>
           <span class="edit-category">
             <%= link_to "", edit_category_path(category), class: "fa fa-pencil-square-o" %>

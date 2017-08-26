@@ -17,7 +17,7 @@ Rails.application.routes.draw do
   resources :categories, except: :new do
     resources :tasks, except: [:index, :show],
                       controller: 'categories/tasks'
-    get '/tasks/:id/complete', to: 'categories/tasks#complete', as: :complete
+    patch '/tasks/:id/complete', to: 'categories/tasks#complete', as: :complete
     get '/tasks/:id/move_form', to: 'categories/tasks#move_form', as: :move_form
     patch 'tasks/:id/move', to: 'categories/tasks#move', as: :move
   end

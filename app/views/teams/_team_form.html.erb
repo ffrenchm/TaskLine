@@ -1,5 +1,5 @@
 <div class="above-aside">
-  <%= form_for @team do |f| %>
+  <%= form_for @team, remote: true do |f| %>
   <div class="input-group">
     <%= f.text_field :name, placeholder: "New Team", class: "form-control" %>
     <div class="input-group-btn">
@@ -7,7 +7,8 @@
     </div>
   </div>
   <li class="form-control">
-    <%= f.check_box :public %><%= f.label "Public" %>
+    <%= f.radio_button :public, 0, checked: true %> Private
+    <%= f.radio_button :public, 1 %> Public
   </li>
   <% end %>
 </div>

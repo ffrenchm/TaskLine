@@ -34,4 +34,12 @@ class Task < ApplicationRecord
     end
   end
 
+  def repeat_message
+    if self.repeat_number == 1
+      " - Every " + self.repeat_period
+    else
+      " - Every " + self.repeat_number.to_s + " " + self.repeat_period + "s"
+    end
+  end
+
 end

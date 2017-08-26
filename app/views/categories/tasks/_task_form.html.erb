@@ -7,20 +7,25 @@
         <%= f.submit yield(:button_text), class: "btn btn-primary" %>
       </span>
     </div>
-    <%= f.label "Due Date" %>
-    <%= f.date_field :deadline_date, class: "form-control" %>
-    <%= f.time_field :deadline_time, class: "form-control" %>
-    <li class="form-control"><%= f.check_box :repeat %><%= f.label "repeat task?" %></li>
+    <div class="form-control">
+      <%= "Date: " %>
+      <%= f.date_field :deadline_date %>
+    </div>
+    <div class="form-control">
+      <%= "Time: " %>
+      <%= f.time_field :deadline_time %>
+    </div>
     <div class="input-group form-control">
-      <%= f.label "Every " %>
-      <%= f.number_field :repeat_number %>
-      <%= f.select :repeat_period, [["Day"], ["Week"], ["Month"], ["Year"]] %><%= f.label " (s)" %>
+      <%= f.check_box :repeat %><%= " Repeat" %>
+      <span id="repeat-input">
+        <%= " every" %>
+        <span><%= f.number_field :repeat_number, placeholder: " x" %></span>
+        <span><%= f.select :repeat_period, [["Day(s)", "Day"], ["Week(s)", "Week"], ["Month(s)", "Month"], ["Year(s)", "Year"]] %></span>
+      </span>
     </div>
     <%= f.text_area :notes, placeholder: "Notes", class: "form-control" %>
     <%= f.label "Upload Docs: " %>
-    <li class="form-control">
-      <%= f.file_field :content %>
-    </li>
+    <%= f.file_field :content %>
   <% end %>
   </br>
   <%= link_to "Back", categories_path %>

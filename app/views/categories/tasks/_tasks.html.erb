@@ -13,7 +13,10 @@
       <% else %>
         <div class="completed-task">
       <% end %>
-        <%= link_to category_complete_path(task.category, task) do %>
+        <%= link_to category_complete_path(task.category, task),
+          remote: true,
+          method: :patch,
+          data: { params: :task } do %>
           <div class="tickbox"><span>
             <i class="fa fa-check"></i>
           </span></div>
@@ -35,13 +38,13 @@
             </li>
           <% if task.repeat == 1 %>
             <span class="sub-info task-repeat">
-              <%= " - Every " + pluralize(task.repeat_number, task.repeat_period) %>
+              <%= task.repeat_message %>
             </span>
           <% end %>
         </div>
         <div class="small-links">
           <span class="action-link delete-task">
-            <%= link_to "", [task.category, task], method: :delete, class: "fa fa-trash" %>
+            <%= link_to "", [task.category, task], method: :delete, class: "fa fa-trash", remote: true %>
           </span>
           <span class="action-link edit-task">
             <%= link_to "", edit_category_task_path(task.category, task), class: "fa fa-pencil-square-o" %>
