@@ -3,4 +3,4 @@
 # You can use CoffeeScript in this file: http://coffeescript.org/
 $(document).on 'turbolinks:load', ->
   $(".title-wrapper").click ->
-    $(this).parent().children(".tasks").toggle()
+    $(this).parent().children(".tasks").slideToggle(200)

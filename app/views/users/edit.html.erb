@@ -8,7 +8,9 @@
   <div class="sub-box">
     <h2>Upload Profile Picture</h2>
     <%= form_for @user do |f| %>
-      <%= f.hidden_field :name, placeholder: "Username", class: 'form-control' %>
+      <%= f.hidden_field :name,
+      placeholder: "Username",
+      class: 'form-control' %>
       <%= f.file_field :picture %>
       </br>
       <%= f.submit "Upload", class: "btn btn-primary" %>

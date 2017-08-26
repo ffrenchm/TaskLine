@@ -130,12 +130,10 @@ h2 {
 }
 .centre-form {
   background-color: $accent;
-  position: absolute;
-  top: 40%;
-  left: 50%;
-  transform: translate(-50%, -50%);
   width: 500px;
   padding: 20px;
+  margin: auto;
+  margin-top: 10%;
   border-radius: 6px;
   h1 {
     text-align: center;
@@ -155,13 +153,6 @@ h2 {
     font-size: 20px;
     line-height: 1;
   }
-}
-
-// FORM STYLES
-.form-control {
-  width: 100%;
-  margin-bottom: 5px;
-  z-index: 1;
 }
 
 // FOOTER STYLES
@@ -296,6 +287,28 @@ header {
   padding: 0;
   font-weight: bold;
 }
+#task_repeat {
+  cursor: pointer;
+}
+.toggle-more {
+  font-size: 14px;
+}
+.task-more {
+  display: none;
+  font-size: 14px;
+}
+.every-field {
+  width: 100%;
+}
+.every {
+  width: 15% !important;
+}
+.every-number {
+  width: 20% !important;
+}
+.every-period {
+  width: 80% !important;
+}
 .task-overdue-deadline {
   color: red !important;
 }
@@ -320,7 +333,7 @@ header {
     }
   }
 }
-.toggle-completed {
+.toggle {
   cursor: pointer;
   color: $links;
   display: inline-block;

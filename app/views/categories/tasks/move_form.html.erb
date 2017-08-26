@@ -1,11 +1,16 @@
 <div class="centre-form">
-  <h2>Change Category to...</h2>
+  <h2>Move Task to Category...</h2>
   <%= form_for [@category, @task] do |f| %>
-    <div class="input-group">
-      <%= f.collection_select :category_id, current_user.categories, :id, :title, class: "form-control" %>
-      <%= f.submit "Move", class: "btn btn-primary" %>
+    <div class="form-group input-group">
+      <%= f.collection_select :category_id,
+      current_user.categories,
+      :id, :title,
+      {},
+      class: "form-control" %>
+      <div class="input-group-btn">
+        <%= f.submit "Move", class: "btn btn-primary" %>
+      </div>
     </div>
   <% end %>
-  </br>
   <%= link_to "Cancel", categories_path %>
 </div>

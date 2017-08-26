@@ -21,13 +21,13 @@ class Task < ApplicationRecord
   def increment
     n = self.repeat_number
     case self.repeat_period
-    when "Day"
+    when "Days"
       n.days
-    when "Week"
+    when "Weeks"
       n.weeks
-    when "Month"
+    when "Months"
       n.months
-    when "Year"
+    when "Years"
       n.years
     else
       0
@@ -36,9 +36,9 @@ class Task < ApplicationRecord
 
   def repeat_message
     if self.repeat_number == 1
-      " - Every " + self.repeat_period
+      " - Every " + self.repeat_period.to_s.chop
     else
-      " - Every " + self.repeat_number.to_s + " " + self.repeat_period + "s"
+      " - Every " + self.repeat_number.to_s + " " + self.repeat_period
     end
   end
 

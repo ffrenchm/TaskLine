@@ -1,32 +1,51 @@
 <div class="centre-form">
   <h2><%= yield(:title) %></h2>
   <%= form_for [@category, @task] do |f| %>
-    <div class="input-group">
-      <%= f.text_field :content, placeholder: "Task", class: "form-control" %>
+    <div class="input-group form-group">
+      <%= f.text_field :content,
+      placeholder: "Task Description",
+      class: "form-control" %>
       <span class="input-group-btn">
-        <%= f.submit yield(:button_text), class: "btn btn-primary" %>
+        <%= f.submit yield(:button_text),
+        class: "btn btn-primary" %>
       </span>
     </div>
-    <div class="form-control">
-      <%= "Date: " %>
-      <%= f.date_field :deadline_date %>
+    <div class="form-group input-group">
+      <span class="input-group-addon">Date</span>
+      <%= f.date_field :deadline_date,
+      class: "form-control" %>
     </div>
-    <div class="form-control">
-      <%= "Time: " %>
-      <%= f.time_field :deadline_time %>
+    <div class="form-group input-group">
+      <span class="input-group-addon">Time</span>
+      <%= f.time_field :deadline_time,
+      class: "form-control" %>
     </div>
-    <div class="input-group form-control">
-      <%= f.check_box :repeat %><%= " Repeat" %>
-      <span id="repeat-input">
-        <%= " every" %>
-        <span><%= f.number_field :repeat_number, placeholder: " x" %></span>
-        <span><%= f.select :repeat_period, [["Day(s)", "Day"], ["Week(s)", "Week"], ["Month(s)", "Month"], ["Year(s)", "Year"]] %></span>
-      </span>
+    <div class="form-group">
+      <%= f.check_box :repeat %>
+      <span> Repeat?</span>
     </div>
-    <%= f.text_area :notes, placeholder: "Notes", class: "form-control" %>
-    <%= f.label "Upload Docs: " %>
-    <%= f.file_field :content %>
+  <% unless @task.repeat && @task.repeat == 1 %>
+    <div class="form-group input-group every-field" style="display:none">
+  <% else %>
+    <div class="form-group input-group every-field">
   <% end %>
-  </br>
+      <span class="input-group-addon every">Every</span>
+      <%= f.number_field :repeat_number,
+      class: "form-control every-number" %>
+      <%= f.select :repeat_period,
+      [["Days"], ["Weeks"], ["Months"], ["Years"]],
+      {},
+      class: "form-control every-period" %>
+    </div>
+    <div class="form-group">
+      <%= f.text_area :notes,
+      placeholder: "Notes",
+      class: "form-control" %>
+    </div>
+    <div class="form-group">
+      <%= f.label "Upload Docs" %>
+      <%= f.file_field :content %>
+    </div>
+  <% end %>
   <%= link_to "Back", categories_path %>
 </div>

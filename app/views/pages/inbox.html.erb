@@ -14,9 +14,16 @@
             <span class="task-content">
               <%= Team.find(invite.team_id).name %>
             </span>
-            <%= link_to "", invite, method: :delete, class: "fa fa-trash" %>
-            <p class="sub-info">From: <%= User.find(invite.sender_id).email %></p>
-            <%= link_to "Join", team_memberships_path(invite.team), method: :post %>
+            <%= link_to "",
+            invite,
+            method: :delete,
+            class: "fa fa-trash" %>
+            <p class="sub-info">
+              From: <%= User.find(invite.sender_id).email %>
+            </p>
+            <%= link_to "Join",
+            team_memberships_path(invite.team),
+            method: :post %>
           </div>
         <% end %>
       <% end %>

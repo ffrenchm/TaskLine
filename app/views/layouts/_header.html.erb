@@ -3,8 +3,11 @@
     <%= link_to "TaskLine", root_path, class: "logo" %>
     <% if signed_in? %>
       <li class="profile-link">
-        <%= link_to user_path(current_user), class: "profile-link" do %>
-          <%= image_tag current_user.picture.url, size: "39x39", class: "small-pic" %>
+        <%= link_to user_path(current_user),
+        class: "profile-link" do %>
+          <%= image_tag current_user.picture.url,
+          size: "39x39",
+          class: "small-pic" %>
         <% end %>
       </li>
       <li><%= link_to "Manage Tasks", categories_path %></li>

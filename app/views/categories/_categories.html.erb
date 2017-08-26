@@ -6,7 +6,7 @@
   <% end %>
   <% @user.categories.each do |category| %>
     <% unless category.id.nil? %>
-      <div class="box" id='<%= category.id %>'>
+      <div class="box">
         <div class="title-wrapper">
           <span class="category-title">
             <%= category.title %>
@@ -14,13 +14,22 @@
         </div>
         <div class="big-links">
           <span class="delete-category">
-            <%= link_to "", category, method: :delete, remote: true, class: "fa fa-trash", data: { confirm: "Are you sure? All tasks inside '" + category.title + "' will be lost." } %>
+            <%= link_to "", category,
+            method: :delete,
+            remote: true,
+            class: "fa fa-trash",
+            data: { confirm: "Are you sure? All tasks inside '" + category.title + "' will be lost." } %>
           </span>
           <span class="edit-category">
-            <%= link_to "", edit_category_path(category), class: "fa fa-pencil-square-o" %>
+            <%= link_to "",
+            edit_category_path(category),
+            class: "fa fa-pencil-square-o" %>
           </span>
           <span class="new-task">
-            <%= link_to "", new_category_task_path(category), class: "fa fa-plus" %>
+            <%= link_to "",
+            new_category_task_path(category),
+            class: "fa fa-plus",
+            title: "Add new Task" %>
           </span>
         </div>
         <li class="sub-info">

@@ -1,6 +1,10 @@
 <%= form_for(:session, url: signin_path) do |f| %>
   <%= render 'shared/error_messages' %>
-  <%= f.email_field :email, placeholder: "Email", class: 'form-control' %>
-  <%= f.password_field :password, placeholder: "Password", class: 'form-control' %>
+  <%= f.email_field :email,
+  placeholder: "Email",
+  class: 'form-control' %>
+  <%= f.password_field :password,
+  placeholder: "Password",
+  class: 'form-control' %>
   <%= f.submit yield(:button_text), class: "btn btn-primary" %>
 <% end %>

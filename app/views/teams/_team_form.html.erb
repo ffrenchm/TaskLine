@@ -1,14 +1,12 @@
-<div class="above-aside">
-  <%= form_for @team, remote: true do |f| %>
-  <div class="input-group">
-    <%= f.text_field :name, placeholder: "New Team", class: "form-control" %>
-    <div class="input-group-btn">
-      <%= f.submit "Create", class: "btn btn-primary" %>
-    </div>
+<%= form_for @team, remote: true do |f| %>
+<div class="form-group input-group">
+  <%= f.text_field :name,
+  placeholder: "New Team",
+  class: "form-control" %>
+  <div class="input-group-btn">
+    <%= f.submit yield(:button_text), class: "btn btn-primary" %>
   </div>
-  <li class="form-control">
-    <%= f.radio_button :public, 0, checked: true %> Private
-    <%= f.radio_button :public, 1 %> Public
-  </li>
-  <% end %>
 </div>
+<%= f.radio_button :public, 0, checked: true %> Private
+<%= f.radio_button :public, 1 %> Public
+<% end %>

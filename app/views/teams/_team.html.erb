@@ -3,19 +3,27 @@
     <h2><%= link_to team.name, team %></h2>
   </div>
   <div class="big-links">
-    <% if Membership.find_by(user_id: @user.id, team_id: team.id).admin == true %>
+    <% if Membership.find_by(
+    user_id: @user.id,
+    team_id: team.id).admin == true %>
       <span>
-        <%= link_to "", team,
-          class: "fa fa-trash",
-          method: :delete,
-          data: { confirm: "Are you sure? All other members will lose access to this team" } %>
+        <%= link_to "",
+        team,
+        class: "fa fa-trash",
+        method: :delete,
+        data: { confirm: "Are you sure? All other members will lose access to this team" } %>
       </span>
       <span>
-        <%= link_to "", edit_team_path(team), class: "fa fa-pencil-square-o" %>
+        <%= link_to "",
+        edit_team_path(team),
+        class: "fa fa-pencil-square-o" %>
       </span>
-      <% if team.public == 1 && !team.users.include?(current_user) %>
+      <% if team.public == 1 &&
+      !team.users.include?(current_user) %>
         <span>
-          <%= link_to "Join", team_memberships_path(team), method: :post %>
+          <%= link_to "Join",
+          team_memberships_path(team),
+          method: :post %>
         </span>
       <% end %>
     <% end %>
@@ -25,6 +33,8 @@
   </div>
   </br>
   <% team.users.each do |user| %>
-    <%= image_tag user.picture.url, size: "39x39", class: "small-pic" %>
+    <%= image_tag user.picture.url,
+    size: "39x39",
+    class: "small-pic" %>
   <% end %>
 </div>

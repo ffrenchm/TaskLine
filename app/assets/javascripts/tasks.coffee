@@ -7,3 +7,7 @@ $(document).on 'turbolinks:load', ->
       $(this).parent().children(".completed-task").css("display" : "flex")
     else
       $(this).parent().children(".completed-task").css("display" : "none")
+  $(".toggle-more").click ->
+    $(this).parent().children(".task-more").slideToggle(100)
+  $("#task_repeat").click ->
+    $(".every-field").slideToggle(150)
