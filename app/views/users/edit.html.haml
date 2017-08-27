@@ -1,0 +1,14 @@
+= provide(:title, "Edit Account")
+= provide(:button_text, "Update")
+.box
+  .sub-box
+    %h2= yield(:title)
+    = render 'shared/form'
+  .sub-box
+    %h2 Upload Profile Picture
+    = form_for @user do |f|
+      = f.hidden_field :name, placeholder: "Username", class: 'form-control'
+      = f.file_field :picture
+      = f.submit "Upload", class: "btn btn-primary"
+  %br/
+  = link_to "Back", @user

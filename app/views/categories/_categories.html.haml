@@ -1,0 +1,19 @@
+.main
+  - if @user.categories.count == 0
+    .box
+      %p You currently have no categories... Make some using the form on the right.
+  - @user.categories.each do |category|
+    - unless category.id.nil?
+      .box
+        .title-wrapper
+          %span.category-title= category.title
+        .big-links
+          %span.delete-category
+            = link_to "", category, method: :delete, remote: true, class: "fa fa-trash", data: { confirm: "Are you sure? All tasks inside '" + category.title + "' will be lost." }
+          %span.edit-category
+            = link_to "", edit_category_path(category), class: "fa fa-pencil-square-o"
+          %span.new-task
+            = link_to "", new_category_task_path(category), class: "fa fa-plus", title: "Add new Task"
+        %li.sub-info= pluralize(task_count(category), "task")
+        - @tasks = category.tasks
+        = render 'categories/tasks/tasks'

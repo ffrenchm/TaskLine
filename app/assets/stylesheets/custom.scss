@@ -383,15 +383,16 @@ header {
   &:hover {
     color: $links-hover
   }
-  &::after {
+  &:after {
     height: 0;
     width: 0;
     content: "";
     border: 6px solid;
-    border-color: #888 transparent transparent;
+    border-color: #aaa transparent transparent;
     position: absolute;
     top: 50%;
-    transform: translate(50%, -36%);
+    right: 0;
+    transform: translate(10%, -45%);
   }
 }
 .page-title {

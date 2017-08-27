@@ -1,0 +1,8 @@
+- if signed_in?
+  = provide(:title, "Calendar")
+- else
+  = provide(:title, "Sign In")
+  = provide(:button_text, "Sign In")
+  .centre-form
+    %h1 Sign In
+    = render 'users/signin'

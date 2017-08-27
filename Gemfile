@@ -18,6 +18,7 @@ gem 'jquery-rails', '4.1.1'
 gem 'mini_magick',             '4.7.0'
 gem 'puma',         '3.4.0'
 gem 'rails',        '5.0.1'
+gem 'haml'
 gem 'haml-rails'
 gem 'sass-rails',   '5.0.6'
 gem 'turbolinks',   '5.0.1'
@@ -35,6 +36,9 @@ group :development do
   gem 'listen',                '3.0.8'
   gem 'spring',                '1.7.2'
   gem 'spring-watcher-listen', '2.0.0'
+  gem 'hpricot'
+  gem 'ruby_parser'
+  gem "erb2haml"
 end
 
 group :test do

@@ -1,0 +1,9 @@
+= form_for @team, remote: true do |f|
+  .form-group.input-group
+    = f.text_field :name, placeholder: "New Team", class: "form-control"
+    .input-group-btn
+      = f.submit yield(:button_text), class: "btn btn-primary"
+  = f.radio_button :public, 0, checked: true
+  Private
+  = f.radio_button :public, 1
+  Public

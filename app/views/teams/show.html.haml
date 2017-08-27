@@ -1,0 +1,36 @@
+= provide(:title, @team.name)
+.split-layout
+  .main
+    .box
+      .title-wrapper
+        %h2= @team.name
+      .sub-box
+        .sub-info
+          = pluralize(@team.users.count, "Member")
+        - @team.users.each do |user|
+          %li.team-member
+            %span
+              = image_tag user.picture.url, size: "39x39", class: "small-pic"
+            %span.member-name= user.name
+            - if Membership.find_by(user_id: user.id, team_id: @team.id).admin == true
+              %span.admin-tag Admin
+            - if user == current_user
+              %span.you-tag You
+      %br/
+      = link_to "Back", teams_path
+  .aside
+    .box
+      %h2 Options
+      .sub-box
+        %h3 Invite someone to the team
+        = form_for @invite, url: invites_path do |f|
+          = f.hidden_field :team_id, value: @invite.team_id
+          .input-group
+            = f.email_field :email, placeholder: "Email", class: "form-control"
+            .input-group-btn
+              = f.submit 'Invite to Team', class: "btn btn-primary"
+      %br/
+      - if @membership
+        = link_to "Leave Team", team_membership_path(@team, @membership), method: :delete
+      - else
+        = link_to "Join", team_memberships_path(@team), method: :post
