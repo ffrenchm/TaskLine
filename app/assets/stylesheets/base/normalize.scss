@@ -1,0 +1,18 @@
+html, body, div, span, object, h1, h2, h3, h4, h5, h6, p, a, ol, ul, li, fieldset, form, footer, header, menu, nav {
+	margin: 0;
+	padding: 0;
+	border: 0;
+	font-size: 100%;
+	font: inherit;
+	vertical-align: baseline;
+}
+footer, header, menu, nav, {
+	display: block;
+}
+ol, ul, li {
+	list-style: none;
+}
+table {
+	border-collapse: collapse;
+	border-spacing: 0;
+}

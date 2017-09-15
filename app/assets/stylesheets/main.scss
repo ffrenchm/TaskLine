@@ -1,0 +1,9 @@
+@import "bootstrap-sprockets";
+@import "bootstrap";
+
+@import "base/mixins.scss";
+@import "base/normalize.scss";
+@import "base/global.scss";
+@import "styles/categories.scss";
+@import "styles/tasks.scss";
+@import "styles/teams.scss";

@@ -1,0 +1,22 @@
+// MIXINS
+@mixin sub_box {
+background-color: $main;
+margin-top: 10px;
+border-radius: 7px;
+padding: 10px;
+box-sizing: border-box;
+min-height: 55px;
+position: relative;
+box-shadow: 0 2px 2px #d8d8d8;
+}
+
+// COLOURS
+$main: #e8e8e8;
+$accent: #f3f3f3;
+$text: #111;
+$links: #337ab7;
+$links-hover: #23527c;
+
+// FONTS
+$header: 'Baloo Bhaina', cursive;
+$copy: 'Roboto', sans-serif;

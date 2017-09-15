@@ -1,0 +1,13 @@
+.team-member {
+  box-sizing: border-box;
+  padding-bottom: 10px;
+  span {
+    margin-right: 10px;
+  }
+  .admin-tag {
+    color: red;
+  }
+  .you-tag {
+    color: #2ECC71;
+  }
+}

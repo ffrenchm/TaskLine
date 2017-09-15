@@ -1,0 +1,36 @@
+.title-wrapper {
+  position: relative;
+  display: inline-block;
+  line-height: 1;
+}
+.category-title, .toggled-title {
+  font-family: $header;
+  font-size: 20px;
+  padding-right: 15px;
+  color: $links;
+  cursor: pointer;
+  &:hover {
+    color: $links-hover
+  }
+  &:after {
+    height: 0;
+    width: 0;
+    content: "";
+    border: 6px solid;
+    border-color: #aaa transparent transparent;
+    position: absolute;
+    top: 50%;
+    right: 0;
+    transform: translate(10%, -45%);
+  }
+}
+.page-title {
+  display: inline-block;
+  line-height: 1;
+  color: $accent;
+}
+.fa-plus-square {
+  float: right;
+  cursor: pointer;
+  font-size: 20px !important;
+}
