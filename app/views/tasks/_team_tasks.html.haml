@@ -1,0 +1,32 @@
+- unless @tasks.any?
+  ="The team currently has no tasks. Make one"
+  =link_to "here.", new_team_task_path(@team)
+- else
+  - if @team && completed_tasks(@tasks.first.team) != 0
+    %p.toggle.toggle-completed Toggle Completed
+  - @tasks.each do |task|
+    - unless task.id.nil?
+      %div{class: task.completed ? "completed-task" : "task"}
+        = link_to complete_path(task), remote: true, method: :patch, data: { params: :task } do
+          .tickbox
+            %span
+              %i.fa.fa-check
+        .info
+          %li.task-content= task.content
+          %li
+            - d = task.deadline_date
+            - t = task.deadline_time
+            %span{class: task.overdue? ? "sub-info task-overdue-deadline" : "sub-info"}
+              = deadline_date(d) + comma(d, t) + deadline_time(t)
+            - if task.repeat == 1
+              %span.sub-info.task-repeat= task.repeat_message
+          - if !task.notes.blank?
+            %span.toggle.toggle-more More
+            %li.task-more= task.notes
+        .small-links
+          %span.action-link.delete-task
+            = link_to "", task, method: :delete, class: "fa fa-trash", remote: true
+          %span.action-link.edit-task
+            = link_to "", edit_task_path(task), class: "fa fa-pencil-square-o"
+          %span.action-link.move-task
+            = link_to "", move_form_path(task), class: "fa fa-arrow-left", title: "Move to another category"

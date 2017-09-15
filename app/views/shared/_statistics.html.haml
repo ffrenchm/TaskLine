@@ -1,0 +1,12 @@
+.box
+  .title-wrapper
+    %h2 Statistics
+  .sub-box
+    %li= pluralize(total_tasks, "total task")
+    %li= pluralize(overdue_tasks, "overdue task")
+    %li
+      = pluralize(today_tasks, "task")
+      due today
+    %li
+      = pluralize(week_tasks, "task")
+      due this week

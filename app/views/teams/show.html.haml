@@ -7,6 +7,7 @@
       .sub-box
         .sub-info
           = pluralize(@team.users.count, "Member")
+        %br/
         - @team.users.each do |user|
           %li.team-member
             %span
@@ -18,6 +19,9 @@
               %span.you-tag You
       %br/
       = link_to "Back", teams_path
+    .box
+      %h2 Tasks
+      = render 'tasks/team_tasks'
   .aside
     .box
       %h2 Options
@@ -31,6 +35,7 @@
               = f.submit 'Invite to Team', class: "btn btn-primary"
       %br/
       - if @membership
-        = link_to "Leave Team", team_membership_path(@team, @membership), method: :delete
+        %li= link_to "Leave Team", membership_path(@membership), method: :delete
+        %li= link_to "Create Task", new_team_task_path(@membership)
       - else
         = link_to "Join", team_memberships_path(@team), method: :post

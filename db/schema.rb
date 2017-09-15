@@ -10,7 +10,16 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170825073409) do
+ActiveRecord::Schema.define(version: 20170914164507) do
+
+  create_table "allocations", force: :cascade do |t|
+    t.string   "email"
+    t.integer  "sender_id"
+    t.integer  "recipient_id"
+    t.integer  "task_id"
+    t.datetime "created_at",   null: false
+    t.datetime "updated_at",   null: false
+  end
 
   create_table "categories", force: :cascade do |t|
     t.string   "title"
@@ -55,7 +64,9 @@ ActiveRecord::Schema.define(version: 20170825073409) do
     t.datetime "updated_at",                    null: false
     t.integer  "repeat_number"
     t.string   "repeat_period"
+    t.integer  "team_id"
     t.index ["category_id"], name: "index_tasks_on_category_id"
+    t.index ["team_id"], name: "index_tasks_on_team_id"
     t.index ["user_id"], name: "index_tasks_on_user_id"
   end
 

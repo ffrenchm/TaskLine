@@ -14,4 +14,12 @@
             %p.sub-info
               ="From: #{User.find(invite.sender_id).email}"
             = link_to "Join", team_memberships_path(invite.team), method: :post
+    .box
+      .title-wrapper
+        %h2 Task Allocations
+      - if current_user.received_allocations.count == 0
+        %p you currently have no task allocations to review
+      - else
+        - current_user.received_allocations.each do |allocation|
+          .sub-box
   .aside

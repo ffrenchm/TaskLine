@@ -1,7 +1,6 @@
 class Categories::TasksController < ApplicationController
   before_action :signed_in_user
   before_action :find_category
-  before_action :find_task, except: [:new, :create]
   before_action :verify_move, only: :update
 
   def new
@@ -18,33 +17,6 @@ class Categories::TasksController < ApplicationController
     redirect_to categories_path
   end
 
-  def edit
-  end
-
-  def update
-    unless @task.update(task_params)
-      flash[:danger] = "Invalid list task"
-    end
-    redirect_to categories_path
-  end
-
-  def destroy
-    if @task.destroy
-      redirect_to request.referrer || categories_path
-    end
-  end
-
-  def complete
-    unless @task.update(completed: !@task.completed)
-      flash[:danger] = "Error"
-    end
-    if @task.repeat == 1 && @task.completed == true
-      @new_task = @task.dup
-      @new_task.update(deadline_date: @task.deadline_date + @task.increment, completed: false)
-    end
-    redirect_to request.referrer || categories_path
-  end
-
   private
 
     def task_params
@@ -53,16 +25,5 @@ class Categories::TasksController < ApplicationController
 
     def find_category
       @category = Category.find(params[:category_id])
-    end
-
-    def find_task
-      @task = Task.find(params[:id])
-    end
-
-    def verify_move
-      if Category.find_by(id: params[:category_id]).user != current_user
-        redirect_to categories_path
-        flash[:danger] = "You can't move it to someone else's category BUD."
-      end
     end
 end

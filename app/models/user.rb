@@ -10,7 +10,11 @@ class User < ApplicationRecord
   has_many :sent_invites, class_name: 'Invite',
                           foreign_key: 'sender_id',
                           dependent: :destroy
-
+  has_many :received_allocations, class_name: 'Allocation',
+                                  foreign_key: 'recipient_id'
+  has_many :sent_allocations, class_name: 'Allocation',
+                              foreign_key: 'sender_id',
+                              dependent: :destroy
   mount_uploader :picture, PictureUploader
 
   before_save :email_downcase

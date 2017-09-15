@@ -9,16 +9,18 @@ Rails.application.routes.draw do
   resources :users
 
   resources :teams do
-    resources :memberships, only: [:create, :destroy], controller: 'teams/memberships'
+    resources :memberships, shallow: true,  only: [:create, :destroy], controller: 'teams/memberships'
+    resources :tasks, only: [:new, :create], controller: 'teams/tasks'
   end
 
-  resources :invites
+  resources :invites, only: [:create, :destroy]
 
   resources :categories, except: :new do
-    resources :tasks, except: [:index, :show],
-                      controller: 'categories/tasks'
-    patch '/tasks/:id/complete', to: 'categories/tasks#complete', as: :complete
-    get '/tasks/:id/move_form', to: 'categories/tasks#move_form', as: :move_form
-    patch 'tasks/:id/move', to: 'categories/tasks#move', as: :move
+    resources :tasks, only: [:new, :create], controller: 'categories/tasks'
   end
+
+  resources :tasks, except: [:new, :create]
+  patch '/tasks/:id/complete', to: 'tasks#complete', as: :complete
+  get '/tasks/:id/move_form', to: 'tasks#move_form', as: :move_form
+  patch 'tasks/:id/move', to: 'tasks#move', as: :move
 end

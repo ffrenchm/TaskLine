@@ -16,4 +16,4 @@
             = link_to "", new_category_task_path(category), class: "fa fa-plus", title: "Add new Task"
         %li.sub-info= pluralize(task_count(category), "task")
         - @tasks = category.tasks
-        = render 'categories/tasks/tasks'
+        = render 'tasks/category_tasks'

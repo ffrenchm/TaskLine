@@ -1,6 +1,6 @@
 .centre-form
   %h2= yield(:title)
-  = form_for [@category, @task] do |f|
+  = form_for [@team, @task] do |f|
     .input-group.form-group
       = f.text_field :content, placeholder: "Task Description", class: "form-control"
       %span.input-group-btn

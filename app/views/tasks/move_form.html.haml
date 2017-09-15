@@ -1,8 +1,8 @@
 .centre-form
   %h2 Move Task to Category...
-  = form_for [@category, @task] do |f|
+  = form_for @task do |f|
     .form-group.input-group
       = f.collection_select :category_id, current_user.categories, :id, :title, {}, class: "form-control"
       .input-group-btn
         = f.submit "Move", class: "btn btn-primary"
-  = link_to "Cancel", categories_path
+  = link_to "Cancel", request.referrer

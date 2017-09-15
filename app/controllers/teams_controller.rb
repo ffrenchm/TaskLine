@@ -23,6 +23,7 @@ class TeamsController < ApplicationController
   def show
     @invite = @team.invites.build
     @membership = Membership.find_by(user_id: current_user.id, team_id: @team.id)
+    @tasks = @team.tasks
   end
 
   def edit

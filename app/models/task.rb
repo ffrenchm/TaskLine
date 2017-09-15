@@ -1,13 +1,18 @@
 class Task < ApplicationRecord
-  belongs_to :category
+  belongs_to :category, optional: true
+  belongs_to :team, optional: true
   belongs_to :user
+  has_many :allocations
+
   default_scope -> { order(:deadline_date) }
-  validates :category_id, presence: true
+
   validates :user_id, presence: true
   validates :content, presence: true, length: { maximum: 155}
 
   def overdue?
-    !self.completed && self.deadline_date && self.deadline_date < Time.now
+    d = self.deadline_date
+    t = self.deadline_time
+    (!self.completed && d && !t && d < Time.now) || (d && t && !self.completed && (d + t.seconds_since_midnight.seconds).to_datetime < Time.now)
   end
 
   def today?
