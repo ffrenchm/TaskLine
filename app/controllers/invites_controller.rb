@@ -7,6 +7,8 @@ class InvitesController < ApplicationController
     if @invite.save
       if @invite.recipient != nil
         @invite.recipient.received_invites << @invite
+      else
+        flash[:danger] = "This user does not exist."
       end
     else
       flash[:danger] = "There was an error inviting this person."

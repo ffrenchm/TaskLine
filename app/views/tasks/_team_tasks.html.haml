@@ -29,4 +29,6 @@
           %span.action-link.edit-task
             = link_to "", edit_task_path(task), class: "fa fa-pencil-square-o"
           %span.action-link.move-task
-            = link_to "", move_form_path(task), class: "fa fa-arrow-left", title: "Move to another category"
+            = link_to "", move_form_path(task), class: "fa fa-arrow-left", title: "Move to your tasks"
+          %span.action-link.allocate-task
+            = link_to "A", new_task_allocation_path(task), title: "Allocate to another team member"

@@ -19,7 +19,9 @@ Rails.application.routes.draw do
     resources :tasks, only: [:new, :create], controller: 'categories/tasks'
   end
 
-  resources :tasks, except: [:new, :create]
+  resources :tasks, except: [:new, :create] do
+    resources :allocations, shallow: true, only: [:new, :create, :destroy], controller: 'tasks/allocations'
+  end
   patch '/tasks/:id/complete', to: 'tasks#complete', as: :complete
   get '/tasks/:id/move_form', to: 'tasks#move_form', as: :move_form
   patch 'tasks/:id/move', to: 'tasks#move', as: :move

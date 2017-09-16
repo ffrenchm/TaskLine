@@ -14,9 +14,7 @@ class TeamsController < ApplicationController
       @user.join(@team)
       @membership = Membership.find_by(user_id: @user.id, team_id: @team.id)
       @membership.update(admin: true)
-      redirect_to teams_path
-    else
-      flash[:danger] = "Make sure you include a team name."
+      redirect_to team_path(@team)
     end
   end
 

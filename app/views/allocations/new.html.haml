@@ -1,8 +1,0 @@
-.centre-form
-  %h2 Move Task to Category...
-  = form_for @allocation do |f|
-    .form-group.input-group
-      = f.collection_select :email, @team.users, class: "form-control"
-      .input-group-btn
-        = f.submit "Move", class: "btn btn-primary"
-  = link_to "Cancel", team_path(@team)

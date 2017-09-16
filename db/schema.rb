@@ -10,15 +10,15 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170914164507) do
+ActiveRecord::Schema.define(version: 20170916080035) do
 
   create_table "allocations", force: :cascade do |t|
-    t.string   "email"
     t.integer  "sender_id"
     t.integer  "recipient_id"
     t.integer  "task_id"
     t.datetime "created_at",   null: false
     t.datetime "updated_at",   null: false
+    t.integer  "team_id"
   end
 
   create_table "categories", force: :cascade do |t|
