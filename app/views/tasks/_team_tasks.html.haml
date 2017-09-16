@@ -24,11 +24,14 @@
             %span.toggle.toggle-more More
             %li.task-more= task.notes
         .small-links
-          %span.action-link.delete-task
-            = link_to "", task, method: :delete, class: "fa fa-trash", remote: true
-          %span.action-link.edit-task
-            = link_to "", edit_task_path(task), class: "fa fa-pencil-square-o"
-          %span.action-link.move-task
-            = link_to "", move_form_path(task), class: "fa fa-arrow-left", title: "Move to your tasks"
-          %span.action-link.allocate-task
-            = link_to "A", new_task_allocation_path(task), title: "Allocate to another team member"
+          %span.menu-toggle
+            %i.fa.fa-cog
+          .task-menu
+            %li.action-link.delete-task
+              = link_to "Delete", task, method: :delete, remote: true
+            %li.action-link.edit-task
+              = link_to "Edit", edit_task_path(task)
+            %li.action-link.move-task
+              = link_to "Accept", move_form_path(task)
+            %li.action-link.allocate-task
+              = link_to "Allocate", new_task_allocation_path(task)

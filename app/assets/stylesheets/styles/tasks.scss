@@ -1,5 +1,4 @@
 .tasks {
-  display: none;
 }
 .task {
   @include sub_box;
@@ -38,17 +37,33 @@
   float: right;
   height: 100%;
 }
-.small-links {
-  width: 20%;
-  display: inline-block;
-  flex: 0 0 auto;
-  height: 100%;
-  float: right;
-  span {
-    float: right;
-    margin-left: 10px;
-    line-height: 1;
-    font-size: 14px;
+.task-menu {
+  &:before {
+    height: 0;
+    width: 0;
+    content: "";
+    border: 6px solid;
+    border-color: transparent transparent #fff;
+    position: absolute;
+    top: -12px;
+    left: 50%;
+    transform: translate(-50%, 0);
+  }
+  background-color: #fff;
+  width: 90px;
+  box-shadow: 0 3px 3px rgba(0, 0, 0, 0.3);
+  position: absolute;
+  top: 40px;
+  right: -28.5px;
+  z-index: 20;
+  display: none;
+  padding: 10px;
+}
+.menu-toggle {
+  cursor: pointer;
+  color: $links;
+  &:hover {
+    color: $links-hover;
   }
 }
 .task-content {

@@ -37,6 +37,7 @@
               - if !allocation.task.notes.blank?
                 %span.toggle.toggle-more More
                 %li.task-more= allocation.task.notes
+            =link_to "Accept", move_form_path(allocation.task)
             =link_to "Remove", allocation, method: :delete
           %br/
           %li="From #{User.find(allocation.sender_id).name} in the team #{Team.find(allocation.team_id).name}."

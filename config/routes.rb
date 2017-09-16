@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  root 'pages#home'
+  root 'pages#calendar'
   get '/inbox', to: 'pages#inbox'
   get '/signup', to: 'users#new'
   post '/signup', to: 'users#create'

@@ -1,6 +1,3 @@
-# Place all the behaviors and hooks related to the matching controller here.
-# All this logic will automatically be available in application.js.
-# You can use CoffeeScript in this file: http://coffeescript.org/
 $(document).on 'turbolinks:load', ->
   $(".toggle-completed").click ->
     if $(this).parent().children(".completed-task").css("display") == "none"
@@ -18,3 +15,5 @@ $(document).on 'turbolinks:load', ->
       $(this).parent().parent().removeClass("completed-task").addClass("task")
   $(".delete-task").click ->
     $(this).parent().parent().toggle()
+  $(".menu-toggle").click ->
+    $(this).parent().children(".task-menu").toggle()

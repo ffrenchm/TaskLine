@@ -1,9 +1,8 @@
 class PagesController < ApplicationController
-  def home
+  def calendar
     @skip_title = true
     if signed_in?
       @tasks = current_user.tasks
-      # @tasks_by_date = Task.group_by(&:deadline_date)
     else
       @user = User.new
       @skip_footer = true
