@@ -1,14 +1,19 @@
 class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception
-  before_action :back_url
   include SessionsHelper
 
   private
 
-    def back_url
-      unless request.referrer == request.original_url
-        session[:referrer] = request.referrer
-      end
+    def find_task
+      @task = Task.find(params[:id])
+    end
+
+    def find_category
+      @category = Category.find(params[:category_id])
+    end
+
+    def find_team
+      @team = Team.find(params[:id])
     end
 
     #confirms a signed in user

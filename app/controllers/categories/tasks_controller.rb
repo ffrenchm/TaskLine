@@ -33,12 +33,5 @@ class Categories::TasksController < ApplicationController
     def task_params
       params.require(:task).permit(:content, :deadline_date, :deadline_time, :repeat, :repeat_number, :repeat_period, :category_id, :notes)
     end
-
-    def find_category
-      @category = Category.find(params[:category_id])
-    end
-
-    def find_task
-      @task = Task.find(params[:id])
-    end
+    
 end

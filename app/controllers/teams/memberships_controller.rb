@@ -10,8 +10,13 @@ class Teams::MembershipsController < ApplicationController
   end
 
   def destroy
-    team = Membership.find(params[:id]).team
-    current_user.leave(team)
+    membership = Membership.find(params[:id])
+    team = membership.team
+    if membership.admin == true || team.users.count == 1
+      team.destroy
+    else
+      current_user.leave(team)
+    end
     redirect_to teams_path
   end
 end

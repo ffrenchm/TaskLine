@@ -1,9 +1,5 @@
 .box
   %li= pluralize(current_user.tasks.active.count, "total task")
-  %li= pluralize(current_user.tasks.due_before(Date.today).active.count, "overdue task")
-  %li
-    = pluralize(current_user.tasks.due_on(Date.today).active.count, "task")
-    due today
-  %li
-    = pluralize(current_user.tasks.due_before(Date.today + 7.days).active.count, "overdue task", "task")
-    due this week
+  %li= pluralize(overdue.count, "overdue task")
+  %li= "#{pluralize(due_today.count, "task")} due today"
+  %li= "#{pluralize(due_this_week.count, "task")} due this week"

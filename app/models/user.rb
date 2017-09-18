@@ -1,5 +1,11 @@
 class User < ApplicationRecord
-  attr_accessor :remember_token
+  mount_uploader :picture, PictureUploader
+  attr_accessor :remember_token, :crop_x, :crop_y, :crop_w, :crop_h
+  after_update :crop_picture
+
+  def crop_picture
+    picture.recreate_versions! if crop_x.present?
+  end
 
   has_many :categories, dependent: :destroy
   has_many :tasks, through: :categories
@@ -15,7 +21,6 @@ class User < ApplicationRecord
   has_many :sent_allocations, class_name: 'Allocation',
                               foreign_key: 'sender_id',
                               dependent: :destroy
-  mount_uploader :picture, PictureUploader
 
   before_save :email_downcase
 

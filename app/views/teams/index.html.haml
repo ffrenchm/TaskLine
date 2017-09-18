@@ -19,7 +19,7 @@
               = pluralize(team.users.count, "Member")
             %br/
             - team.users[0..11].each do |user|
-              = image_tag user.picture.url, size: "39x39", class: "small-pic"
+              = image_tag user.picture_url(:thumb), size: "39x39", class: "small-pic"
       - else
         .box
           %p You're not a member of any teams. Join a public team, or create one yourself using the form on the right.
@@ -37,7 +37,7 @@
               = pluralize team.users.count, "Member"
             %br/
             - team.users[0..11].each do |user|
-              = image_tag user.picture.url, size: "39x39", class: "small-pic"
+              = image_tag user.picture_url(:thumb), size: "39x39", class: "small-pic"
   .aside
     .box
       = render 'teams/team_form'

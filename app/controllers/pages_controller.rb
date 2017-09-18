@@ -1,6 +1,5 @@
 class PagesController < ApplicationController
   def calendar
-    @skip_title = true
     if signed_in?
       @tasks = current_user.tasks
     else

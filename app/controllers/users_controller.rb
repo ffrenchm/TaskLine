@@ -11,9 +11,13 @@ class UsersController < ApplicationController
   def create
     @user = User.new(user_params)
     if @user.save
-      signin @user
-      flash[:success] = "You signed up successfully."
-      redirect_to root_path
+      if params[:user][:picture].present?
+        render :crop
+      else
+        signin @user
+        flash[:success] = "You signed up successfully."
+        redirect_to edit_user_path(@user)
+      end
     else
       render 'new'
     end
@@ -23,10 +27,18 @@ class UsersController < ApplicationController
     @user = current_user
   end
 
+  def crop
+    @user = current_user
+  end
+
   def update
     @user = User.find(params[:id])
     if @user.update_attributes(user_params)
-      redirect_to edit_user_path(@user)
+      if params[:user][:picture].present?
+        render :crop
+      else
+        redirect_to edit_user_path(@user)
+      end
     end
   end
 
