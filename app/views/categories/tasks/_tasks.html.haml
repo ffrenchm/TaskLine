@@ -4,7 +4,9 @@
     %p This category is empty. Create a new task by clicking the plus icon.
   - else
     - if @category && @tasks.complete.count != 0
-      %p.toggle.toggle-completed Toggle Completed
+      %p.toggle.toggle-completed.fake-link.break Toggle Completed
+    - else
+      .break
     - @tasks.each do |task|
       - unless task.id.nil?
         %div{class: task.completed ? "completed-task" : "task"}
@@ -22,9 +24,9 @@
               - if task.repeat == 1
                 %span.sub-info.task-repeat= task.repeat_message
             - if !task.notes.blank?
-              %span.toggle.toggle-more More
+              %span.fake-link.toggle-more More
               %li.task-more= task.notes
-          %span.menu-toggle
+          %span.fake-link.menu-toggle
             %i.fa.fa-cog
           .task-menu
             %li.action-link.move-task

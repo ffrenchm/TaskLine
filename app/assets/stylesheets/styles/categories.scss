@@ -7,11 +7,6 @@
   font-family: $header;
   font-size: 20px;
   padding-right: 15px;
-  color: $links;
-  cursor: pointer;
-  &:hover {
-    color: $links-hover
-  }
   &:after {
     height: 0;
     width: 0;

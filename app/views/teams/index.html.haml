@@ -2,7 +2,7 @@
 = provide(:button_text, "Create")
 .split-layout
   .main
-    .box
+    .box.break
       %h2 Your Teams
       - if @teams.any?
         - @teams.each do |team|
@@ -41,6 +41,5 @@
   .aside
     .box
       = render 'teams/team_form'
-    .box
-      = "You're a member of " + pluralize(@user.teams.count, "team")
     = render 'shared/invites'
+    

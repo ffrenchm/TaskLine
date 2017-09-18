@@ -9,3 +9,10 @@
 @import "styles/tasks.scss";
 @import "styles/teams.scss";
 @import "styles/user.scss";
+@import "styles/phone.scss";
+
+@media screen and (max-width: 480px) {
+  content {
+    padding: 0px;
+  }
+}

@@ -11,3 +11,5 @@
         %p
           ="From: #{User.find(invite.sender_id).email}"
         = link_to "Join", team_memberships_path(invite.team), method: :post
+  %br/
+  = "You're a member of " + pluralize(@user.teams.count, "team")

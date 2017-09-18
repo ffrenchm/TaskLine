@@ -8,6 +8,8 @@ $(document).on 'turbolinks:load', ->
     $(this).parent().children(".task-more").slideToggle(100)
   $("#task_repeat").click ->
     $(".every-field").slideToggle(150)
+  $(".tickbox").hover ->
+    $(this).toggleClass("tick-transition")
   $(".tickbox").click ->
     if $(this).parent().parent().hasClass("task")
       $(this).parent().parent().removeClass("task").addClass("completed-task")

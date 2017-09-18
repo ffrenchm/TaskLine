@@ -3,7 +3,7 @@
 
 .split-layout
   .main
-    .box.profile-box
+    .box.profile-box.break
       .pic-section
         %span.pic-holder= image_tag @user.picture_url(:medium), size: "150x150", class: 'big-profile-pic'
         .edit-pic
@@ -11,7 +11,7 @@
         .box.upload-pic
           %h2 Upload Profile Picture
           = form_for @user do |f|
-            .form-group
+            .form-group.no-line
               = f.hidden_field :name, placeholder: "Username", class: 'form-control'
               = f.file_field :picture
             = f.submit "Upload", class: "btn btn-primary"
@@ -22,11 +22,16 @@
         %p= "Joined #{@user.created_at.strftime("%B")} #{@user.created_at.year}"
         %p= "Member of #{pluralize(@user.teams.count, "team")}"
     .box
-      %h2 Edit Details
-      = render 'shared/form'
+      .form
+        %h2 Edit Details
+        = render 'form'
+  .aside
+    .box.break
+      %li= pluralize(current_user.tasks.active.count, "total task")
+      %li= pluralize(overdue.count, "overdue task")
+      %li= "#{pluralize(due_today.count, "task")} due today"
+      %li= "#{pluralize(due_this_week.count, "task")} due this week"
     .box
       %h2 Account
       %li= link_to "Sign Out", signout_path, method: :delete
       %li= link_to "Delete Account", current_user, method: :delete, data: { confirm: "Are you sure? All your data will be lost" }
-  .aside
-    = render 'shared/statistics'

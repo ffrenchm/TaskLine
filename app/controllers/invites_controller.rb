@@ -7,13 +7,14 @@ class InvitesController < ApplicationController
     if @invite.save
       if @invite.recipient != nil
         @invite.recipient.received_invites << @invite
+        flash[:success] = "An invite was sent to #{@invite.recipient.email}."
       else
         flash[:danger] = "This user does not exist."
       end
     else
       flash[:danger] = "There was an error inviting this person."
     end
-    redirect_to teams_path
+    redirect_to team_path(@invite.team)
   end
 
   def destroy

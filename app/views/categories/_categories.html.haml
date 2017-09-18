@@ -2,11 +2,11 @@
   - if @user.categories.count == 0
     .box
       %p You currently have no categories... Make some using the form on the right.
-  - @user.categories.each do |category|
+  - @categories.each do |category|
     - unless category.id.nil?
       .box
         .title-wrapper
-          %span.category-title= category.title
+          %span.category-title.fake-link= category.title
         .big-links
           %span.delete-category
             = link_to "", category, method: :delete, remote: true, class: "fa fa-trash", data: { confirm: "Are you sure? All tasks inside '" + category.title + "' will be lost." }

@@ -7,18 +7,6 @@
     = render 'shared/allocations'
     .box
       %p= pluralize(current_user.tasks.active.count, "total task")
+      %p= "#{pluralize(overdue.count, "overdue task")}"
+      %p= "#{pluralize(due_today.count, "task")} due today"
       %p= "#{pluralize(due_this_week.count, "task")} due this week"
-    .box
-      %h3= "#{pluralize(due_today.count, "task")} due today"
-      - if due_today.any?
-        - due_today.each do |task|
-          %p.sub-info= task.content
-      - else
-        %p.sub-info None to display
-    .box
-      %h3= "#{pluralize(overdue.count, "overdue task")}"
-      - if overdue.any?
-        - overdue.each do |task|
-          %p.sub-info= task.content
-      - else
-        %p.sub-info None to display

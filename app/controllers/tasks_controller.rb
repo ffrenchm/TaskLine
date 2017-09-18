@@ -31,5 +31,5 @@ class TasksController < ApplicationController
     def task_params
       params.require(:task).permit(:content, :deadline_date, :deadline_time, :repeat, :repeat_number, :repeat_period, :category_id, :notes)
     end
-    
+
 end

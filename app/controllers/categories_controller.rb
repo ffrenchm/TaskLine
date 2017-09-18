@@ -6,6 +6,8 @@ class CategoriesController < ApplicationController
     @user = current_user
     @categories = @user.categories
     @category = @user.categories.build
+    @column_1 = @categories.to_a.select.with_index { |_, i| i.even? }
+    @column_2 = @categories - @column_1
   end
 
   def create

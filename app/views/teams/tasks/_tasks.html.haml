@@ -3,7 +3,7 @@
   =link_to "here.", new_team_task_path(@team)
 - else
   - if @team && @tasks.complete.count != 0
-    %p.toggle.toggle-completed Toggle Completed
+    %p.toggle.toggle-completed.fake-link.break Toggle Completed
   - @tasks.each do |task|
     - unless task.id.nil?
       %div{class: task.completed ? "completed-task" : "task"}
@@ -21,10 +21,10 @@
             - if task.repeat == 1
               %span.sub-info.task-repeat= task.repeat_message
           - if !task.notes.blank?
-            %span.toggle.toggle-more More
+            %span.fake-link.toggle-more More
             %li.task-more= task.notes
         .small-links
-          %span.menu-toggle
+          %span.fake-link.menu-toggle
             %i.fa.fa-cog
           .task-menu
             %li.action-link.move-task

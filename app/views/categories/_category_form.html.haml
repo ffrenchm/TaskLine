@@ -1,6 +1,6 @@
-.box
+.box.break
   = form_for @category, remote: true do |f|
     .input-group
       = f.text_field :title, placeholder: "New Category", class: "form-control"
-      %span.input-group-btn
+      .input-group-btn
         = f.submit yield(:button_text), class: "btn btn-primary"

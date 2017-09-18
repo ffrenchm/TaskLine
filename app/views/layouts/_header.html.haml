@@ -1,13 +1,27 @@
 %body
   %header
-    %ul.nav
+    .nav
       = link_to "TaskLine", root_path, class: "logo"
       - if signed_in?
         %li.profile-link
           = link_to edit_user_path(current_user), class: "profile-link" do
             = image_tag current_user.picture_url(:thumb), size: "39x39", class: "small-pic"
-        %li= link_to "Tasks", categories_path
+        %li.nav-link= link_to "Tasks", categories_path
         -# %li= link_to "Calendar", calendar_path
-        %li= link_to "Teams", teams_path
+        %li.nav-link= link_to "Teams", teams_path
+        %i.fa.fa-bars.nav-toggle.fake-link
+      - else
+        %li= link_to "Sign Up", signup_path, class: "edge-link"
+    .phone-nav
+      - if signed_in?
+        = link_to edit_user_path(current_user) do
+          .phone-link
+            %p Profile
+        = link_to categories_path do
+          .phone-link
+            %p Tasks
+        = link_to teams_path do
+          .phone-link
+            %p Teams
       - else
         %li= link_to "Sign Up", signup_path, class: "edge-link"

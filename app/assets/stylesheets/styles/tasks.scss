@@ -2,7 +2,6 @@
 }
 .task {
   @include sub-box;
-  @include medium-fade;
   display: flex;
 }
 .tickbox, .fake-tickbox {
@@ -26,9 +25,18 @@
   .fa-check {
     font-size: 20px;
     color: #fff;
-    &:hover {
-      color: #888;
+  }
+}
+.completed-task {
+  .tickbox {
+    .fa-check {
+      color: #D98880;
     }
+  }
+}
+.tick-transition {
+  .fa-check {
+    color: #C0392B !important;
   }
 }
 .info {
@@ -51,24 +59,30 @@
     top: -12px;
     left: 50%;
     transform: translate(-50%, 0);
+    z-index: 70;
+  }
+  &:after {
+    height: 0;
+    width: 0;
+    content: "";
+    border: 7px solid;
+    border-color: transparent transparent #eaeaea;
+    position: absolute;
+    top: -12px;
+    left: 50%;
+    transform: translate(-50%, -3.5px);
+    z-index: 30;
   }
   background-color: #fff;
   width: 90px;
-  box-shadow: 0 3px 3px rgba(0, 0, 0, 0.3);
-  border-radius: 2px;
+  box-shadow: 0 0px 3px rgba(0, 0, 0, 0.2);
+  border-radius: 3px;
   position: absolute;
   top: 40px;
   right: -28.5px;
   z-index: 20;
   display: none;
   padding: 10px;
-}
-.menu-toggle {
-  cursor: pointer;
-  color: $links;
-  &:hover {
-    color: $links-hover;
-  }
 }
 .task-content {
   padding: 0;
@@ -102,33 +116,14 @@
 }
 .completed-task {
   @include sub-box;
-  @include light-fade;
   display: none;
   .info {
     text-decoration: line-through;
     color: #888;
   }
-  a {
-    color: #888;
-    &:hover {
-      color: #444;
-    }
-  }
-  .fa-check {
-    font-size: 20px;
-    color: #888;
-    &:hover {
-      color: #ccc;
-    }
-  }
 }
 .toggle {
-  cursor: pointer;
-  color: $links;
   display: inline-block;
-  &:hover {
-    color: $links-hover
-  }
 }
 .form-nav {
   width: 100%;
