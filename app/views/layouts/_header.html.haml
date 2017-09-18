@@ -4,11 +4,10 @@
       = link_to "TaskLine", root_path, class: "logo"
       - if signed_in?
         %li.profile-link
-          = link_to user_path(current_user), class: "profile-link" do
+          = link_to edit_user_path(current_user), class: "profile-link" do
             = image_tag current_user.picture.url, size: "39x39", class: "small-pic"
-        %li= link_to "Manage Tasks", categories_path
-        %li= link_to "Calendar", root_path
+        %li= link_to "Tasks", categories_path
+        -# %li= link_to "Calendar", calendar_path
         %li= link_to "Teams", teams_path
-        %li= link_to "Inbox", inbox_path
       - else
         %li= link_to "Sign Up", signup_path, class: "edge-link"

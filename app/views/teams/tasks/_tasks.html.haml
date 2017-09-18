@@ -2,7 +2,7 @@
   ="The team currently has no tasks. Make one"
   =link_to "here.", new_team_task_path(@team)
 - else
-  - if @team && completed_tasks(@tasks.first.team) != 0
+  - if @team && @tasks.complete.count != 0
     %p.toggle.toggle-completed Toggle Completed
   - @tasks.each do |task|
     - unless task.id.nil?
@@ -27,11 +27,12 @@
           %span.menu-toggle
             %i.fa.fa-cog
           .task-menu
-            %li.action-link.delete-task
-              = link_to "Delete", task, method: :delete, remote: true
-            %li.action-link.edit-task
-              = link_to "Edit", edit_task_path(task)
             %li.action-link.move-task
-              = link_to "Accept", move_form_path(task)
+              = link_to "Accept", team_move_form_path(@team, task)
+            %li.action-link.edit-task
+              = link_to "Edit", edit_team_task_path(@team, task)
             %li.action-link.allocate-task
               = link_to "Allocate", new_task_allocation_path(task)
+            - if @membership && @membership.admin == true
+              %li.action-link.delete-task
+                = link_to "Delete", task, method: :delete, remote: true

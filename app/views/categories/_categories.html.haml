@@ -13,7 +13,7 @@
           %span.edit-category
             = link_to "", edit_category_path(category), class: "fa fa-pencil-square-o"
           %span.new-task
-            = link_to "", new_category_task_path(category), class: "fa fa-plus", title: "Add new Task"
-        %li.sub-info= pluralize(task_count(category), "task")
+            = link_to "", new_category_task_path(category), class: "fa fa-plus"
+        %li.sub-info= pluralize(category.tasks.active.count, "task")
         - @tasks = category.tasks
-        = render 'tasks/category_tasks'
+        = render 'categories/tasks/tasks'

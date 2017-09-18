@@ -3,7 +3,7 @@
     %br/
     %p This category is empty. Create a new task by clicking the plus icon.
   - else
-    - if @category && completed_tasks(@tasks.first.category) != 0
+    - if @category && @tasks.complete.count != 0
       %p.toggle.toggle-completed Toggle Completed
     - @tasks.each do |task|
       - unless task.id.nil?
@@ -27,9 +27,9 @@
           %span.menu-toggle
             %i.fa.fa-cog
           .task-menu
+            %li.action-link.move-task
+              = link_to "Move", category_move_form_path(task.category, task)
+            %li.action-link.edit-task
+              = link_to "Edit", edit_category_task_path(task.category, task)
             %li.action-link.delete-task
               = link_to "Delete", task, method: :delete, remote: true
-            %li.action-link.edit-task
-              = link_to "Edit", edit_task_path(task)
-            %li.action-link.move-task
-              = link_to "Move", move_form_path(task)

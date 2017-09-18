@@ -19,7 +19,7 @@ class InvitesController < ApplicationController
   def destroy
     @invite = Invite.find(params[:id])
     if @invite.destroy
-      redirect_to inbox_path
+      redirect_to request.referrer
     else
       flash[:danger] = "Error"
     end

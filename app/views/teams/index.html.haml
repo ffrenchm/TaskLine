@@ -43,3 +43,4 @@
       = render 'teams/team_form'
     .box
       = "You're a member of " + pluralize(@user.teams.count, "team")
+    = render 'shared/invites'

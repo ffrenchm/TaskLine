@@ -1,0 +1,7 @@
+<%= provide(:title, "Calendar") %>
+<div class="extender"></div>
+<div class="calendar-holder">
+  <%= month_calendar do |date| %>
+    <%= date.day %>
+  <% end %>
+</div>

@@ -1,0 +1,53 @@
+.calendar-holder {
+  position: absolute;
+  height: 100%;
+  width: 100%;
+  top: 120px;
+  left: 0px;
+}
+.extender {
+  height: 1200px;
+}
+.simple-calendar {
+  width: 95%;
+  min-width: 1280px;
+  margin: auto;
+  thead {
+    background-color: #222;
+    color: #fff;
+  }
+  .day {
+    height: 200px;
+    border: 1px solid #ddd;
+    width: 14.3%;
+  }
+
+  .wday-0 {}
+  .wday-1 {}
+  .wday-2 {}
+  .wday-3 {}
+  .wday-4 {}
+  .wday-5 {}
+  .wday-6 {}
+
+  .past {}
+  .future {}
+
+  .start-date {}
+
+  .prev-month {
+    background-color: #eee;
+  }
+  .next-month {
+    background-color: #eee;
+  }
+  .current-month {
+    background-color: #fff;
+  }
+  .today {
+    color: red;
+    background-color: #fafafa;
+  }
+
+  .has-events {}
+}

@@ -16,4 +16,8 @@ $(document).on 'turbolinks:load', ->
   $(".delete-task").click ->
     $(this).parent().parent().toggle()
   $(".menu-toggle").click ->
-    $(this).parent().children(".task-menu").toggle()
+    if $(this).parent().children(".task-menu").css("display") == "none"
+      $(".task-menu").hide()
+      $(this).parent().children(".task-menu").toggle()
+    else
+      $(".task-menu").hide()

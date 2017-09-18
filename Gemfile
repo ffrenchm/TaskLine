@@ -25,6 +25,7 @@ gem 'turbolinks',   '5.0.1'
 gem 'uglifier',     '3.0.0'
 gem 'will_paginate',           '3.1.5'
 gem 'bootstrap-datepicker-rails'
+gem 'simple_calendar', '~> 2.0'
 
 group :development, :test do
   gem 'sqlite3', '1.3.12'

@@ -15,27 +15,23 @@
             %span.member-name= user.name
             - if Membership.find_by(user_id: user.id, team_id: @team.id).admin == true
               %span.admin-tag Admin
-            - if user == current_user
-              %span.you-tag You
       %br/
       = link_to "Back", teams_path
     .box
       %h2 Tasks
-      = render 'tasks/team_tasks'
+      = render 'teams/tasks/tasks'
   .aside
     .box
-      %h2 Options
-      .sub-box
-        %h3 Invite someone to the team
-        = form_for @invite, url: invites_path do |f|
-          = f.hidden_field :team_id, value: @invite.team_id
-          .input-group
-            = f.email_field :email, placeholder: "Email", class: "form-control"
-            .input-group-btn
-              = f.submit 'Invite to Team', class: "btn btn-primary"
-      %br/
+      %h3 Invite someone to the team
+      = form_for @invite, url: invites_path do |f|
+        = f.hidden_field :team_id, value: @invite.team_id
+        .input-group
+          = f.email_field :email, placeholder: "Email", class: "form-control"
+          .input-group-btn
+            = f.submit 'Invite to Team', class: "btn btn-primary"
+    .box
       - if @membership
         %li= link_to "Leave Team", membership_path(@membership), method: :delete
-        %li= link_to "Create Task", new_team_task_path(@membership)
+        %li= link_to "Create Task", new_team_task_path(@team)
       - else
         = link_to "Join", team_memberships_path(@team), method: :post

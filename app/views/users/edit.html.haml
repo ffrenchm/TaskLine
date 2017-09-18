@@ -1,14 +1,32 @@
-= provide(:title, "Edit Account")
+= provide(:title, "Profile")
 = provide(:button_text, "Update")
-.box
-  .sub-box
-    %h2= yield(:title)
-    = render 'shared/form'
-  .sub-box
-    %h2 Upload Profile Picture
-    = form_for @user do |f|
-      = f.hidden_field :name, placeholder: "Username", class: 'form-control'
-      = f.file_field :picture
-      = f.submit "Upload", class: "btn btn-primary"
-  %br/
-  = link_to "Back", @user
+
+.split-layout
+  .main
+    .box.profile-box
+      .pic-section
+        %span.pic-holder= image_tag current_user.picture.url, size: "150x150", class: 'big-profile-pic'
+        .edit-pic
+          %i.fa.fa-pencil
+        .box.upload-pic
+          %h2 Upload Profile Picture
+          = form_for @user do |f|
+            .form-group
+              = f.hidden_field :name, placeholder: "Username", class: 'form-control'
+              = f.file_field :picture
+            = f.submit "Upload", class: "btn btn-primary"
+          %br/
+          %p.fake-link.pic-cancel Cancel
+      .text-section
+        %h1= @user.name
+        %p= "Joined #{@user.created_at.strftime("%B")} #{@user.created_at.year}"
+        %p= "Member of #{pluralize(@user.teams.count, "team")}"
+    .box
+      %h2 Edit Details
+      = render 'shared/form'
+    .box
+      %h2 Account
+      %li= link_to "Sign Out", signout_path, method: :delete
+      %li= link_to "Delete Account", current_user, method: :delete, data: { confirm: "Are you sure? All your data will be lost" }
+  .aside
+    = render 'shared/statistics'

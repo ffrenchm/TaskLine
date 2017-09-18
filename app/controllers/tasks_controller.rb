@@ -2,21 +2,16 @@ class TasksController < ApplicationController
   before_action :signed_in_user
   before_action :find_task
 
-  def edit
-    session[:return_to] = request.referrer
-  end
-
-  def move_form
-    session[:return_to] = request.referrer
-  end
-
   def update
     @task.update(task_params)
-    redirect_to session[:return_to]
+    redirect_to categories_path
   end
 
   def destroy
-    if @task.team_id == nil
+    if URI(request.referrer).path == "/teams/#{@task.team_id}"
+      @task.destroy
+      redirect_to request.referrer
+    elsif @task.team_id == nil
       @task.destroy
     else
       @task.update(category_id: nil)

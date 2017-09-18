@@ -1,0 +1,13 @@
+.box
+  .title-wrapper
+    %h2 Team Invites
+  - if current_user.received_invites.count == 0
+    %p You currently have no team invites
+  - else
+    - current_user.received_invites.each do |invite|
+      .sub-box
+        %span.task-content= Team.find(invite.team_id).name
+        = link_to "", invite, method: :delete, class: "fa fa-trash"
+        %p
+          ="From: #{User.find(invite.sender_id).email}"
+        = link_to "Join", team_memberships_path(invite.team), method: :post

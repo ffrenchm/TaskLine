@@ -1,24 +1,18 @@
 .tasks {
 }
 .task {
-  @include sub_box;
+  @include sub-box;
+  @include medium-fade;
   display: flex;
-  .fa-check {
-    font-size: 20px;
-    color: #fff;
-    &:hover {
-      color: #888;
-    }
-  }
 }
-.tickbox {
+.tickbox, .fake-tickbox {
   position: absolute;
   height: 25px;
   flex: 0 0 auto;
   width: 25px;
-  border-radius: 8px;
+  border-radius: 4px;
   background-color: #fff;
-  border: 1px solid #888;
+  border: 1px solid #ccc;
   top: 50%;
   transform: translate(20%, -50%);
   span {
@@ -26,6 +20,15 @@
     top: 50%;
     left: 50%;
     transform: translate(-50%, -45%);
+  }
+}
+.tickbox {
+  .fa-check {
+    font-size: 20px;
+    color: #fff;
+    &:hover {
+      color: #888;
+    }
   }
 }
 .info {
@@ -52,6 +55,7 @@
   background-color: #fff;
   width: 90px;
   box-shadow: 0 3px 3px rgba(0, 0, 0, 0.3);
+  border-radius: 2px;
   position: absolute;
   top: 40px;
   right: -28.5px;
@@ -88,6 +92,7 @@
 }
 .every-number {
   width: 20% !important;
+  border-right: 0px;
 }
 .every-period {
   width: 80% !important;
@@ -96,7 +101,8 @@
   color: red !important;
 }
 .completed-task {
-  @include sub_box;
+  @include sub-box;
+  @include light-fade;
   display: none;
   .info {
     text-decoration: line-through;

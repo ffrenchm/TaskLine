@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170916080035) do
+ActiveRecord::Schema.define(version: 20170917200808) do
 
   create_table "allocations", force: :cascade do |t|
     t.integer  "sender_id"
@@ -54,8 +54,8 @@ ActiveRecord::Schema.define(version: 20170916080035) do
   create_table "tasks", force: :cascade do |t|
     t.integer  "category_id"
     t.integer  "user_id"
-    t.datetime "deadline_date"
-    t.datetime "deadline_time"
+    t.date     "deadline_date"
+    t.time     "deadline_time"
     t.integer  "repeat"
     t.boolean  "completed",     default: false
     t.string   "content"

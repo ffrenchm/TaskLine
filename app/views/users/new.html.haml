@@ -1,8 +1,9 @@
 = provide(:button_text, "Sign Up")
 = provide(:title, "Sign Up")
+.desk
 .centre-form
-  %h1 Sign Up
+  %h2 Sign Up
   = render 'shared/form'
   %br/
   %p
-    Already have an account? #{link_to "Sign In", root_path}
+    Already have an account? #{link_to "Sign In", signin_path}

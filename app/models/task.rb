@@ -5,22 +5,16 @@ class Task < ApplicationRecord
   has_many :allocations, dependent: :destroy
 
   default_scope -> { order(:deadline_date) }
+  scope :due_on, -> (date) { where('deadline_date = ?', date) }
+  scope :due_before, -> (date) { where('deadline_date < ?', date) }
+  scope :complete, -> { where(completed: true) }
+  scope :active, -> { where(completed: false) }
 
   validates :user_id, presence: true
   validates :content, presence: true, length: { maximum: 155}
 
   def overdue?
-    d = self.deadline_date
-    t = self.deadline_time
-    (!self.completed && d && !t && d < Time.now) || (d && t && !self.completed && (d + t.seconds_since_midnight.seconds).to_datetime < Time.now)
-  end
-
-  def today?
-    (!self.completed && self.deadline_date && self.deadline_date.today?)
-  end
-
-  def week?
-    (!self.completed && self.deadline_date && self.deadline_date - Time.now < 7.days)
+    self.deadline_date && self.deadline_date < Date.today && !self.completed
   end
 
   def increment

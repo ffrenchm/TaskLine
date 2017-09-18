@@ -21,7 +21,4 @@
       = f.select :repeat_period, [["Days"], ["Weeks"], ["Months"], ["Years"]], {}, class: "form-control every-period"
     .form-group
       = f.text_area :notes, placeholder: "Notes", class: "form-control"
-    .form-group
-      = f.label "Upload Docs"
-      = f.file_field :content
-    = link_to "Back", request.referrer
+    = link_to "Back", yield(:back_link)
