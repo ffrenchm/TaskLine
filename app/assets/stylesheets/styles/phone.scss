@@ -1,4 +1,6 @@
-@media (max-width: 960px) {
+@media only screen
+  and (max-device-width: 1024px)
+  and (-webkit-min-device-pixel-ratio: 1) {
   .content {
     padding: 120px 20px 0;
   }
@@ -18,7 +20,9 @@
     margin-right: 10px !important;
   }
 }
-@media (max-width: 780px) {
+@media only screen
+  and (max-device-width: 780px)
+  and (-webkit-min-device-pixel-ratio: 2) {
   .content {
     padding: 60px 0 0;
   }
@@ -86,11 +90,6 @@
     width: 100%;
     margin: 0;
   }
-  .centre-form {
-    width: 85%;
-  }
-}
-@media (max-width: 600px) {
   .centre-form {
     width: 100%;
   }
