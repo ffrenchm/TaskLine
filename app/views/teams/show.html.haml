@@ -26,7 +26,7 @@
         .input-group
           = f.email_field :email, placeholder: "Email", class: "form-control"
           .input-group-btn
-            = f.submit 'Invite to Team', class: "btn btn-primary"
+            = f.submit 'Invite', class: "btn btn-primary"
     .box
       - if @membership
         %li= link_to "Leave Team", membership_path(@membership), method: :delete

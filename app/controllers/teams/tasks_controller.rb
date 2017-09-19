@@ -41,10 +41,4 @@ class Teams::TasksController < ApplicationController
       @team = Team.find(params[:team_id])
     end
 
-    def in_team
-      unless @team.users.include?(current_user)
-        redirect_to team_path(@team)
-      end
-    end
-
 end

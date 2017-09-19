@@ -17,6 +17,12 @@ class ApplicationController < ActionController::Base
       @team = Team.find(params[:id])
     end
 
+    def in_team
+      unless @team.users.include?(current_user)
+        redirect_to team_path(@team)
+      end
+    end
+
     #confirms a signed in user
     def signed_in_user
       unless signed_in?
