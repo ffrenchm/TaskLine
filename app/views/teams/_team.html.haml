@@ -2,9 +2,7 @@
   .title-wrapper
     %h2= link_to team.name, team
   .big-links
-    - if Membership.find_by(
-    - user_id: @user.id,
-    - team_id: team.id).admin == true
+    - if Membership.find_by(user_id: @user.id, team_id: team.id).admin == true
       %span
         = link_to "", team, class: "fa fa-trash", method: :delete, data: { confirm: "Are you sure? All other members will lose access to this team" }
       %span

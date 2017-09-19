@@ -29,9 +29,9 @@ class UsersController < ApplicationController
         render :crop
       else
         flash[:success] = "Your details were updated."
-        redirect_to edit_user_path(@user)
       end
     end
+    redirect_to edit_user_path(@user)
   end
 
   def destroy

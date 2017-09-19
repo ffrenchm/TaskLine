@@ -24,13 +24,7 @@
   and (max-device-width: 780px)
   and (-webkit-min-device-pixel-ratio: 2) {
   .content {
-    padding: 60px 0 0;
-  }
-  p, li, span {
-    font-size: 14px;
-  }
-  h2, .category-title {
-    font-size: 18px;
+    padding-top: 3.8em;
   }
   .nav-link, .profile-link {
     display: none !important;
@@ -66,7 +60,7 @@
   }
   header {
     position: absolute;
-    height: 40px;
+    height: 2.5em;
     box-shadow: none;
     border-bottom: 1px solid #ddd;
   }
@@ -84,7 +78,7 @@
     width: 100%;
     margin: 0;
     flex: none;
-    margin-bottom: 30px
+    margin-bottom: 3em;
   }
   .main {
     width: 100%;

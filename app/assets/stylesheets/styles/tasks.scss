@@ -6,9 +6,9 @@
 }
 .tickbox, .fake-tickbox {
   position: absolute;
-  height: 25px;
+  height: 1.5em;
+  width: 1.5em;
   flex: 0 0 auto;
-  width: 25px;
   border-radius: 4px;
   background-color: #fff;
   border: 1px solid #ccc;
@@ -23,7 +23,7 @@
 }
 .tickbox {
   .fa-check {
-    font-size: 20px;
+    font-size: 1.2em;
     color: #fff;
   }
 }
@@ -41,7 +41,7 @@
 }
 .info {
   width: 67%;
-  margin-left: 45px;
+  margin-left: 2.9em;
   word-wrap: break-word;
   display: inline-block;
   flex: 1 1 0;
@@ -53,10 +53,10 @@
     height: 0;
     width: 0;
     content: "";
-    border: 6px solid;
+    border: 0.4em solid;
     border-color: transparent transparent #fff;
     position: absolute;
-    top: -12px;
+    top: -17%;
     left: 50%;
     transform: translate(-50%, 0);
     z-index: 70;
@@ -65,48 +65,47 @@
     height: 0;
     width: 0;
     content: "";
-    border: 7px solid;
+    border: 0.5em solid;
     border-color: transparent transparent #eaeaea;
     position: absolute;
-    top: -12px;
+    top: -17%;
     left: 50%;
-    transform: translate(-50%, -3.5px);
+    transform: translate(-50%, -0.25em);
     z-index: 30;
   }
   background-color: #fff;
-  width: 90px;
+  width: 5.6em;
   box-shadow: 0 0px 3px rgba(0, 0, 0, 0.2);
   border-radius: 3px;
   position: absolute;
-  top: 40px;
-  right: -28.5px;
+  top: 2.5em;
+  right: -1.75em;
   z-index: 20;
   display: none;
-  padding: 10px;
+  padding: 0.6em;
 }
 .task-content {
   padding: 0;
-  font-weight: bold;
+  font-weight: 600;
 }
 #task_repeat {
   cursor: pointer;
 }
 .toggle-more {
-  font-size: 14px;
+  font-size: 0.9em;
+  padding-top: 0.5em;
+  display: inline-block;
 }
 .task-more {
   display: none;
-  font-size: 14px;
+  font-size: 0.9em;
 }
 .every-field {
   width: 100%;
 }
-.every {
-  width: 15% !important;
-}
 .every-number {
   width: 20% !important;
-  border-right: 0px;
+  border-right: 0;
 }
 .every-period {
   width: 80% !important;

@@ -6,6 +6,9 @@
 - else
   - if @team && @tasks.complete.count != 0
     %p.toggle.toggle-completed.fake-link.break Toggle Completed
+  - else
+    %p.toggle.toggle-completed.fake-link.hide Toggle Completed
+    .break
   - @tasks.each do |task|
     - unless task.id.nil?
       %div{class: task.completed ? "completed-task" : "task"}
@@ -23,7 +26,7 @@
             - if task.repeat == 1
               %span.sub-info.task-repeat= task.repeat_message
           - if !task.notes.blank?
-            %span.fake-link.toggle-more More
+            %span.fake-link.toggle-more Notes
             %li.task-more= task.notes
         .small-links
           %span.fake-link.menu-toggle

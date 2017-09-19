@@ -3,7 +3,8 @@
 .split-layout
   = render 'categories'
   .aside
-    = render 'category_form'
+    .box
+      = render 'category_form'
     = render 'shared/allocations'
     .box
       %p= pluralize(current_user.tasks.active.count, "total task")
