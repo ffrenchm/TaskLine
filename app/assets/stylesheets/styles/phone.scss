@@ -24,20 +24,21 @@
   and (max-device-width: 780px)
   and (-webkit-min-device-pixel-ratio: 2) {
   .content {
-    padding-top: 3.8em;
+    padding: 3.8em 0 0 0;
+    font-size: 32px;
   }
   .nav-link, .profile-link {
     display: none !important;
   }
   .phone-nav {
     position: absolute;
-    top: 40px;
+    top: 2.5em;
     left: 0;
     width: 100%;
   }
   .phone-link {
     width: 100%;
-    height: 50px;
+    height: 3em;
     background-color: #eee;
     text-align: center;
     border-bottom: 1px solid #ddd;
@@ -50,8 +51,8 @@
   .nav-toggle {
     display: inline-block !important;
     float: right;
-    font-size: 30px !important;
-    margin-right: 20px;
+    font-size: 1.9em !important;
+    margin-right: 1.25em;
     color: #fff;
     cursor: pointer;
   }
@@ -65,7 +66,7 @@
     border-bottom: 1px solid #ddd;
   }
   .logo, .nav-toggle {
-    font-size: 24px !important;
+    font-size: 2em !important;
   }
   .box {
     box-shadow: none;
