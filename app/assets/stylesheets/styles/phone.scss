@@ -8,7 +8,7 @@
   .main {
     width: 60%;
   }
-  .form-control, input {
+  .form-control, .btn {
     min-height: 40px;
   }
   .logo {
@@ -18,16 +18,22 @@
     margin-right: 10px !important;
   }
 }
-@media (max-width: 760px) {
+@media (max-width: 780px) {
   .content {
-    padding: 70px 0 0;
+    padding: 60px 0 0;
+  }
+  p, li, span {
+    font-size: 14px;
+  }
+  h2, .category-title {
+    font-size: 18px;
   }
   .nav-link, .profile-link {
     display: none !important;
   }
   .phone-nav {
     position: absolute;
-    top: 50px;
+    top: 40px;
     left: 0;
     width: 100%;
   }
@@ -48,13 +54,15 @@
     float: right;
     font-size: 30px !important;
     margin-right: 20px;
+    color: #fff;
+    cursor: pointer;
   }
   .split-layout {
     display: block;
   }
   header {
     position: absolute;
-    height: 50px;
+    height: 40px;
     box-shadow: none;
     border-bottom: 1px solid #ddd;
   }

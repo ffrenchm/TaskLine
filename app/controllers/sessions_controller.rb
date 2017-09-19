@@ -1,4 +1,5 @@
 class SessionsController < ApplicationController
+  skip_before_filter :signed_in_user
 
   def new
     @user = User.new
@@ -10,10 +11,10 @@ class SessionsController < ApplicationController
     if user && user.authenticate(params[:session][:password])
       signin user
       remember user
-      redirect_back_or root_path
+      redirect_to root_path
     else
       flash[:danger] = "Invalid email/password"
-      redirect_to root_path
+      redirect_to signin_path
     end
   end
 

@@ -1,15 +1,11 @@
 module TasksHelper
 
   def due_today
-    current_user.tasks.active.due_on(Date.today)
+    current_user.tasks.active.due_before(Date.today + 1.day)
   end
 
   def due_this_week
     current_user.tasks.active.due_before(Date.today + 7.days)
-  end
-
-  def overdue
-    current_user.tasks.active.due_before(Date.today)
   end
 
   def deadline_date(date)
@@ -37,15 +33,7 @@ module TasksHelper
     when nil
       ""
     else
-      time.strftime("%-I:%M%p")
-    end
-  end
-
-  def comma(date, time)
-    if date && time
-      ", "
-    else
-      ""
+      time.strftime(" %-I:%M%p")
     end
   end
 end

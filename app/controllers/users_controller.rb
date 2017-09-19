@@ -1,5 +1,5 @@
 class UsersController < ApplicationController
-  before_action :signed_in_user, only: [:edit, :update, :destroy]
+  skip_before_filter :signed_in_user, only: [:new, :create]
   before_action :correct_user, only: [:edit, :update, :destroy]
 
   def new
@@ -11,13 +11,8 @@ class UsersController < ApplicationController
   def create
     @user = User.new(user_params)
     if @user.save
-      if params[:user][:picture].present?
-        render :crop
-      else
-        signin @user
-        flash[:success] = "You signed up successfully."
-        redirect_to edit_user_path(@user)
-      end
+      signin @user
+      redirect_to edit_user_path(@user)
     else
       render 'new'
     end
@@ -27,16 +22,13 @@ class UsersController < ApplicationController
     @user = current_user
   end
 
-  def crop
-    @user = current_user
-  end
-
   def update
     @user = User.find(params[:id])
     if @user.update_attributes(user_params)
       if params[:user][:picture].present?
         render :crop
       else
+        flash[:success] = "Your details were updated."
         redirect_to edit_user_path(@user)
       end
     end

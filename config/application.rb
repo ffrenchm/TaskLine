@@ -6,6 +6,8 @@ require 'rails/all'
 # you've limited to :test, :development, or :production.
 Bundler.require(*Rails.groups)
 
+require 'carrierwave'
+
 module TaskLine
   class Application < Rails::Application
     config.autoload_paths += %W(#{config.root}/lib)

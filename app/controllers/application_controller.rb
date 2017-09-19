@@ -1,5 +1,6 @@
 class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception
+  before_action :signed_in_user
   include SessionsHelper
 
   private
@@ -20,7 +21,7 @@ class ApplicationController < ActionController::Base
     def signed_in_user
       unless signed_in?
         store_location
-        redirect_to calendar_path
+        redirect_to signin_path
       end
     end
 

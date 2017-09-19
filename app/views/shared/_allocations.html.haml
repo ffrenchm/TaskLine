@@ -14,7 +14,7 @@
             - d = allocation.task.deadline_date
             - t = allocation.task.deadline_time
             %span{class: allocation.task.overdue? ? "sub-info task-overdue-deadline" : "sub-info"}
-              = deadline_date(d) + comma(d, t) + deadline_time(t)
+              = deadline_date(d) + deadline_time(t)
             - if allocation.task.repeat == 1
               %span.sub-info.task-repeat= allocation.task.repeat_message
           - if !allocation.task.notes.blank?

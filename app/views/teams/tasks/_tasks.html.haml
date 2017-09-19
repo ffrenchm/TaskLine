@@ -1,6 +1,8 @@
 - unless @tasks.any?
-  ="The team currently has no tasks. Make one"
-  =link_to "here.", new_team_task_path(@team)
+  ="The team currently has no tasks."
+  - if @team.users.include?(current_user)
+    ="Make one"
+    =link_to "here.", new_team_task_path(@team)
 - else
   - if @team && @tasks.complete.count != 0
     %p.toggle.toggle-completed.fake-link.break Toggle Completed
@@ -17,7 +19,7 @@
             - d = task.deadline_date
             - t = task.deadline_time
             %span{class: task.overdue? ? "sub-info task-overdue-deadline" : "sub-info"}
-              = deadline_date(d) + comma(d, t) + deadline_time(t)
+              = deadline_date(d) + deadline_time(t)
             - if task.repeat == 1
               %span.sub-info.task-repeat= task.repeat_message
           - if !task.notes.blank?

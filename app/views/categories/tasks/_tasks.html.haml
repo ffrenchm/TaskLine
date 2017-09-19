@@ -20,7 +20,7 @@
               - d = task.deadline_date
               - t = task.deadline_time
               %span{class: task.overdue? ? "sub-info task-overdue-deadline" : "sub-info"}
-                = deadline_date(d) + comma(d, t) + deadline_time(t)
+                = deadline_date(d) + deadline_time(t)
               - if task.repeat == 1
                 %span.sub-info.task-repeat= task.repeat_message
             - if !task.notes.blank?

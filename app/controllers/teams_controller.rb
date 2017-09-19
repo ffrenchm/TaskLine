@@ -1,5 +1,6 @@
 class TeamsController < ApplicationController
   before_action :find_team, except: [:index, :create]
+  before_action :in_team, only: :edit
 
   def index
     @user = current_user

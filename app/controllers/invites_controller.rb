@@ -2,17 +2,20 @@ class InvitesController < ApplicationController
 
   def create
     @invite = Invite.new(invite_params)
-    @invite.update_attributes(sender_id: current_user.id,
-    recipient_id: User.find_by(email: params[:invite][:email]).id)
-    if @invite.save
-      if @invite.recipient != nil
-        @invite.recipient.received_invites << @invite
-        flash[:success] = "An invite was sent to #{@invite.recipient.email}."
+    @recipient = User.find_by(email: params[:invite][:email])
+    if @recipient != nil
+      @invite.update_attributes(sender_id: current_user.id, recipient_id: @recipient.id)
+      if @invite.save
+        if @invite.recipient != nil
+          @invite.recipient.received_invites << @invite
+          flash[:success] = "An invite was sent to #{@invite.recipient.email}."
+        else
+        end
       else
-        flash[:danger] = "This user does not exist."
+        flash[:danger] = "There was an error inviting this person."
       end
     else
-      flash[:danger] = "There was an error inviting this person."
+      flash[:danger] = "A user with that email does not exist."
     end
     redirect_to team_path(@invite.team)
   end

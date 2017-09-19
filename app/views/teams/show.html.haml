@@ -10,7 +10,7 @@
         - @team.users.each do |user|
           %li.team-member
             %span
-              = image_tag user.picture_url(:thumb), size: "39x39", class: "small-pic"
+              = image_tag user.picture.url, size: "39x39", class: "small-pic"
             %span.member-name= user.name
             - if Membership.find_by(user_id: user.id, team_id: @team.id).admin == true
               %span.admin-tag Admin

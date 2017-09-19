@@ -5,11 +5,13 @@
       - if signed_in?
         %li.profile-link
           = link_to edit_user_path(current_user), class: "profile-link" do
-            = image_tag current_user.picture_url(:thumb), size: "39x39", class: "small-pic"
+            .profile-link-button
+              = image_tag current_user.picture.url, size: "39x39", class: "small-pic"
+              %span= current_user.name
         %li.nav-link= link_to "Tasks", categories_path
         -# %li= link_to "Calendar", calendar_path
         %li.nav-link= link_to "Teams", teams_path
-        %i.fa.fa-bars.nav-toggle.fake-link
+        %i.fa.fa-bars.nav-toggle
       - else
         %li= link_to "Sign Up", signup_path, class: "edge-link"
     .phone-nav

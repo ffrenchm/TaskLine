@@ -6,7 +6,7 @@ class Task < ApplicationRecord
 
   default_scope -> { order(:deadline_date) }
   scope :due_on, -> (date) { where('deadline_date = ?', date) }
-  scope :due_before, -> (date) { where('deadline_date < ?', date) }
+  scope :due_before, -> (time) { where('deadline_date < ?', time) }
   scope :complete, -> { where(completed: true) }
   scope :active, -> { where(completed: false) }
 
@@ -14,7 +14,10 @@ class Task < ApplicationRecord
   validates :content, presence: true, length: { maximum: 155}
 
   def overdue?
-    self.deadline_date && self.deadline_date < Date.today && !self.completed
+    d = self.deadline_date
+    t = self.deadline_time
+    d && !self.completed && !t && d < Date.today ||
+    d && !self.completed && t && d + t.hour.hours < Time.now
   end
 
   def increment
