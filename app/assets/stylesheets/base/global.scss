@@ -220,6 +220,7 @@ input#user_picture {
 .form {
   padding: 0.7em;
 }
-.form-control, .btn {
+.form-control {
   font-size: 0.9em;
+  display: inline-block;
 }
