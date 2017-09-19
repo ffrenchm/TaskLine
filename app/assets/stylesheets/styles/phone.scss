@@ -90,9 +90,36 @@
   .centre-form {
     width: 100%;
   }
+  $size: 0.9em;
+
   .form-control {
-    font-size: 0.9em;
-    display: inline-block;
-    padding: 1em;
+    font-size: $size;
+    padding: 1em 0.5em;
   }
+  .input-group-addon {
+    font-size: $size;
+    padding: 0.5em 0.5em;
+  }
+  .btn {
+    font-size: $size;
+    padding: 0.3em 0.6em;
+  }
+
+  .input-group-btn {
+    .btn {
+      font-size: 1em;
+      padding: 0.3em 0.5em;
+    }
+    font-size: $size;
+    padding: 0;
+  }
+  .form-control {
+    display: inline-block;
+  }
+  input[type=radio], input[type=checkbox] {
+    width: $size;
+    height: $size;
+    font-size: $size;
+  }
+
 }
