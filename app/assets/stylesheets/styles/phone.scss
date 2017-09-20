@@ -20,10 +20,10 @@
     margin-right: 10px !important;
   }
 }
-@media only screen
-  and (max-device-width: 780px)
-  and (-webkit-min-device-pixel-ratio: 2)
-// @media (max-width: 780px)
+// @media only screen
+//   and (max-device-width: 780px)
+//   and (-webkit-min-device-pixel-ratio: 2)
+@media (max-width: 780px)
 {
   html {
     font-size: 46px;
@@ -35,7 +35,7 @@
     display: none !important;
   }
   .task, .sub-box {
-    border-top: 0.05em solid #eee;
+    border-top: 0.1em solid #eee;
   }
   .phone-nav {
     position: absolute;
@@ -59,7 +59,7 @@
     display: inline-block !important;
     float: right;
     font-size: 1.9em !important;
-    margin-right: 1.25em;
+    margin-right: 0.5em;
     color: #fff;
     cursor: pointer;
   }
@@ -84,8 +84,8 @@
   }
   .box {
     box-shadow: none;
-    border-bottom: 0.05em solid #ddd;
-    border-top: 0.05em solid #ddd;
+    border-bottom: 0.1em solid #ddd;
+    border-top: 0.1em solid #ddd;
   }
   .aside {
     display: inline-block;
@@ -108,6 +108,8 @@
   .form-control {
     font-size: $size;
     padding: 1em 0.5em;
+    display: inline-block;
+    margin-bottom: $size;
   }
   .input-group-addon {
     font-size: $size;
@@ -126,13 +128,16 @@
     font-size: $size;
     padding: 0;
   }
-  .form-control {
-    display: inline-block;
-  }
   input[type=radio], input[type=checkbox] {
     width: $size;
     height: $size;
     font-size: $size;
   }
-
+  input[type=date], input[type=time] {
+    font-size: $size;
+    padding: 1em 0.5em;
+  }
+  .big-links > span {
+    margin-left: 1em;
+  }
 }
