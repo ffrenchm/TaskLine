@@ -109,7 +109,6 @@
     font-size: $size;
     padding: 1em 0.5em;
     display: inline-block;
-    margin-bottom: $size;
   }
   .input-group-addon {
     font-size: $size;
@@ -119,7 +118,9 @@
     font-size: $size;
     padding: 0.3em 0.6em;
   }
-
+  .form-group {
+    margin-bottom: $size;
+  }
   .input-group-btn {
     .btn {
       font-size: 1em;
