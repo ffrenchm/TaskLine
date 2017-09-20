@@ -4,10 +4,8 @@ class CategoriesController < ApplicationController
 
   def index
     @user = current_user
-    @categories = @user.categories
+    @categories = @user.categories.includes(:tasks).references(:tasks)
     @category = @user.categories.build
-    @column_1 = @categories.to_a.select.with_index { |_, i| i.even? }
-    @column_2 = @categories - @column_1
   end
 
   def create
@@ -29,11 +27,6 @@ class CategoriesController < ApplicationController
   def destroy
     @category.destroy
     redirect_to categories_path
-  end
-
-  def show
-    @tasks = @category.tasks
-    @task = @category.tasks.build
   end
 
   private

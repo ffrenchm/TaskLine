@@ -3,6 +3,7 @@ class Task < ApplicationRecord
   belongs_to :team, optional: true
   belongs_to :user
   has_many :allocations, dependent: :destroy
+  
 
   default_scope -> { order(:deadline_date) }
   scope :due_on, -> (date) { where('deadline_date = ?', date) }

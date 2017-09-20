@@ -1,6 +1,11 @@
 @media only screen
   and (max-device-width: 1024px)
-  and (-webkit-min-device-pixel-ratio: 1) {
+  and (-webkit-min-device-pixel-ratio: 1)
+// @media (max-width: 1024px)
+{
+  html {
+    font-size: 23px;
+  }
   .content {
     padding: 120px 20px 0;
   }
@@ -85,7 +90,7 @@
     border-bottom: 1px solid #ddd;
   }
   .logo, .nav-toggle {
-    font-size: 2em !important;
+    font-size: 1.7em !important;
   }
   .task-menu {
     right: 0.1em;
@@ -146,7 +151,7 @@
     height: $size;
     font-size: $size;
   }
-  input[type=date], input[type=time] {
+  select {
     font-size: $size;
     padding: 1em 0.5em;
   }

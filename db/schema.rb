@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170919135222) do
+ActiveRecord::Schema.define(version: 20170920142945) do
 
   create_table "allocations", force: :cascade do |t|
     t.integer  "sender_id"
@@ -19,6 +19,9 @@ ActiveRecord::Schema.define(version: 20170919135222) do
     t.datetime "created_at",   null: false
     t.datetime "updated_at",   null: false
     t.integer  "team_id"
+    t.index ["recipient_id"], name: "index_allocations_on_recipient_id"
+    t.index ["task_id"], name: "index_allocations_on_task_id"
+    t.index ["team_id"], name: "index_allocations_on_team_id"
   end
 
   create_table "categories", force: :cascade do |t|
@@ -37,6 +40,7 @@ ActiveRecord::Schema.define(version: 20170919135222) do
     t.integer  "recipient_id"
     t.datetime "created_at",   null: false
     t.datetime "updated_at",   null: false
+    t.index ["recipient_id"], name: "index_invites_on_recipient_id"
     t.index ["team_id"], name: "index_invites_on_team_id"
   end
 
@@ -66,6 +70,8 @@ ActiveRecord::Schema.define(version: 20170919135222) do
     t.string   "repeat_period"
     t.integer  "team_id"
     t.index ["category_id"], name: "index_tasks_on_category_id"
+    t.index ["completed"], name: "index_tasks_on_completed"
+    t.index ["deadline_date"], name: "index_tasks_on_deadline_date"
     t.index ["team_id"], name: "index_tasks_on_team_id"
     t.index ["user_id"], name: "index_tasks_on_user_id"
   end

@@ -1,5 +1,5 @@
 class TeamsController < ApplicationController
-  before_action :find_team, except: [:index, :create]
+  before_action :find_team, except: [:index, :create, :show]
   before_action :in_team, only: :edit
 
   def index
@@ -20,6 +20,7 @@ class TeamsController < ApplicationController
   end
 
   def show
+    @team = Team.find(params[:id])
     @invite = @team.invites.build
     @membership = Membership.find_by(user_id: current_user.id, team_id: @team.id)
     @tasks = @team.tasks
