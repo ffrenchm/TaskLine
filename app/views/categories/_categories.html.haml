@@ -1,5 +1,5 @@
 .main
-  - if @user.categories.count == 0
+  - if !@user.categories.any?
     .box
       %p You currently have no categories... Make some using the form on the right.
   - @categories.each do |category|

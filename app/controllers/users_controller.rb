@@ -25,11 +25,7 @@ class UsersController < ApplicationController
   def update
     @user = User.find(params[:id])
     if @user.update_attributes(user_params)
-      if params[:user][:picture].present?
-        render :crop
-      else
-        flash[:success] = "Your details were updated."
-      end
+      flash[:success] = "Your details were updated."
     end
     redirect_to edit_user_path(@user)
   end

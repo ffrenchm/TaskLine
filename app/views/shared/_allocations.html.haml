@@ -1,7 +1,7 @@
 .box
   .title-wrapper
     %h2 Task Allocations
-  - if current_user.received_allocations.count == 0
+  - if !current_user.received_allocations.any?
     %p You currently have no task allocations to review
   - else
     - current_user.received_allocations.each do |allocation|

@@ -3,7 +3,7 @@
     %br/
     %p This category is empty. Create a new task by clicking the plus icon.
   - else
-    - if @category && @tasks.complete.count != 0
+    - if @category && @tasks.complete.any?
       %p.toggle.toggle-completed.fake-link.break Toggle Completed
     - else
       %p.toggle.toggle-completed.fake-link.hide Toggle Completed

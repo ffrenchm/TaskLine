@@ -5,22 +5,23 @@
   .main
     .box.profile-box
       .pic-section
-        %span.pic-holder= image_tag @user.picture.url, class: 'big-profile-pic'
-        .edit-pic
-          %i.fa.fa-pencil
-        .box.upload-pic
-          %h2 Upload Profile Picture
-          = form_for @user do |f|
-            .form-group.no-line
-              = f.hidden_field :name, placeholder: "Username", class: 'form-control'
-              = f.file_field :picture
-            = f.submit "Upload", class: "btn btn-primary"
-          %br/
-          %p.fake-link.pic-cancel Cancel
+        %span.pic-holder
+          = image_tag @user.picture.url, class: 'big-profile-pic'
+          .edit-pic
+            %i.fa.fa-pencil
       .text-section
         %h1= @user.name
         %p= "Joined #{@user.created_at.strftime("%B")} #{@user.created_at.year}"
         %p= "Member of #{pluralize(@user.teams.count, "team")}"
+    .box.upload-pic
+      %h2 Upload Profile Picture
+      = form_for @user do |f|
+        .form-group.no-line
+          = f.hidden_field :name, placeholder: "Username", class: 'form-control'
+          = f.file_field :picture
+        = f.submit "Upload", class: "btn btn-primary"
+      %br/
+      %p.fake-link.pic-cancel Cancel
     .box
       .form
         %h2 Edit Details

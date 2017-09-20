@@ -4,7 +4,7 @@
     ="Make one"
     =link_to "here.", new_team_task_path(@team)
 - else
-  - if @team && @tasks.complete.count != 0
+  - if @team && @tasks.complete.any?
     %p.toggle.toggle-completed.fake-link.break Toggle Completed
   - else
     %p.toggle.toggle-completed.fake-link.hide Toggle Completed

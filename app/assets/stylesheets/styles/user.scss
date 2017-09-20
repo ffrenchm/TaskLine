@@ -3,12 +3,10 @@
 }
 .pic-section {
   flex: 0 0 auto;
-  width: 9.5em;
-  margin-right: 1.25em;
+  margin-right: 20px;
   position: relative;
 }
 .edit-pic {
-  display: none;
   position: absolute;
   bottom: 0;
   right: 0;
@@ -32,9 +30,5 @@
   flex: 1 1 0;
 }
 .upload-pic {
-  position: absolute;
-  width: 300px;
-  bottom: -194px;
-  right: -275px;
   display: none;
 }
