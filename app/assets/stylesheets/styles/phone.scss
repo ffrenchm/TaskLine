@@ -20,9 +20,10 @@
     margin-right: 10px !important;
   }
 }
-@media only screen
-  and (max-device-width: 780px)
-  and (-webkit-min-device-pixel-ratio: 2) {
+// @media only screen
+//   and (max-device-width: 780px)
+//   and (-webkit-min-device-pixel-ratio: 2)
+@media (max-width: 780px) {
   html {
     font-size: 46px;
   }
@@ -31,6 +32,9 @@
   }
   .nav-link, .profile-link {
     display: none !important;
+  }
+  .sub-box {
+    border-top: 0.4em solid #eee !important;
   }
   .phone-nav {
     position: absolute;
