@@ -6,11 +6,8 @@ class InvitesController < ApplicationController
     if @recipient != nil
       @invite.update_attributes(sender_id: current_user.id, recipient_id: @recipient.id)
       if @invite.save
-        if @invite.recipient != nil
-          @invite.recipient.received_invites << @invite
-          flash[:success] = "An invite was sent to #{@invite.recipient.email}."
-        else
-        end
+        @invite.recipient.received_invites << @invite
+        flash[:success] = "An invite was sent to #{@invite.recipient.email}."
       else
         flash[:danger] = "There was an error inviting this person."
       end
