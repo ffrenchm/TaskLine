@@ -9,6 +9,7 @@ class Task < ApplicationRecord
   scope :due_before, -> (time) { where('deadline_date < ?', time) }
   scope :complete, -> { where(completed: true) }
   scope :active, -> { where(completed: false) }
+  scope :overdue, -> { where('deadline_date < ? AND completed = ?', Date.today, false) }
 
   validates :user_id, presence: true
   validates :content, presence: true, length: { maximum: 155}

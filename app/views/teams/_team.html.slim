@@ -1,7 +1,7 @@
 .sub-box
   span.category-title= link_to team.name, team
   .big-links
-    - if Membership.find_by(user_id: @user.id, team_id: team.id).admin == true
+    - if Membership.find_by(user_id: @user.id, team_id: team.id) && Membership.find_by(user_id: @user.id, team_id: team.id).admin == true
       span
         = link_to "", team, class: "fa fa-trash", method: :delete, remote: true, data: { confirm: "Are you sure? All other members will lose access to this team" }
       span
@@ -9,5 +9,5 @@
   .sub-info
     = pluralize(team.users.count, "Member")
   br/
-  - team.users[0..11].each do |user|
+  - team.users.limit(10).each do |user|
     = image_tag user.picture.url, size: "39x39", class: "small-pic"

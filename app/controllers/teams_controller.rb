@@ -5,6 +5,7 @@ class TeamsController < ApplicationController
   def index
     @user = current_user
     @teams = @user.teams
+    @public_teams = Team.except(current_user.teams).where(public: 1)
     @team = Team.new
   end
 

@@ -1,0 +1,10 @@
+.sub-box
+  = link_to team.name, team, class: "category-title"
+  .big-links
+    span
+      = link_to "Join", team_memberships_path(team), method: :post, remote: true
+  .sub-info
+    = pluralize team.users.count, "Member"
+  br
+  - team.users.limit(10).each do |user|
+    = image_tag user.picture.url, size: "39x39", class: "small-pic"
