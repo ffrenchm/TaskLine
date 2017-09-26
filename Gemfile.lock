@@ -383,7 +383,7 @@ PLATFORMS
 
 DEPENDENCIES
   bcrypt
-  bootstrap (~> 4.0.0.beta)
+  bootstrap
   bootstrap-datepicker-rails
   byebug
   carrierwave

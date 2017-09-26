@@ -1,1 +1,52 @@
-
+@media only screen
+  and (max-device-width: 1024px)
+  and (-webkit-min-device-pixel-ratio: 1)
+// @media (max-width: 1024px)
+{
+  html {
+    font-size: 23px;
+  }
+  .logo {
+    margin-left: 20px;
+  }
+  .profile-link {
+    margin-right: 10px !important;
+  }
+}
+@media only screen
+  and (max-device-width: 780px)
+  and (-webkit-min-device-pixel-ratio: 2)
+// @media (max-width: 780px)
+{
+  html {
+    font-size: 46px;
+  }
+  h1 {
+    font-size: 1.5em;
+    margin-bottom: 0.5em;
+  }
+  .big-profile-pic {
+    height: 6em;
+    width: 6em;
+  }
+  .small-pic {
+    height: 2em;
+    width: 2em;
+  }
+  .nav-link, .profile-link {
+    display: none !important;
+  }
+  .task, .sub-box {
+    border-top: 0.1em solid #eee;
+  }
+  .logo, .nav-toggle {
+    font-size: 1.7em !important;
+  }
+  .task-menu {
+    right: 0.1em;
+    top: 2em;
+    &:before, &:after {
+      display: none;
+    }
+  }
+}

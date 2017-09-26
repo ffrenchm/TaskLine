@@ -2,12 +2,12 @@
 = provide(:button_text, "Create")
 = provide(:form_title, "Create a new Team")
 .row
-  .col-md-7
-    .box.card.mb-3
+  .main
+    .box
       .card-header Your Teams
       .card-body
         = render @teams || "You're not a member of any teams. Join a public team, or create one yourself using the form on the right."
-    .box.card.mb-3
+    .box
       .card-header Public Teams
       .card-body
         - if Team.where(public: 1).any?
@@ -25,10 +25,10 @@
                   = image_tag user.picture.url, size: "39x39", class: "small-pic"
         - else
           p Nothing to display
-  .col-md-5
+  .aside
     .row
       .col
-        .box.card.mb-3
+        .box
           = render 'teams/team_form'
     .row
       .col

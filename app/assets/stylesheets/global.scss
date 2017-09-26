@@ -28,6 +28,12 @@ nav {
   width: 100%;
   max-width: 1140px;
 }
+.main {
+  @extend .col-md-7;
+}
+.aside {
+  @extend .col-md-5;
+}
 .box {
   @extend .card;
   @extend .mb-3;
