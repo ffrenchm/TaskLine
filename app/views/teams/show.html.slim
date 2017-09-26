@@ -1,7 +1,7 @@
 = provide(:title, @team.name)
 .row
-  .main
-    .box
+  .col-md-7
+    .box.card.mb-3
       .card-header= @team.name
       .card-body
         .sub-box
@@ -16,7 +16,7 @@
               - if Membership.find_by(user_id: user.id, team_id: @team.id).admin == true
                 span.admin-tag Admin
         = link_to "Back", teams_path
-    .box
+    .box.card.mb-3
       .card-header Tasks
       .card-body
         - unless @tasks.any?
@@ -30,8 +30,8 @@
           - else
             p.toggle-completed.fake-link.mb-3.hide Toggle Completed
         = render partial: 'tasks/task', collection: @tasks
-  .aside
-    .box
+  .col-md-5
+    .box.card.mb-3
       .card-header Invite someone to the team
       .card-body
         = form_for @invite, url: invites_path do |f|
@@ -40,7 +40,7 @@
             = f.email_field :email, placeholder: "Email", class: "form-control"
             .input-group-btn
               = f.submit 'Invite', class: "btn btn-primary"
-    .box
+    .box.card.mb-3
       .card-header Team Options
       .card-body
         - if @membership
