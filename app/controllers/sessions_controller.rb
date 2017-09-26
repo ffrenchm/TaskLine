@@ -1,5 +1,6 @@
 class SessionsController < ApplicationController
-  skip_before_filter :signed_in_user
+  skip_before_action :signed_in_user
+  layout "minimal", only: :new
 
   def new
     @user = User.new
@@ -11,7 +12,7 @@ class SessionsController < ApplicationController
     if user && user.authenticate(params[:session][:password])
       signin user
       remember user
-      redirect_to root_path
+      redirect_to categories_path
     else
       flash[:danger] = "Invalid email/password"
       redirect_to signin_path

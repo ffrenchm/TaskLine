@@ -1,0 +1,25 @@
+.row
+  .col
+    .box
+      .card-header
+        span.category-title.fake-link
+          = category.title
+          b.caret
+        .big-links
+          span.delete-category
+            = link_to "", category, method: :delete, remote: true, class: "fa fa-trash", data: { confirm: "Are you sure? All tasks inside '" + category.title + "' will be lost." }
+          span.edit-category
+            = link_to "", edit_category_path(category), class: "fa fa-pencil-square-o"
+          span.new-task
+            = link_to "", new_category_task_path(category), class: "fa fa-plus"
+        li.sub-info= pluralize(category.tasks.active.count, "task")
+      - @tasks = category.tasks
+      .card-body
+        - unless @tasks.any?
+          li This category is empty. Create a new task by clicking the plus icon.
+        - else
+          - if @category && @tasks.complete.any?
+            span.toggle-completed.fake-link.mb-3 Toggle Completed
+          - else
+            p.toggle-completed.fake-link.mb-3.hide Toggle Completed
+          = render partial: 'tasks/task', collection: @tasks

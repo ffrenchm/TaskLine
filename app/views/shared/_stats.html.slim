@@ -1,0 +1,4 @@
+.card-body
+  li= pluralize(current_user.tasks.active.count, "total task")
+  li= "#{pluralize(due_today.count, "task")} due today"
+  li= "#{pluralize(due_this_week.count, "task")} due this week"

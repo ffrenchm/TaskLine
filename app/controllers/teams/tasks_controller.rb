@@ -1,7 +1,6 @@
 class Teams::TasksController < ApplicationController
   before_action :signed_in_user
   before_action :find_task_team
-  before_action :find_task, only: [:edit, :move_form, :update]
   before_action :in_team
 
   def new
@@ -17,19 +16,6 @@ class Teams::TasksController < ApplicationController
     end
     redirect_to team_path(@team)
   end
-
-  def edit
-  end
-
-  def move_form
-  end
-
-  def update
-    @task.update(task_params)
-    redirect_to team_path(@task.team)
-  end
-
-
 
   private
 

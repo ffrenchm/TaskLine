@@ -1,7 +1,6 @@
 class Categories::TasksController < ApplicationController
   before_action :signed_in_user
   before_action :find_category
-  before_action :find_task, only: [:edit, :move_form, :update]
 
   def new
     @task = @category.tasks.build
@@ -17,21 +16,10 @@ class Categories::TasksController < ApplicationController
     redirect_to categories_path
   end
 
-  def edit
-  end
-
-  def update
-    @task.update(task_params)
-    redirect_to categories_path
-  end
-
-  def move_form
-  end
-
   private
 
     def task_params
       params.require(:task).permit(:content, :deadline_date, :deadline_time, :repeat, :repeat_number, :repeat_period, :category_id, :notes)
     end
-    
+
 end

@@ -1,0 +1,17 @@
+= provide(:title, "Manage Tasks")
+= provide(:button_text, "Add")
+.row
+  .main
+    = render @categories || "You currently have no categories... Make some using the form on the right."
+  .aside
+    .row
+      .col
+        = render 'category_form'
+    .row
+      .col
+        .box
+          = render 'shared/allocations'
+    .row
+      .col
+        .box
+          = render 'shared/stats'

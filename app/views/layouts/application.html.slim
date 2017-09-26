@@ -1,0 +1,11 @@
+doctype html
+html
+  head
+    = render 'layouts/default_head'
+    = render 'shared/shim'
+  body
+    = render 'layouts/header'
+    .content
+      = render 'shared/flash'
+      = yield
+    = render 'layouts/footer'

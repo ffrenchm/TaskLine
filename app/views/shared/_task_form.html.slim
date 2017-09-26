@@ -1,0 +1,24 @@
+.centre-form
+  h2= yield(:title)
+  = form_for @task do |f|
+    .input-group.form-group
+      = f.text_field :content, placeholder: "Task Description", class: "form-control"
+      span.input-group-btn
+        = f.submit yield(:button_text), class: "btn btn-primary"
+    .form-group.input-group
+      span.input-group-addon Date
+      = f.date_field :deadline_date, class: "form-control"
+    .form-group.input-group
+      span.input-group-addon Time
+      = f.time_field :deadline_time, class: "form-control"
+    .form-group
+      = f.check_box :repeat
+      span Repeat?
+    .form-group.input-group.every-field{style: (@task.repeat && @task.repeat == 1) ? "" : "display:none"}
+      span.input-group-addon.every Every
+      = f.number_field :repeat_number,
+        class: "form-control every-number"
+      = f.select :repeat_period, [["Days"], ["Weeks"], ["Months"], ["Years"]], {}, class: "form-control every-period"
+    .form-group
+      = f.text_area :notes, placeholder: "Notes", class: "form-control"
+    = link_to "Back", yield(:back_link)

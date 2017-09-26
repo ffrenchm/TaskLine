@@ -19,23 +19,6 @@ class Tasks::AllocationsController < ApplicationController
     redirect_to teams_path
   end
 
-  def accept_form
-    @allocation = Allocation.find(params[:id])
-    @task = @allocation.task
-  end
-
-  def accept
-    @allocation = Allocation.find(params[:id])
-    @task = @allocation.task
-  end
-
-  def destroy
-    @allocation = Allocation.find(params[:id])
-    if @allocation.destroy
-      redirect_to request.referrer
-    end
-  end
-
   private
 
     def allocation_params

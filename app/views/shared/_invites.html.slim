@@ -1,0 +1,16 @@
+.box
+  .card-header Team Invites
+  .card-body
+    - if !current_user.received_invites.any?
+      p You currently have no team invites
+    - else
+      - current_user.received_invites.each do |invite|
+        .task
+          .sub-box-main
+            span.task-content= Team.find(invite.team_id).name
+            .sub-info
+              ="From: #{User.find(invite.sender_id).email}"
+          .small-links
+            = link_to "", team_memberships_path(invite.team), method: :post, class: "fa fa-check"
+            = link_to "", invite, method: :delete, class: "fa fa-trash"
+    = "You're a member of " + pluralize(@user.teams.count, "team")

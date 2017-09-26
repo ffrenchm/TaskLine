@@ -19,7 +19,7 @@ $(document).on 'turbolinks:load', ->
     else
       task.removeClass("completed-task").addClass("task")
   $(".delete-task").click ->
-    $(this).parent().parent().slideToggle(150)
+    $(this).parent().parent().parent().toggle()
   $(".menu-toggle").click ->
     if $(this).parent().children(".task-menu").css("display") == "none"
       $(".task-menu").hide()

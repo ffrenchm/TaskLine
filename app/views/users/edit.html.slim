@@ -1,0 +1,40 @@
+= provide(:title, "Profile")
+= provide(:button_text, "Update")
+.row
+  .main
+    .box
+      .card-body
+        .row
+          span.pic-holder
+            = image_tag @user.picture.url, class: 'big-profile-pic'
+            .edit-pic
+              i.fa.fa-pencil
+          .col
+            h1= @user.name
+            p= "Joined #{@user.created_at.strftime("%B")} #{@user.created_at.year}"
+            p= "Member of #{pluralize(@user.teams.count, "team")}"
+    .box.upload-pic
+      h2 Upload Profile Picture
+      = form_for @user do |f|
+        .form-group.no-line
+          = f.hidden_field :name, placeholder: "Username", class: 'form-control'
+          = f.file_field :picture
+        = f.submit "Upload", class: "btn btn-primary"
+      br
+      p.fake-link.pic-cancel Cancel
+    .box
+      .card-header Edit Details
+      .card-body
+        = render 'form'
+  .aside
+    .row
+      .col
+        .box
+          = render 'shared/stats'
+    .row
+      .col
+        .box
+          .card-header Account
+          .card-body
+            li= link_to "Sign Out", signout_path, method: :delete
+            li= link_to "Delete Account", current_user, method: :delete, data: { confirm: "Are you sure? All your data will be lost" }

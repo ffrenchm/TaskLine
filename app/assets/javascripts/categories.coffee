@@ -2,5 +2,5 @@
 # All this logic will automatically be available in application.js.
 # You can use CoffeeScript in this file: http://coffeescript.org/
 $(document).on 'turbolinks:load', ->
-  $(".title-wrapper").click ->
-    $(this).parent().children(".tasks").slideToggle(200)
+  $(".category-title").click ->
+    $(this).parent().parent().children(".card-body").slideToggle(200)

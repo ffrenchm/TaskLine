@@ -1,0 +1,17 @@
+nav.navbar.navbar-expand-md.navbar-dark.fixed-top.bg-primary
+  .nav-wrap
+    = link_to "TaskLine", root_path, class: "navbar-brand"
+    button.navbar-toggler aria-controls="navbarNavDropdown" aria-expanded="false" aria-label=("Toggle navigation") data-target="#navbarNavDropdown" data-toggle="collapse" type="button"
+      span.navbar-toggler-icon
+    #navbarNavDropdown.collapse.navbar-collapse
+      ul.navbar-nav.mr-auto
+        li.nav-item class=(controller_name == "categories" ? "active" : "")
+          = link_to "Tasks", root_path, class: "nav-link"
+        li.nav-item class=(controller_name == "teams" ? "active" : "")
+          = link_to "Teams", teams_path, class: "nav-link"
+        li.nav-item.dropdown
+          a#navbarDropdownMenuLink.nav-link.dropdown-toggle aria-expanded="false" aria-haspopup="true" data-toggle="dropdown" href="#" class=(controller_name == "users" ? "active" : "")
+            | Profile
+          .dropdown-menu aria-labelledby="navbarDropdownMenuLink"
+            = link_to "Account", edit_user_path(current_user), class: "nav-link text-dark"
+            = link_to "Sign Out", signout_path, method: :delete, class: "nav-link text-dark"

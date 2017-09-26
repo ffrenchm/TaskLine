@@ -1,0 +1,24 @@
+.card-header Task Allocations
+.card-body
+  - if !current_user.received_allocations.any?
+    li You currently have no task allocations to review
+  - else
+    - current_user.received_allocations.each do |allocation|
+      div.task
+        .fake-tickbox
+          span
+        .info
+          li.task-content= allocation.task.content
+          li
+            - d = allocation.task.deadline_date
+            - t = allocation.task.deadline_time
+            span class=(allocation.task.overdue? ? "sub-info task-overdue-deadline" : "sub-info")
+              = deadline_date(d) + deadline_time(t)
+            - if allocation.task.repeat == 1
+              span.sub-info.task-repeat= allocation.task.repeat_message
+          - if !allocation.task.notes.blank?
+            span.toggle.toggle-more More
+            li.task-more= allocation.task.notes
+          li="From #{User.find(allocation.sender_id).name} in the team #{Team.find(allocation.team_id).name}."
+        li=link_to "", accept_form_allocation_path(allocation), class: "fa fa-check"
+        li=link_to "", allocation, class: "fa fa-trash", method: :delete

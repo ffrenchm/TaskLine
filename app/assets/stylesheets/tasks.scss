@@ -1,0 +1,97 @@
+.task {
+  @extend .sub-box;
+  display: flex;
+}
+.tickbox, .fake-tickbox {
+  position: absolute;
+  height: 1.5em;
+  width: 1.5em;
+  flex: 0 0 auto;
+  border-radius: 4px;
+  background-color: #fff;
+  border: 1px solid #ccc;
+  top: 50%;
+  transform: translate(20%, -50%);
+  span {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -45%);
+  }
+}
+.tickbox {
+  .fa-check {
+    font-size: 1.2em;
+    color: #fff;
+  }
+}
+.completed-task {
+  .tickbox {
+    .fa-check {
+      color: #D98880;
+    }
+  }
+}
+.tick-transition {
+  .fa-check {
+    color: #C0392B !important;
+  }
+}
+.info {
+  width: 67%;
+  margin-left: 2.9em;
+  word-wrap: break-word;
+  display: inline-block;
+  flex: 1 1 0;
+  float: right;
+  height: 100%;
+}
+.task-menu {
+  background-color: #fff;
+  width: 5.6em;
+  box-shadow: 0 0px 3px rgba(0, 0, 0, 0.2);
+  border-radius: 3px;
+  position: absolute;
+  top: 2.5em;
+  right: -1.75em;
+  z-index: 20;
+  display: none;
+  padding: 0.6em;
+}
+.task-content {
+  padding: 0;
+  font-weight: 600;
+}
+#task_repeat {
+  cursor: pointer;
+}
+.toggle-more {
+  font-size: 0.9em;
+  padding-top: 0.5em;
+  display: inline-block;
+}
+.task-more {
+  display: none;
+  font-size: 0.9em;
+}
+.every-field {
+  width: 100%;
+}
+.every-number {
+  width: 20% !important;
+  border-right: 0;
+}
+.every-period {
+  width: 80% !important;
+}
+.task-overdue-deadline {
+  color: red !important;
+}
+.completed-task {
+  @extend .sub-box;
+  display: none;
+  .info {
+    text-decoration: line-through;
+    color: #888;
+  }
+}

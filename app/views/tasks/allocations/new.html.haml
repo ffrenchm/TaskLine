@@ -1,8 +1,0 @@
-.centre-form
-  %h2 Send Task Allocation to...
-  = form_for [@task, @allocation] do |f|
-    .form-group.input-group
-      = f.collection_select :recipient_id, @team.users, :id, :name, {}, class: "form-control"
-      .input-group-btn
-        = f.submit "Send", class: "btn btn-primary"
-  = link_to "Cancel", team_path(@team)

@@ -1,6 +1,7 @@
 class UsersController < ApplicationController
-  skip_before_filter :signed_in_user, only: [:new, :create]
+  skip_before_action :signed_in_user, only: [:new, :create]
   before_action :correct_user, only: [:edit, :update, :destroy]
+  layout "minimal", only: :new
 
   def new
     @user = User.new
@@ -14,7 +15,7 @@ class UsersController < ApplicationController
       signin @user
       redirect_to edit_user_path(@user)
     else
-      render 'new'
+      redirect_to new_user_path
     end
   end
 
@@ -27,14 +28,14 @@ class UsersController < ApplicationController
     if @user.update_attributes(user_params)
       flash[:success] = "Your details were updated."
     end
-    redirect_to edit_user_path(@user)
+    redirect_to edit_user_path(current_user)
   end
 
   def destroy
     User.find(params[:id]).destroy
     flash[:success] = "Account deleted successfully"
     sign_out
-    redirect_to root_path
+    redirect_to new_session_path
   end
 
   private

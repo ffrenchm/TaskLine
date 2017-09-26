@@ -1,9 +1,0 @@
-= provide(:title, "Sign In")
-.centre-form
-  %h1 Sign In
-  = form_for(:session, url: signin_path) do |f|
-    = render 'shared/error_messages'
-    .form-group
-      = f.email_field :email, placeholder: "Email", class: 'form-control'
-      = f.password_field :password, placeholder: "Password", class: 'form-control'
-    = f.submit "Sign In", class: "btn btn-primary"

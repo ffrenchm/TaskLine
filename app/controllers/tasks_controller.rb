@@ -1,6 +1,13 @@
 class TasksController < ApplicationController
   before_action :signed_in_user
   before_action :find_task
+  before_action :task_permission
+
+  def edit
+  end
+
+  def move_form
+  end
 
   def update
     @task.update(task_params)
@@ -30,6 +37,12 @@ class TasksController < ApplicationController
 
     def task_params
       params.require(:task).permit(:content, :deadline_date, :deadline_time, :repeat, :repeat_number, :repeat_period, :category_id, :notes)
+    end
+
+    def task_permission
+      unless @task.category && current_user.categories.include?(@task.category) || @task.team && current_user.teams.include?(@task.team)
+        redirect_to request.referrer || root_path
+      end
     end
 
 end

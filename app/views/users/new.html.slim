@@ -1,0 +1,8 @@
+s= provide(:button_text, "Sign Up")
+= provide(:title, "Sign Up")
+.centre-form
+  .card-header Sign Up
+  .card-body
+    = render 'form'
+    br
+    | Already have an account? #{link_to "Sign In", signin_path}
