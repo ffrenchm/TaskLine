@@ -1,4 +1,4 @@
-.centre-form
+.centre-form.card
   .card-header Move Task to Category...
   .card-body
     = form_for @task, url: { controller: "allocations", action: "accept" }, html: {:method => :patch} do |f|
